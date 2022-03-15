@@ -4,7 +4,8 @@
 int main()
 {
     char playerNickname[20];
-    int gameDifficulty[1] = 2;
+    int gameDifficulty = 2;
+
 
     printf ("==========================================\n");
     printf ("\n");
@@ -22,7 +23,7 @@ int main()
     printf ("          | your difficulty will be set as MEDIUM |            \n");
     printf ("---------------------------------------------------------------\n");
     printf ("Enter the value here: ");
-    scanf ("%i", &gameDifficulty);
+    scanf ("%d", &gameDifficulty);
     if (gameDifficulty == 1) {
         printf("Your difficulty has been set to EASY\n");
         } else if (gameDifficulty == 2){
@@ -33,5 +34,26 @@ int main()
             printf ("Choose a valid value between 1 - 3\n");
         }
 
+    printf ("___________________________________\n");
+    printf ("|     This is just an example     |\n");
+    printf ("|_________________________________|\n");
+    printf ("|                       |  SCORE: |\n");
+    printf ("|          2048         |   928   |\n");
+    printf ("|_______________________|_________|\n");
+    printf ("|     |     |     |     |         |\n");
+    printf ("|  2  |     |     |  2  | B- Back |\n");
+    printf ("|_____|_____|_____|_____|_________|\n");
+    printf ("|     |     |     |     |         |\n");
+    printf ("|  4  |  2  |     |     | S- Save |\n");
+    printf ("|_____|_____|_____|_____|_________|\n");
+    printf ("|     |     |     |     |         |\n");
+    printf ("|  2  |  16 |  4  |     |R-Restart|\n");
+    printf ("|_____|_____|_____|_____|_________|\n");
+    printf ("|     |     |     |     |         |\n");
+    printf ("|  16 |  32 |  64 |     |N-Ranking|\n");
+    printf ("|_____|_____|_____|_____|_________|\n");
+    printf ("|     |     |     |     |         |\n");
+    printf ("|  >  |  ^  |  v  |  <  | Control |\n");
+    printf ("|_____|_____|_____|_____|_________|\n");
 
 }
