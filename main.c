@@ -23,7 +23,7 @@ int main()
     printf ("          | your difficulty will be set as MEDIUM |            \n");
     printf ("---------------------------------------------------------------\n");
     printf ("Enter the value here: ");
-    scanf ("%d", &gameDifficulty);
+    scanf ("%i", &gameDifficulty);
     if (gameDifficulty == 1) {
         printf("Your difficulty has been set to EASY\n");
         } else if (gameDifficulty == 2){
@@ -34,11 +34,9 @@ int main()
             printf ("Choose a valid value between 1 - 3\n");
         }
 
-    printf ("_________________________________________\n");
-    printf ("|        This is just an example        |\n");
-    printf ("|_______________________________________|___________\n");
+    printf ("_____________________________________________________\n");
     printf ("|                           |           |           |\n");
-    printf ("|            2048           | SCORE:761 | Controls: |\n");
+    printf ("|            2048           | SCORE:232 | Controls: |\n");
     printf ("|___________________________|___________|___________|\n");
     printf ("|      |      |      |      |           |           |\n");
     printf ("|  02  |      |      |  02  |  B-Back   |  RIGHT >  |\n");
