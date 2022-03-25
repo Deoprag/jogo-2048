@@ -1,2 +1,2 @@
-# 2048 GAME IN C LANGUAGE
- This is my first college project, where i will develope a 2048 game in C language
+# JOGO 2048 EM LINGUAGEM C
+ Esse jogo está em desenvolvimento e a medida em que for sendo desenvolvido eu vou atualizando o README
