@@ -1,30 +1,50 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char nomeJogador[20];
-int dificuldadeJogo = 2;
-
 int main(){
-printf ("Ola, %s, escolha sua dificuldade:\n", nomeJogador);
-    printf ("----------------------------------------------------------------------------\n");
-    printf ("| Digite [1] para FACIL | Digite [2] para NORMAL | Digite [3] para DIFICIL |\n");
-    printf ("|                      Se voce digitar alguma letra                        |\n");
-    printf ("|              sua dificuldade sera definida como [2] NORMAL               |\n");
-    printf ("----------------------------------------------------------------------------\n");
-    dificuldade:
-    printf ("Digite um valor: ");
-    scanf ("%i", &dificuldadeJogo);
-    if (dificuldadeJogo == 1) {
-        printf("A dificuldade foi definida como FACIL\n");
-        } else if (dificuldadeJogo == 2){
-            printf ("A dificuldade foi definida como NORMAL\n");
-        } else if (dificuldadeJogo == 3){
-            printf ("A dificuldade foi definida como DIFICIL\n");
-        } else {
-            printf ("Digite um valor valido entre 1 - 3\n");
-            int getchar(void);
-            goto dificuldade;
-        }
+
+    int tijolo01, tijolo02, tijolo03 = 0;
+
+    for (tijolo01 = 0; tijolo01 < 63; tijolo01 ++){
+        printf("%c", 178);
+    }
+
+    printf("\n");
+    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c    222222   \t 0000000000 \t    4444   \t 888888888   %c%c\n", 178, 178, 178, 178);
+    printf("%c%c  2222222222 \t0000    0000\t   44444   \t88888888888  %c%c\n", 178, 178, 178, 178);
+    printf("%c%c          222\t000      000\t  44 444   \t888     888  %c%c\n", 178, 178, 178, 178);
+    printf("%c%c        22222\t00        00\t 44  444   \t 888888888   %c%c\n", 178, 178, 178, 178);
+    printf("%c%c     22222   \t00        00\t44444444444\t 888888888   %c%c\n", 178, 178, 178, 178);
+    printf("%c%c   22222     \t000      000\t     444   \t888     888  %c%c\n", 178, 178, 178, 178);
+    printf("%c%c  2222       \t0000    0000\t     444   \t88888888888  %c%c\n", 178, 178, 178, 178);
+    printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+
+    for (tijolo02 = 0; tijolo02 < 63; tijolo02 ++){
+        printf("%c", 178);
+    }
+
+    printf("\n");
+    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t          FACIL          \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   ___________________   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  |  4 |  2 |  4 |    |  \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  | 32 |    |    |    |  \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  |____|____|____|____| \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  | 64 | 32 |    |    |  \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  | 64 | 16 |  4 |  2 |  \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t           4x4           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t         1024 pts        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+
+    for (tijolo03 = 0; tijolo03 < 63; tijolo03 ++){
+        printf("%c", 178);
+    }
 
     return 0;
 }
