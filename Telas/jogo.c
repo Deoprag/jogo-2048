@@ -22,5 +22,5 @@ int main()
     printf ("|  16  |  32  |  64  |      | N-Ranking |  BAIXO V  |\n");
     printf ("|______|______|______|______|___________|___________|\n");
 
-    system("pause");
+    system("pause"); // ESSE É O PROTÓTIPO DA TELA PRINCIPAL DE JOGO. MUITAS ALTERAÇÕES AINDA SERÃO FEITAS
 }

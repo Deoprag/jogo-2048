@@ -3,9 +3,12 @@
 
 int main(){
 
-    // FÁCIL
+                    // FÁCIL
 
-    int tijolo01, tijolo02, tijolo03 = 0;
+    int tijolo01, tijolo02, tijolo03;
+
+    inicio:
+    tijolo01, tijolo02, tijolo03 = 0;
 
     for (tijolo01 = 0; tijolo01 < 63; tijolo01 ++){
         printf("%c", 178);
@@ -29,8 +32,8 @@ int main(){
 
     printf("\n");
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t         %c FACIL %c       \t             %c%c\n", 178, 178, 174, 175, 178, 178);
-    printf("%c%c             \t__________________________\t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t        %c FACIL %c       \t             %c%c\n", 178, 178, 174, 175, 178, 178);
+    printf("%c%c             \t ________________________ \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t|  4 |  2 |  4 |  2 |    |\t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t|____|____|____|____|____|\t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t| 32 |  4 |    |    |    |\t             %c%c\n", 178, 178, 178, 178);
@@ -50,7 +53,11 @@ int main(){
         printf("%c", 178);
     }
 
-    // NORMAL
+    printf("\n");
+    system("pause");
+    system("cls");
+
+                    // NORMAL
 
     printf("\n");
     tijolo01, tijolo02, tijolo03 = 0;
@@ -96,7 +103,11 @@ int main(){
         printf("%c", 178);
     }
 
-    // DIFICIL
+    printf("\n");
+    system("pause");
+    system("cls");
+
+                    // DIFICIL
 
     printf("\n");
     tijolo01, tijolo02, tijolo03 = 0;
@@ -142,7 +153,11 @@ int main(){
         printf("%c", 178);
     }
 
-    // HARDCORE
+    printf("\n");
+    system("pause");
+    system("cls");
+
+                    // HARDCORE
 
     printf("\n");
     tijolo01, tijolo02, tijolo03 = 0;
@@ -186,5 +201,10 @@ int main(){
         printf("%c", 178);
     }
 
+    printf("\n");
+    system("pause");
+    system("cls");
+
+    goto inicio;    // Isso faz as telas ficarem em loop. A funcionalidade de escolha será adicionada depois
     return 0;
 }
