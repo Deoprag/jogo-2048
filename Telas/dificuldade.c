@@ -5,12 +5,12 @@ int main(){
 
                     // FÁCIL
 
-    int tijolo01, tijolo02, tijolo03;
+    int tijolo;
 
     inicio:
-    tijolo01, tijolo02, tijolo03 = 0;
 
-    for (tijolo01 = 0; tijolo01 < 63; tijolo01 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -26,7 +26,8 @@ int main(){
     printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    for (tijolo02 = 0; tijolo02 < 63; tijolo02 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -49,7 +50,8 @@ int main(){
     printf("%c%c             \t         2048 pts        \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    for (tijolo03 = 0; tijolo03 < 63; tijolo03 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -60,9 +62,9 @@ int main(){
                     // NORMAL
 
     printf("\n");
-    tijolo01, tijolo02, tijolo03 = 0;
 
-    for (tijolo01 = 0; tijolo01 < 63; tijolo01 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -78,7 +80,8 @@ int main(){
     printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    for (tijolo02 = 0; tijolo02 < 63; tijolo02 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -99,7 +102,8 @@ int main(){
     printf("%c%c             \t         2048 pts        \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    for (tijolo03 = 0; tijolo03 < 63; tijolo03 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -110,9 +114,9 @@ int main(){
                     // DIFICIL
 
     printf("\n");
-    tijolo01, tijolo02, tijolo03 = 0;
 
-    for (tijolo01 = 0; tijolo01 < 63; tijolo01 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -128,7 +132,8 @@ int main(){
     printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    for (tijolo02 = 0; tijolo02 < 63; tijolo02 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -149,7 +154,8 @@ int main(){
     printf("%c%c             \t         4096 pts        \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    for (tijolo03 = 0; tijolo03 < 63; tijolo03 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -160,9 +166,9 @@ int main(){
                     // HARDCORE
 
     printf("\n");
-    tijolo01, tijolo02, tijolo03 = 0;
 
-    for (tijolo01 = 0; tijolo01 < 63; tijolo01 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -178,7 +184,8 @@ int main(){
     printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    for (tijolo02 = 0; tijolo02 < 63; tijolo02 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
@@ -197,7 +204,8 @@ int main(){
     printf("%c%c             \t         1024 pts        \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    for (tijolo03 = 0; tijolo03 < 63; tijolo03 ++){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
 
