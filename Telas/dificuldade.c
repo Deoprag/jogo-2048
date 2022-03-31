@@ -32,7 +32,7 @@ int main(){
     }
 
     printf("\n");
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t            \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t        %c FACIL %c       \t             %c%c\n", 178, 178, 174, 175, 178, 178);
     printf("%c%c             \t ________________________ \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t|  4 |  2 |  4 |  2 |    |\t             %c%c\n", 178, 178, 178, 178);
@@ -45,11 +45,11 @@ int main(){
     printf("%c%c             \t|____|____|____|____|____|\t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t|256 |128 | 64 | 32 |    |\t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t|____|____|____|____|____|\t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t           5x5           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t         2048 pts        \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t       [O] Ranking       \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t           5x5            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t         2048 pts         \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t       [O] Ranking        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t            \t             %c%c\n", 178, 178, 178, 178);
 
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
@@ -87,22 +87,22 @@ int main(){
     }
 
     printf("\n");
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t        %c MEDIA %c     \t\t             %c%c\n", 178, 178, 174, 175, 178, 178);
-    printf("%c%c             \t   ___________________   \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |  4 |  2 |  4 |    |  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  | 32 |    |    |    |  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  | 64 | 32 |    |    |  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  | 64 | 16 |  4 |  2 |  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t           4x4           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t         2048 pts        \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t       [O] Ranking       \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t             \t            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t         %c MEDIA %c       \t             %c%c\n", 178, 178, 174, 175, 178, 178);
+    printf("%c%c             \t    ___________________    \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |  4 |  2 |  4 |    |   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   | 32 |    |    |    |   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   | 64 | 32 |    |    |   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   | 64 | 16 |  4 |  2 |   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t             \t            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            4x4            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t          2048 pts         \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t        [O] Ranking        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t             \t             %c%c\n", 178, 178, 178, 178);
 
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
@@ -140,22 +140,22 @@ int main(){
     }
 
     printf("\n");
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t        %c DIFICIL %c    \t\t             %c%c\n", 178, 178, 174, 175, 178, 178);
-    printf("%c%c             \t   ___________________   \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |  4 |  2 |  4 |    |  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  | 32 |    |    |    |  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  | 64 | 32 |    |    |  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  | 64 | 16 |  4 |  2 |  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  |____|____|____|____|  \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t           4x4           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t         4096 pts        \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t       [O] Ranking       \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t             \t            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t         %c DIFICIL %c     \t             %c%c\n", 178, 178, 174, 175, 178, 178);
+    printf("%c%c             \t    ___________________    \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |  4 |  2 |  4 |    |   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   | 32 |    |    |    |   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   | 64 | 32 |    |    |   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   | 64 | 16 |  4 |  2 |   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t             \t            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            4x4            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t          4096 pts         \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t        [O] Ranking        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t             \t            \t             %c%c\n", 178, 178, 178, 178);
 
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
@@ -193,20 +193,20 @@ int main(){
     }
 
     printf("\n");
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t       %c HARDCORE %c\t\t             %c%c\n", 178, 178, 174, 175, 178, 178);
-    printf("%c%c             \t      ______________     \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t     |  4 |  2 |  4 |    \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t     |____|____|____|    \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t     | 32 |    |    |    \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t     |____|____|____|    \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t     | 64 | 32 |    |    \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t     |____|____|____|    \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t           3x3           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t         1024 pts        \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t       [O] Ranking       \t             %c%c\n", 178, 178, 178, 178); //Posteriormente aplicar funcionalidade para levar para uma
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178); //tela de ranking com a opção de tempo e pontos
+    printf("%c%c             \t             \t            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t        %c HARDCORE %c     \t             %c%c\n", 178, 178, 174, 175, 178, 178);
+    printf("%c%c             \t       ______________      \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t      |  4 |  2 |  4 |     \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t      |____|____|____|     \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t      | 32 |    |    |     \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t      |____|____|____|     \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t      | 64 | 32 |    |     \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t      |____|____|____|     \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t             \t            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            3x3            \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t          1024 pts         \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t        [O] Ranking        \t             %c%c\n", 178, 178, 178, 178); //Posteriormente aplicar funcionalidade para levar para uma
+    printf("%c%c             \t             \t            \t             %c%c\n", 178, 178, 178, 178); //tela de ranking com a opção de tempo e pontos
 
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){

@@ -78,17 +78,17 @@ int main(){
     }
     printf("\n");
 
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t   RANKING DE PONTUACAO  \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t[1] FACIL   \t[2] NORMAL \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t   RANKING DE PONTUACAO   \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t[1] FACIL   \t[2] NORMAL  \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
     printf("%c%c            \t[3] DIFICIL \t[4] HARDCORE\t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
 
 
     tijolo = 0;
@@ -244,17 +244,17 @@ int main(){
     }
     printf("\n");
 
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t     RANKING DE TEMPO    \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t[1] FACIL   \t[2] NORMAL \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t     RANKING DE TEMPO     \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t[1] FACIL   \t[2] NORMAL  \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
     printf("%c%c            \t[3] DIFICIL \t[4] HARDCORE\t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
-    printf("%c%c            \t            \t           \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
+    printf("%c%c            \t            \t            \t            %c%c\n", 178, 178, 178, 178);
 
 
     tijolo = 0;

@@ -54,11 +54,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t PONTOS: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t1024\t%c%c\t512\t%c%c\t128\t%c%c\t64\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t| 99999 |\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t PONTOS: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t1024\t%c%c\t512 \t%c%c\t128 \t%c%c\t64  \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t| 99999 |\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolo = 0;
 
@@ -67,11 +67,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\tCONTROLES: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (A) DIREITA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t256\t%c%c\t32\t%c%c\t16\t%c%c\t\t%c%c\t\t%c%c (D) ESQUEDA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (W) CIMA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (S) BAIXO\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\tCONTROLES:   \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (A) DIREITA \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t256 \t%c%c\t32  \t%c%c\t16  \t%c%c\t    \t%c%c\t    \t%c%c (D) ESQUEDA \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (W) CIMA    \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (S) BAIXO   \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolo = 0;
 
@@ -80,11 +80,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (P) SALVAR JOGO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t64\t%c%c\t32\t%c%c\t4\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (V) VOLTAR MOVIMENTO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (P) SALVAR JOGO     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t64  \t%c%c\t32  \t%c%c\t4   \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (V) VOLTAR MOVIMENTO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     
     tijolo = 0;
 
@@ -93,11 +93,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (R) REINICIAR JOGO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t32\t%c%c\t16\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (O) RANKING\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                   \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (R) REINICIAR JOGO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t32  \t%c%c\t16  \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                   \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (O) RANKING       \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                   \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolo = 0;
 
@@ -106,11 +106,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t16\t%c%c\t4\t%c%c\t2\t%c%c\t\t%c%c\t\t%c%c   UNIFACEAR - 2022   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t16  \t%c%c\t4   \t%c%c\t2   \t%c%c\t    \t%c%c\t    \t%c%c   UNIFACEAR - 2022  \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolo = 0;
 
@@ -146,11 +146,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t PONTOS: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t1024\t%c%c\t512\t%c%c\t128\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t| 99999 |\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t PONTOS: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t1024\t%c%c\t512 \t%c%c\t128 \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t| 99999 |\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolo = 0;
 
@@ -159,11 +159,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\tCONTROLES: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (A) DIREITA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t256\t%c%c\t32\t%c%c\t16\t%c%c\t\t%c%c (D) ESQUEDA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (W) CIMA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (S) BAIXO\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\tCONTROLES:   \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (A) DIREITA \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t256 \t%c%c\t32  \t%c%c\t16  \t%c%c\t    \t%c%c (D) ESQUEDA \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (W) CIMA    \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (S) BAIXO   \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolo = 0;
 
@@ -172,11 +172,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (P) SALVAR JOGO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t64\t%c%c\t32\t%c%c\t4\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (V) VOLTAR MOVIMENTO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (P) SALVAR JOGO     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t64  \t%c%c\t32  \t%c%c\t4   \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (V) VOLTAR MOVIMENTO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     
     tijolo = 0;
 
@@ -185,11 +185,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (R) REINICIAR JOGO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t32\t%c%c\t\t%c%c\t2\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c (O) RANKING\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (R) REINICIAR JOGO  \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t32  \t%c%c\t    \t%c%c\t2   \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (O) RANKING         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     
     tijolo = 0;
 
@@ -225,11 +225,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t PONTOS: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t1024\t%c%c\t128\t%c%c\t\t%c%c\t        \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t| 99999 |\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t        \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t PONTOS: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t1024\t%c%c\t128 \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t| 99999 |\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolo = 0;
 
@@ -238,11 +238,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\tCONTROLES: \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c (A) DIREITA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t256\t%c%c\t32\t%c%c\t16\t%c%c (D) ESQUERDA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c (W) CIMA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c (S) BAIXO\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\tCONTROLES:    \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (A) DIREITA    \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t256 \t%c%c\t32  \t%c%c\t16  \t%c%c (D) ESQUERDA   \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (W) CIMA       \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (S) BAIXO      \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolo = 0;
 
@@ -251,11 +251,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c (P) SALVAR JOGO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c (V) VOLTAR MOVIMENTO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t%c%c\t\t%c%c\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (P) SALVAR JOGO     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (V) VOLTAR MOVIMENTO\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c                     \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     
     tijolo = 0;
 
@@ -264,11 +264,11 @@ inicio:
     }
     printf("\n");
 
-    printf("%c%c\t\t\t\t\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t\t\t\t\t%c%c (R) REINICIAR JOGO\t%c%c\n", 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\tUNIFACEAR - 2022\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t\t\t\t\t%c%c (O) RANKING\t\t%c%c\n", 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t\t\t\t\t\t%c%c\t         \t%c%c\n", 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t\t                \t\t%c%c                   \t%c%c\n", 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t\t                \t\t%c%c (R) REINICIAR JOGO\t%c%c\n", 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t\tUNIFACEAR - 2022\t\t%c%c                   \t%c%c\n", 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t\t                \t\t%c%c (O) RANKING       \t%c%c\n", 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t\t                \t\t%c%c                   \t%c%c\n", 178, 178, 178, 178, 178, 178);
     
     tijolo = 0;
 

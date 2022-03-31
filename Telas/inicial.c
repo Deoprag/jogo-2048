@@ -129,21 +129,21 @@ int main()
     }
 
     printf("\n");
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \tApelido:         [             ] \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \tSenha:           [             ] \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \tConfirma Senha:  [             ] \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \tCelular:         [             ] \t     %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
 
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
