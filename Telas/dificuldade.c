@@ -48,6 +48,7 @@ int main(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t           5x5           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t         2048 pts        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t       [O] Ranking       \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
     tijolo = 0;
@@ -100,6 +101,7 @@ int main(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t           4x4           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t         2048 pts        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t       [O] Ranking       \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
     tijolo = 0;
@@ -152,6 +154,7 @@ int main(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t           4x4           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t         4096 pts        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t       [O] Ranking       \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
     tijolo = 0;
@@ -202,7 +205,8 @@ int main(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t           3x3           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t         1024 pts        \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t       [O] Ranking       \t             %c%c\n", 178, 178, 178, 178); //Posteriormente aplicar funcionalidade para levar para uma
+    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178); //tela de ranking com a opção de tempo e pontos
 
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
