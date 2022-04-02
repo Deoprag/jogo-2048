@@ -69,7 +69,7 @@ inicio:
 
     printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\tCONTROLES:   \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (A) DIREITA \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t256 \t%c%c\t32  \t%c%c\t16  \t%c%c\t    \t%c%c\t    \t%c%c (D) ESQUEDA \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t256 \t%c%c\t32  \t%c%c\t16  \t%c%c\t    \t%c%c\t    \t%c%c (D) ESQUERDA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (W) CIMA    \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (S) BAIXO   \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
@@ -161,7 +161,7 @@ inicio:
 
     printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\tCONTROLES:   \t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (A) DIREITA \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c\t256 \t%c%c\t32  \t%c%c\t16  \t%c%c\t    \t%c%c (D) ESQUEDA \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c\t256 \t%c%c\t32  \t%c%c\t16  \t%c%c\t    \t%c%c (D) ESQUERDA\t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (W) CIMA    \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
     printf("%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c\t    \t%c%c (S) BAIXO   \t\t%c%c\n", 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178, 178);
 
