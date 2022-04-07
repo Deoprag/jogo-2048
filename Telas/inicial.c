@@ -1,9 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int tijolo, inicial, opcao = 0;
+
+int inicio();
+int login();
+int cadastro();
+int configuracoes();
+
 int main()
 {
-    int tijolo, inicial = 0;
+    inicio();
+    
+    
+    
+}
+
+inicio(){
+
+    opcao = 0;
+    tijolo = 0;
 
     for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
@@ -39,7 +55,7 @@ int main()
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t        [0] Sair         \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
@@ -47,16 +63,45 @@ int main()
     for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
-    
-    inicial = 0;
-    printf("\n\t\tDigite aqui a opcao desejada: "); // NÃO ESTÁ FUNCIONAL AINDA, AS TELAS SERÃO EXIBIDAS EM SEQUÊNCIA
-    scanf("%i", &inicial);
-    
-                    // TELA DE LOGIN
-    inicio:
-    system("cls");
 
-    tijolo, tijolo, tijolo = 0;
+    printf("\n");
+    do{
+        printf("Digite aqui a opcao desejada: ");
+        scanf("%i", &opcao);
+
+        switch (opcao)
+        {
+        case 0:
+            system("cls");
+            printf("\nTchauuuu...");
+            break;
+
+        case 1:
+            system("cls");
+            login();
+            break;
+
+        case 2:
+            system("cls");
+            cadastro();
+            break;
+
+        case 3:
+            system("cls");
+            configuracoes();
+            break;
+    
+        default:
+            printf("\nOpcao invalida. Tente novamente\n\n");
+        }
+    } while (opcao > 3 || opcao < 0);
+}
+
+login(){
+    char apelido[20], senha[16];
+
+    opcao = 0;
+    tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
@@ -85,13 +130,13 @@ int main()
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \tApelido: [             ] \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t[1] Apelido: [             ]\t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  Senha: [             ] \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t[2] Senha:   [             ]\t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t  [0] Sair   [3] Voltar  \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
@@ -99,12 +144,42 @@ int main()
     for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
+    
     printf("\n");
-    system("pause");
+    do{
+        printf("Digite aqui a opcao desejada: ");
+        scanf("%i", &opcao);
 
-                    // TELA DE CADASTRO
+        switch (opcao)
+        {
+        case 0:
+            system("cls");
+            printf("\nTchauuuu...");
+            break;
 
-    system("cls");
+        case 1:
+            printf("\nDigite aqui seu apelido: ");
+            scanf("%s", apelido);
+            break;
+
+        case 2:
+            printf("Digite aqui sua senha: ");
+            scanf("%s", senha);
+            break;
+
+        case 3:
+            system("cls");
+            login();
+            break;
+    
+        default:
+            printf("\nOpcao invalida. Tente novamente\n\n");
+        }
+    } while (opcao > 3 || opcao < 0);
+    
+}
+
+cadastro(){
 
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
@@ -149,12 +224,11 @@ int main()
     for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
+
     printf("\n");
-    system("pause");
+}
 
-                    // TELA DE IDIOMA
-
-    system("cls");
+configuracoes(){
 
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
@@ -199,9 +273,6 @@ int main()
     for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
     }
-    printf("\n");
-    system("pause");
-    goto inicio;        // COLOCA AS TELAS EM LOOP (EXCETO A TELA INICIAL)
 
-    return 0;
+    printf("\n");
 }
