@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 int tijolo, inicial, opcao = 0;
+char apelido[20], senha[16], celular[11];
 
 int inicio();
 int login();
@@ -11,9 +12,7 @@ int configuracoes();
 int main()
 {
     inicio();
-    
-    
-    
+     
 }
 
 inicio(){
@@ -74,6 +73,7 @@ inicio(){
         case 0:
             system("cls");
             printf("\nTchauuuu...");
+            return 0;
             break;
 
         case 1:
@@ -98,7 +98,6 @@ inicio(){
 }
 
 login(){
-    char apelido[20], senha[16];
 
     opcao = 0;
     tijolo = 0;
@@ -136,7 +135,7 @@ login(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t  [0] Sair   [3] Voltar  \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t       [0] Voltar        \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
@@ -154,33 +153,29 @@ login(){
         {
         case 0:
             system("cls");
-            printf("\nTchauuuu...");
+            inicio();
             break;
 
         case 1:
             printf("\nDigite aqui seu apelido: ");
-            scanf("%s", apelido);
+            scanf("%s", &apelido);
             break;
 
         case 2:
-            printf("Digite aqui sua senha: ");
-            scanf("%s", senha);
+            printf("\nDigite aqui sua senha: ");
+            scanf("%s", &senha);
             break;
 
-        case 3:
-            system("cls");
-            login();
-            break;
-    
         default:
             printf("\nOpcao invalida. Tente novamente\n\n");
         }
-    } while (opcao > 3 || opcao < 0);
+    } while (opcao > 3 || opcao < 0 || opcao != 9);
     
 }
 
 cadastro(){
 
+    opcao = 0;
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
@@ -209,14 +204,14 @@ cadastro(){
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \tApelido:         [             ] \t     %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \tSenha:           [             ] \t     %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \tConfirma Senha:  [             ] \t     %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \tCelular:         [             ] \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t[1] Apelido:         [             ]\t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t[2] Senha:           [             ]\t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t[3] Confirma Senha:  [             ]\t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t[4] Celular:         [             ]\t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t       [0] Voltar        \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
 
@@ -226,10 +221,45 @@ cadastro(){
     }
 
     printf("\n");
+    do{
+        printf("Digite aqui a opcao desejada: ");
+        scanf("%i", &opcao);
+
+        switch (opcao)
+        {
+        case 0:
+            system("cls");
+            inicio();
+            break;
+
+        case 1:
+            printf("\nDigite seu apelido: ");
+            scanf("%s", &apelido);
+            break;
+
+        case 2:
+            printf("\nDigite sua senha: ");
+            scanf("%s", &senha);
+            break;
+
+        case 3:
+            printf("\nConfirme sua senha: ");
+            scanf("%s", &senha);
+            break;
+        case 4:
+            printf("\nDigite seu numero de celular: ");
+            scanf("%s", &celular);
+            break;
+    
+        default:
+            printf("\nOpcao invalida. Tente novamente\n\n");
+        }
+    } while (opcao > 4 || opcao < 0 || opcao != 9);
 }
 
 configuracoes(){
 
+    opcao = 0;
     tijolo = 0;
     for (tijolo = 0; tijolo < 63; tijolo ++){
         printf("%c", 178);
@@ -265,7 +295,7 @@ configuracoes(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t       [0] Voltar        \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
@@ -275,4 +305,29 @@ configuracoes(){
     }
 
     printf("\n");
+    do
+    {
+        printf("Digite aqui a opcao desejada: ");
+        scanf("%i", &opcao);
+
+        switch (opcao)
+        {
+        case 0:
+            system("cls");
+            inicio();
+            break;
+
+        case 1:
+            printf("\nIdioma alterado para Portugues!\n");                      // AO SELECIONAR UMA DAS OPCOES O PROGRAMA ESTA JOGANDO O USUARIO PARA OUTRA FUNCAO. CORRIGIR DEPOIS
+            break;
+
+        case 2:
+            printf("\nLanguage changed to English!\n");
+            break;
+
+        default:
+            printf("\nOpcao invalida. Tente novamente\n\n");
+        }
+    } while (opcao < 0 || opcao > 2);
+    
 }
