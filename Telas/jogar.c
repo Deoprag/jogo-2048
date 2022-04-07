@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// VARIAVEIS GLOBAIS
 int opcao, tijolo = 0;
 
-// Declaração de Funções:
-
+// DECLARACAO DE FUNCOES
 int selecao();
 int tijolos();
 int dificuldadeFacil();
@@ -20,15 +20,17 @@ int rankingPontuacao();
 int rankingTempoDif();
 int rankingTempo();
 
-// Função principal
 
-int main (){
+// FUNCAO PRINCIPAL
+int main ()
+{
+    system("color 02");
     selecao();
 }
 
-// Funções
+// FUNCOES SECUNDARIAS
 selecao(){
-    
+
     opcao = 0;                                                                        // A PRINCIPIO ESSE ARQUIVO DE JOGO ESTARÁ SEPARADO DO INICIAL POR CONTA DO LOGIN
     tijolos();                                                                        // QUANDO A FUNCIONALIDADE DE CADASTRO/AUTENTICACAO FOR APLICADA AS TELAS SERÃO JUNTADAS
     
@@ -903,45 +905,45 @@ rankingTempo(){
 
     tijolos();
 
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c     COLOCACAO     %c%c     JOGADOR     %c%c     PONTUACAO     %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c    COLOCACAO     %c%c     JOGADOR     %c%c       TEMPO        %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolos();
 
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c     1%c LUGAR      %c%c    Augusto01    %c%c    [12564 pts]    %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c    1%c LUGAR      %c%c    Augusto01    %c%c     [2min 24s]     %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolos();
 
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c     2%c LUGAR      %c%c  PedroTeste123  %c%c    [11256 pts]    %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c    2%c LUGAR      %c%c  PedroTeste123  %c%c     [2min 56s]     %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolos();
 
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c     3%c LUGAR      %c%c  TerceiroLugar  %c%c    [11120 pts]    %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c    3%c LUGAR      %c%c  TerceiroLugar  %c%c     [3min 15s]     %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolos();
 
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c     4%c LUGAR      %c%c  PedroTeste002  %c%c    [10848 pts]    %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c    4%c LUGAR      %c%c  PedroTeste002  %c%c     [3min 49s]     %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolos();
 
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c     5%c LUGAR      %c%c   QuintoLugar   %c%c    [10424 pts]    %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c    5%c LUGAR      %c%c   QuintoLugar   %c%c     [4min 03s]     %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
 
     tijolos();
 
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
-    printf("%c%c     24%c LUGAR     %c%c VigesimoQuarto  %c%c    [6248 pts]     %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
-    printf("%c%c                   %c%c                 %c%c                   %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
+    printf("%c%c    24%c LUGAR     %c%c VigesimoQuarto  %c%c     [9min 42s]     %c%c\n", 178, 178, 167, 178, 178, 178, 178, 178, 178);
+    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 178, 178, 178, 178, 178, 178, 178, 178);
     
     tijolos();
 

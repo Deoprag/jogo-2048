@@ -1,30 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// VARIAVEIS GLOBAIS
 int tijolo, inicial, opcao = 0;
 char apelido[20], senha[16], celular[11];
 
+// DECLARACAO DE FUNCOES
 int inicio();
 int login();
 int cadastro();
 int configuracoes();
+int tijolos();
 
+// FUNCAO PRINCIPAL
 int main()
 {
+    system("color 02");
     inicio();
      
 }
 
+// FUNCOES SECUNDARIAS
 inicio(){
 
-    opcao = 0;
-    tijolo = 0;
+    tijolos();
 
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
-
-    printf("\n");
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c    222222   \t 0000000000 \t    4444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c  2222222222 \t0000    0000\t   44444   \t88888888888  %c%c\n", 178, 178, 178, 178);
@@ -36,12 +36,8 @@ inicio(){
     printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
@@ -58,12 +54,8 @@ inicio(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     do{
         printf("Digite aqui a opcao desejada: ");
         scanf("%i", &opcao);
@@ -94,18 +86,13 @@ inicio(){
         default:
             printf("\nOpcao invalida. Tente novamente\n\n");
         }
-    } while (opcao > 3 || opcao < 0);
+    } while (opcao > 3 || opcao != 0);
 }
 
 login(){
 
-    opcao = 0;
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c    222222   \t 0000000000 \t    4444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c  2222222222 \t0000    0000\t   44444   \t88888888888  %c%c\n", 178, 178, 178, 178);
@@ -117,12 +104,8 @@ login(){
     printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
@@ -135,16 +118,12 @@ login(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t       [0] Voltar        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t[0] Voltar  [9] Confirmar\t             %c%c\n", 178, 178, 178, 178);        //FUNCAO PARA CONFIRMAR SERA APLICADA DEPOIS (NAO ESTA FUNCIONAL AINDA)
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
     
-    printf("\n");
     do{
         printf("Digite aqui a opcao desejada: ");
         scanf("%i", &opcao);
@@ -169,19 +148,14 @@ login(){
         default:
             printf("\nOpcao invalida. Tente novamente\n\n");
         }
-    } while (opcao > 3 || opcao < 0 || opcao != 9);
+    } while (opcao > 3 || opcao != 0);
     
 }
 
 cadastro(){
 
-    opcao = 0;
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c    222222   \t 0000000000 \t    4444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c  2222222222 \t0000    0000\t   44444   \t88888888888  %c%c\n", 178, 178, 178, 178);
@@ -193,12 +167,8 @@ cadastro(){
     printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
@@ -211,16 +181,12 @@ cadastro(){
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
-    printf("%c%c             \t       [0] Voltar        \t             %c%c\n", 178, 178, 178, 178);
+    printf("%c%c             \t    [0] Voltar  [9] Confirmar    \t     %c%c\n", 178, 178, 178, 178);        //FUNCAO PARA CONFIRMAR SERA APLICADA DEPOIS (NAO ESTA FUNCIONAL AINDA)
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t                   \t     %c%c\n", 178, 178, 178, 178);
 
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     do{
         printf("Digite aqui a opcao desejada: ");
         scanf("%i", &opcao);
@@ -254,18 +220,13 @@ cadastro(){
         default:
             printf("\nOpcao invalida. Tente novamente\n\n");
         }
-    } while (opcao > 4 || opcao < 0 || opcao != 9);
+    } while (opcao > 4 || opcao != 0);
 }
 
 configuracoes(){
 
-    opcao = 0;
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c    222222   \t 0000000000 \t    4444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c  2222222222 \t0000    0000\t   44444   \t88888888888  %c%c\n", 178, 178, 178, 178);
@@ -277,12 +238,8 @@ configuracoes(){
     printf("%c%c  22222222222\t 0000000000 \t     444   \t 888888888   %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
@@ -299,12 +256,8 @@ configuracoes(){
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
     printf("%c%c             \t            \t           \t             %c%c\n", 178, 178, 178, 178);
 
-    tijolo = 0;
-    for (tijolo = 0; tijolo < 63; tijolo ++){
-        printf("%c", 178);
-    }
+    tijolos();
 
-    printf("\n");
     do
     {
         printf("Digite aqui a opcao desejada: ");
@@ -318,16 +271,25 @@ configuracoes(){
             break;
 
         case 1:
-            printf("\nIdioma alterado para Portugues!\n");                      // AO SELECIONAR UMA DAS OPCOES O PROGRAMA ESTA JOGANDO O USUARIO PARA OUTRA FUNCAO. CORRIGIR DEPOIS
+            printf("\nIdioma alterado para Portugues!\n\n");
             break;
 
         case 2:
-            printf("\nLanguage changed to English!\n");
+            printf("\nLanguage changed to English!\n\n");
             break;
 
         default:
             printf("\nOpcao invalida. Tente novamente\n\n");
         }
-    } while (opcao < 0 || opcao > 2);
+    } while (opcao > 2 || opcao != 0);
     
 }
+
+tijolos(){
+    tijolo = 0;
+    for (tijolo = 0; tijolo < 63; tijolo ++){
+        printf("%c", 178);
+    }
+    printf("\n");
+}
+
