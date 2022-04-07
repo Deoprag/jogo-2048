@@ -442,7 +442,7 @@ jogarCxC(){
         printf("%c", 178);
     }
     printf("\n");
-
+    system("pause");
 }
 
 jogarQxQ(){
@@ -522,6 +522,7 @@ jogarQxQ(){
         printf("%c", 178);
     }
     printf("\n");
+    system("pause");
 }
 
 jogarTxT(){
@@ -601,6 +602,7 @@ jogarTxT(){
         printf("%c", 178);
     }
     printf("\n");
+    system("pause");
 }
 
 selecaoRanking(){
