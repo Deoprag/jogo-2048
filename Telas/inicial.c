@@ -1,5 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>  // SetConsoleCursorPosition
+
+void gotoxy(int x, int y)
+{
+  COORD coord;
+  coord.X = x;
+  coord.Y = y;
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
 
 // VARIAVEIS GLOBAIS
 int tijolo, inicial, opcao = 0;
@@ -81,7 +90,7 @@ inicio(){
             system("cls");
             configuracoes();
             break;
-    
+
         default:
             printf("\nERRO\nOpcao invalida\n\n");
         }
@@ -125,6 +134,8 @@ login(){
         printf("Digite aqui a opcao desejada: ");
         scanf("%i", &opcao);
 
+    do
+    {
         switch (opcao)
         {
         case 0:
@@ -133,13 +144,17 @@ login(){
             break;
 
         case 1:
-            printf("\nDigite aqui seu apelido: ");
+            printf("\nApelido: ");
             scanf("%s", &apelido);
+            system("cls");
+            login();
             break;
 
         case 2:
-            printf("\nDigite aqui sua senha: ");
+            printf("\nSenha: ");
             scanf("%s", &senha);
+            system("cls");
+            login();
             break;
             
         case 9:
@@ -148,7 +163,7 @@ login(){
         default:
             printf("\nERRO\nOpcao invalida\n\n");
         }
-    
+    } while (opcao != 0);
 }
 
 cadastro(){
@@ -175,7 +190,7 @@ cadastro(){
     printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
     printf("%c%c             \t[1] Apelido:         [             ]\t     %c%c\n", 219, 219, 219, 219);
     printf("%c%c             \t[2] Senha:           [             ]\t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[3] Confirma Senha:  [             ]\t     %c%c\n", 219, 219, 219, 219);
+    printf("%c%c             \t[3] Confirmar Senha: [             ]\t     %c%c\n", 219, 219, 219, 219);
     printf("%c%c             \t[4] Celular:         [             ]\t     %c%c\n", 219, 219, 219, 219);
     printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
     printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
