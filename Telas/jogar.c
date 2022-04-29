@@ -11,13 +11,15 @@ void gotoxy(int x, int y)
 }
 
 // VARIAVEIS GLOBAIS
-int tijolo, inicial, opcao = 0;
-char apelido[20], senha[16], celular[11];
+int tijolo, inicial, opcao, tam = 0;
+char apelido[20], senha[20], confSenha[20], celular[15];
 
 // DECLARACAO DE FUNCOES
 int inicio();
 int login();
 int cadastro();
+int cadastroSucesso();
+int cadastroFalhou();
 int configuracoes();
 int selecao();
 int tijolos();
@@ -36,14 +38,14 @@ int rankingTempoDif();
 int rankingTempo();
 
 
-// FUNCAO PRINCIPAL
+//  PRINCIPAL
 int main ()
 {
     system("color 0F");
     inicio();
 }
 
-// FUNCOES SECUNDARIAS
+//  SECUNDARIAS
 
 inicio(){                                                                                           // TELA INICIAL
 
@@ -55,50 +57,43 @@ inicio(){                                                                       
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                   [1] INICIAR SESSAO    [2] NOVO JOGADOR                   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             [1] INICIAR SESSAO                             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                              [2] NOVO JOGADOR                              %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             [3]  CONFIGURACOES                             %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                             [3] CONFIGURACOES                              %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                              [0] SAIR DO JOGO                              %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             [ESC] SAIR DO JOGO                             %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
+    do
+    {
+        opcao = getch();
 
-        switch (opcao)
-        {
-        case 0:
-            system("cls");
-            printf("\nTchauuuu...");
-            return 0;
-            break;
-
-        case 1:
+        if (opcao == 27){
+            exit(0);
+        } else if (opcao == 49){
             system("cls");
             login();
-            break;
-
-        case 2:
+            opcao = 0;
+        } else if (opcao == 50){
             system("cls");
             cadastro();
-            break;
-
-        case 3:
+            opcao = 0;
+        } else if (opcao == 51){
             system("cls");
             configuracoes();
-            break;
-
-        default:
-            printf("\nERRO\nOpcao invalida\n\n");
+            opcao = 0;
         }
+    } while (opcao != 0);
 }
 
 login(){                                                                                            // LOGIN
@@ -128,125 +123,287 @@ login(){                                                                        
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                      %c 0 %c VOLTAR     %c 1 %c CONFIRMAR                      %c%c\n", 219, 219, 179, 179, 179, 179, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
-    
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
 
-        switch (opcao)
-        {
-        case 0:
+    tam = 0;
+    gotoxy(30,24);
+    fflush(stdin);
+    do
+    {   
+        apelido[tam] = getch();          
+        if (apelido[tam] == 0x08 && tam > 0){       // APAGAR
+            printf("\b \b"); 
+            apelido[tam] = 0x00;
+            tam--;
+        } else if (apelido[tam] == 13){             // ENTER
+            apelido[tam] = 0x00;
+            break;
+        } else if (apelido[tam] != 0x08){
+            putchar(apelido[tam]);
+            tam++;              
+        }
+
+    } while(tam < 16);
+
+    tam = 0;
+    gotoxy(30,30);
+    fflush(stdin);
+    do
+    {   
+        senha[tam] = getch();          
+        if(senha[tam] == 0x08 && tam > 0){          // APAGAR
+            printf("\b \b"); 
+            senha[tam] = 0x00;
+            tam--;
+        } else if (senha[tam] == 13){               // ENTER
+            senha[tam] = 0x00;
+            break;
+        } else if (senha[tam] != 0x08){
+            putchar('*');
+            tam++;
+        }
+    } while(tam < 16);
+
+    gotoxy(0,35);
+    printf("");
+    printf("%c%c                     [ESC] VOLTAR     [ENTER] CONFIRMAR                     %c%c\n", 219, 219, 219, 219);
+    
+    do
+    {
+        opcao = getch();
+        if (opcao == 27){
             system("cls");
             inicio();
-            break;
-
-        case 1:
-            printf("\nApelido: ");
-            scanf("%s", &apelido);
-            system("cls");
-            login();
-            break;
-
-        case 2:
-            printf("\nSenha: ");
-            scanf("%s", &senha);
-            system("cls");
-            login();
-            break;
-            
-        case 9:
+            opcao = 0;
+        } else if (opcao == 13){
             system("cls");
             selecao();
-        	break;
-
-        default:
-            printf("\nERRO\nOpcao invalida\n\n");
+            opcao = 0;
         }
+
+    } while (opcao != 0);
 }
 
 cadastro(){                                                                                         // CADASTRO
 
     logo();
 
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[1] Apelido:         [             ]\t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[2] Senha:           [             ]\t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[3] Confirmar Senha: [             ]\t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[4] Celular:         [             ]\t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t    [0] Voltar  [9] Confirmar    \t     %c%c\n", 219, 219, 219, 219);        //FUNCAO PARA CONFIRMAR SERA APLICADA DEPOIS (NAO ESTA FUNCIONAL AINDA)
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t                   \t     %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c   N O V O   J O G A D O R   %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                  APELIDO: %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                  SENHA:   %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c           CONFIRMA SENHA: %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                  CELULAR: %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
+    tam = 0;
+    gotoxy(30,22);
+    fflush(stdin);
+    do
+    {   
+        apelido[tam] = getch();          
+        if (apelido[tam] == 0x08 && tam > 0){       // APAGAR
+            printf("\b \b"); 
+            apelido[tam] = 0x00;
+            tam--;
+        } else if (apelido[tam] == 13){             // ENTER
+            apelido[tam] = 0x00;
+            break;
+        } else if (apelido[tam] != 0x08){
+            putchar(apelido[tam]);
+            tam++;              
+        }
 
-        switch (opcao)
-        {
-        case 0:
+    } while(tam < 16);
+
+    tam = 0;
+    gotoxy(30,26);
+    fflush(stdin);
+    do
+    {   
+        senha[tam] = getch();          
+        if(senha[tam] == 0x08 && tam > 0){          // APAGAR
+            printf("\b \b"); 
+            senha[tam] = 0x00;
+            tam--;
+        } else if (senha[tam] == 13){               // ENTER
+            senha[tam] = 0x00;
+            break;
+        } else if (senha[tam] != 0x08){
+            putchar('*');
+            tam++;
+        }
+    } while(tam < 16);
+
+    tam = 0;
+    gotoxy(30,30);
+    fflush(stdin);
+    do
+    {   
+        confSenha[tam] = getch();          
+        if(confSenha[tam] == 0x08 && tam > 0){      // APAGAR
+            printf("\b \b"); 
+            confSenha[tam] = 0x00;
+            tam--;
+
+        } else if (confSenha[tam] == 13){           // ENTER
+            confSenha[tam] = 0x00;
+            break;
+        } else if (confSenha[tam] != 0x08){
+            putchar('*');
+            tam++;
+        }
+    } while(tam < 16);
+
+    tam = 0;
+    gotoxy(30,34);
+    fflush(stdin);
+    do
+    {   
+        celular[tam] = getch();          
+        if (celular[tam] == 0x08 && tam > 0){       // APAGAR
+            printf("\b \b"); 
+            celular[tam] = 0x00;
+            tam--;
+        } else if (celular[tam] == 13){              // ENTER
+            celular[tam] = 0x00;
+            break;
+        } else if (celular[tam] != 0x08){
+            putchar(celular[tam]);
+            tam++;
+        }
+
+    } while(tam < 11);
+
+    gotoxy(0,39);
+    printf("");
+    printf("%c%c                     [ESC] VOLTAR     [ENTER] CONFIRMAR                     %c%c\n", 219, 219, 219, 219);
+    
+    do
+    {
+        opcao = getch();
+        if (opcao == 27){
             system("cls");
             inicio();
-            break;
-
-        case 1:
-            printf("\nDigite seu apelido: ");
-            scanf("%s", &apelido);
-            break;
-
-        case 2:
-            printf("\nDigite sua senha: ");
-            scanf("%s", &senha);
-            break;
-
-        case 3:
-            printf("\nConfirme sua senha: ");
-            scanf("%s", &senha);
-            break;
-        case 4:
-            printf("\nDigite seu numero de celular: ");
-            scanf("%s", &celular);
-            break;
-            
-        case 9:
-        	break;
-    
-        default:
-            printf("\nERRO\nOpcao invalida\n\n");
+            opcao = 0;
+        } else if (opcao == 13){
+            system("cls");
+            cadastroSucesso();
+            opcao = 0;
         }
+
+    } while (opcao != 0);
+}
+
+cadastroSucesso(){
+    logo();
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c   CADASTRADO COM SUCESSO!   %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                     APERTE [ENTER] PARA INICIAR SESSAO                     %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                   OU                                       %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                  APERTE [ESC] PARA IR PARA A TELA INICIAL                  %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    
+    tijolos();
+
+    do
+    {
+        opcao = getch();
+        if (opcao == 27){
+            system("cls");
+            inicio();
+            opcao = 0;
+        } else if (opcao == 13){
+            system("cls");
+            login();
+            opcao = 0;
+        }
+
+    } while (opcao != 0);
+}
+
+cadastroFalhou(){
+
 }
 
 configuracoes(){                                                                                    // CONFIGURAÇÕES
 
     logo();
 
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t       [0] Voltar        \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c  C O N F I G U R A C O E S  %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
@@ -322,224 +479,231 @@ dificuldadeFacil(){
     
     logo();
 
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t        %c FACIL %c       \t             %c%c\n", 219, 219, 174, 175, 219, 219);
-    printf("%c%c             \t ________________________ \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t|  4 |  2 |  4 |  2 |    |\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t|____|____|____|____|____|\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t| 32 |  4 |    |    |    |\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t|____|____|____|____|____|\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t| 64 | 32 | 16 |    |    |\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t|____|____|____|____|____|\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t| 64 | 16 |  4 |  2 |    |\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t|____|____|____|____|____|\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t|256 |128 | 64 | 32 |    |\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t|____|____|____|____|____|\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[1] SELECIONAR DIFICULDADE\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[2] PROXIMA DIFICULDADE   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t           5x5            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t         2048 pts         \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t        [0] Voltar        \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                 %c FACIL %c                                  %c%c\n", 219, 219, 174, 175, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                          ________________________                          %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         |  4 |  2 |  4 |  2 |    |                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         |____|____|____|____|____|                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         | 32 |  4 |    |    |    |                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         |____|____|____|____|____|                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         | 64 | 32 | 16 |    |    |                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         |____|____|____|____|____|                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         | 64 | 16 |  4 |  2 |    |                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         |____|____|____|____|____|                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         |256 |128 | 64 | 32 |    |                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         |____|____|____|____|____|                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       [ENTER] SELECIONAR DIFICULDADE                       %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [D]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                  | 5x5 |                                   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         > OBJETIVO = 2048 PONTOS <                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] Voltar                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+    do{
+        opcao = getch();
+        if (opcao == 27){
             system("cls");
             selecao();
-            break;
-
-        case 1:
+        } else if (opcao == 13){
             system("cls");
             jogar5x5();
-            break;
-        
-        case 2:
+            opcao = 0;
+        } else if ((opcao == 100) || (opcao == 68)){
             system("cls");
             dificuldadeMedia();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
+            opcao = 0;
         }
-    } while (opcao > 2 || opcao < 0);
+    } while (opcao != 0);
 }
-
 dificuldadeMedia(){
 
     logo();
 
-    printf("%c%c             \t             \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t         %c MEDIA %c       \t             %c%c\n", 219, 219, 174, 175, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t    ___________________    \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |  4 |  2 |  4 |    |   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   | 32 |    |    |    |   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   | 64 | 32 |    |    |   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   | 64 | 16 |  4 |  2 |   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[1] SELECIONAR DIFICULDADE \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[2] PROXIMA DIFICULDADE    \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            4x4            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t          2048 pts         \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t         [0] Voltar        \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                 %c MEDIA %c                                  %c%c\n", 219, 219, 174, 175, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                            ___________________                             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |  4 |  2 |  4 |    |                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |____|____|____|____|                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           | 32 |    |    |    |                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |____|____|____|____|                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           | 64 | 32 |    |    |                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |____|____|____|____|                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           | 64 | 16 |  4 |  2 |                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |____|____|____|____|                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       [ENTER] SELECIONAR DIFICULDADE                       %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [D]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [A]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                  | 4x4 |                                   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         > OBJETIVO = 2048 PONTOS <                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] Voltar                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+    do{
+        opcao = getch();
+        if (opcao == 27){
             system("cls");
             selecao();
-            break;
-
-        case 1:
+        } else if (opcao == 13){
             system("cls");
             jogar4x4();
-            break;
-        
-        case 2:
+            opcao = 0;
+        } else if ((opcao == 100) || (opcao == 68)){
             system("cls");
             dificuldadeDificil();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
+            opcao = 0;
+        } else if ((opcao == 97) || (opcao == 65)){
+            system("cls");
+            dificuldadeFacil();
+            opcao = 0;
         }
-    } while (opcao > 2 || opcao < 0);
+    } while (opcao != 0);
 }
 
 dificuldadeDificil(){
 
     logo();
 
-    printf("%c%c             \t             \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t         %c DIFICIL %c     \t             %c%c\n", 219, 219, 174, 175, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t    ___________________    \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |  4 |  2 |  4 |    |   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   | 32 |    |    |    |   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   | 64 | 32 |    |    |   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   | 64 | 16 |  4 |  2 |   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   |____|____|____|____|   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[1] SELECIONAR DIFICULDADE \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[2] PROXIMA DIFICULDADE    \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            4x4            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t          4096 pts         \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t         [0] Voltar        \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t             \t            \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                %c DIFICIL %c                                 %c%c\n", 219, 219, 174, 175, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                            ___________________                             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |  4 |  2 |  4 |    |                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |____|____|____|____|                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           | 32 |    |    |    |                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |____|____|____|____|                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           | 64 | 32 |    |    |                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |____|____|____|____|                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           | 64 | 16 |  4 |  2 |                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           |____|____|____|____|                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       [ENTER] SELECIONAR DIFICULDADE                       %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [D]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [A]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                  | 4x4 |                                   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         > OBJETIVO = 4096 PONTOS <                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] Voltar                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+    do{
+        opcao = getch();
+        if (opcao == 27){
             system("cls");
             selecao();
-            break;
-
-        case 1:
+        } else if (opcao == 13){
             system("cls");
             jogar4x4();
-            break;
-        
-        case 2:
+            opcao = 0;
+        } else if ((opcao == 100) || (opcao == 68)){
             system("cls");
             dificuldadeHardcore();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
+            opcao = 0;
+        } else if ((opcao == 97) || (opcao == 65)){
+            system("cls");
+            dificuldadeMedia();
+            opcao = 0;
         }
-    } while (opcao > 2 || opcao < 0);
+    } while (opcao != 0);
 }
 
 dificuldadeHardcore(){
 
     logo();
 
-    printf("%c%c             \t             \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t        %c HARDCORE %c     \t             %c%c\n", 219, 219, 174, 175, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t       ______________      \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t      |  4 |  2 |  4 |     \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t      |____|____|____|     \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t      | 32 |    |    |     \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t      |____|____|____|     \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t      | 64 | 32 |    |     \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t      |____|____|____|     \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[1] SELECIONAR DIFICULDADE \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[2] PROXIMA DIFICULDADE    \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t             \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            3x3            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t          1024 pts         \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t         [0] Voltar        \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t             \t            \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                               %c HARDCORE %c                                 %c%c\n", 219, 219, 174, 175, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                              ______________                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             |  4 |  2 |  4 |                               %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             |____|____|____|                               %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             | 32 |    |    |                               %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             |____|____|____|                               %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             | 64 | 32 |    |                               %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             |____|____|____|                               %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       [ENTER] SELECIONAR DIFICULDADE                       %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [A]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                  | 3x3 |                                   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         > OBJETIVO = 1024 PONTOS <                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] Voltar                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+    do{
+        opcao = getch();
+        if (opcao == 27){
             system("cls");
             selecao();
-            break;
-
-        case 1:
+        } else if (opcao == 13){
             system("cls");
-            jogar3x3();
-            break;
-        
-        case 2:
+            jogar4x4();
+            opcao = 0;
+        } else if ((opcao == 97) || (opcao == 65)){
             system("cls");
-            dificuldadeFacil();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
+            dificuldadeDificil();
+            opcao = 0;
         }
-    } while (opcao > 2 || opcao < 0);
+    } while (opcao != 0);
 }
 
 jogar5x5(){
@@ -572,8 +736,8 @@ jogar5x5(){
     tijolos();
 
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c (R) REINICIAR JOGO  %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c (O) RANKING         %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c (ENTER) SAIR        %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     tijolos();
 
@@ -583,18 +747,13 @@ jogar5x5(){
 
     tijolos();
     
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        if (opcao == 0){
+    do{
+        opcao = getch();
+        if (opcao == 13){
             system("cls");
             selecao();
-        } else {
-            printf("\nValor Inválido. Tente Novamente");
         }
-
-    } while (opcao != 0);
+    } while (opcao != 13);
 }
 
 jogar4x4(){
@@ -620,23 +779,18 @@ jogar4x4(){
     tijolos();
 
     printf("%c%c         %c%c         %c%c         %c%c         %c%c (R) REINICIAR %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c   16    %c%c         %c%c         %c%c         %c%c               %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c (O) RANKING   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c   16    %c%c         %c%c         %c%c         %c%c (O) RANKING   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c (ENTER SAIR   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     
     tijolos();
 
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        if (opcao == 0){
+    do{
+        opcao = getch();
+        if (opcao == 13){
             system("cls");
             selecao();
-        } else {
-            printf("\nValor Inválido. Tente Novamente");
         }
-
-    } while (opcao != 0);
+    } while (opcao != 13);
 }
 
 jogar3x3(){
@@ -662,23 +816,18 @@ jogar3x3(){
     tijolos();
 
     printf("%c%c\t                               %c%c (R) REINICIAR JOGO %c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c\t    UNIFACEAR - 2022           %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c\t                               %c%c (O) RANKING        %c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c\t    UNIFACEAR - 2022           %c%c (O) RANKING        %c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c\t                               %c%c (ENTER) SAIR       %c%c\n", 219, 219, 219, 219, 219, 219);
     
     tijolos();
 
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        if (opcao == 0){
+    do{
+        opcao = getch();
+        if (opcao == 13){
             system("cls");
             selecao();
-        } else {
-            printf("\nValor Inválido. Tente Novamente");
         }
-
-    } while (opcao != 0);
+    } while (opcao != 13);
 }
 
 selecaoRanking(){
@@ -700,29 +849,21 @@ selecaoRanking(){
 
     do
     {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+        opcao = getch();
+        if (opcao == 48){
             system("cls");
-            selecao();
-            break;
-
-        case 1:
+            selecaoRanking();
+            opcao = 0;
+        } else if ((opcao == 49)){
             system("cls");
             rankingPontuacaoDif();
-            break;
-        
-        case 2:
+            opcao = 0;
+        } else if ((opcao == 50)){
             system("cls");
             rankingTempoDif();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
+            opcao = 0;
         }
-    } while (opcao > 2 || opcao < 0);
+    } while (opcao != 0);
 }
 
 rankingPontuacaoDif(){
@@ -745,39 +886,17 @@ rankingPontuacaoDif(){
 
     do
     {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+        opcao = getch();
+        if (opcao == 48){
             system("cls");
             selecao();
-            break;
-
-        case 1:
+            opcao = 0;
+        } else if ((opcao > 48) && (opcao < 52)){
             system("cls");
-            rankingPontuacao();
-            break;
-        
-        case 2:
-            system("cls");
-            rankingPontuacao();
-            break;
-
-        case 3:
-            system("cls");
-            rankingPontuacao();
-            break;
-
-        case 4:
-            system("cls");
-            rankingPontuacao();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
+            rankingTempo();
+            opcao = 0;
         }
-    } while (opcao > 4 || opcao < 0);
+    } while (opcao != 0);
 }
 
 rankingPontuacao(){
@@ -787,7 +906,7 @@ rankingPontuacao(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                            RANKING DE PONTUACAO                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                MODO: XXXXXX                                %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                 [0] VOLTAR                                 %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                               [ENTER] VOLTAR                               %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
@@ -814,21 +933,14 @@ rankingPontuacao(){
     
     tijolos();
 
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+    do{
+        opcao = getch();
+        if (opcao == 13){
             system("cls");
             selecao();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
         }
-    } while (opcao != 0);
+    } while (opcao != 13);
+    
 }
 
 rankingTempoDif(){
@@ -851,105 +963,76 @@ rankingTempoDif(){
 
     do
     {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+        opcao = getch();
+        if (opcao == 48){
             system("cls");
-            selecao();
-            break;
-
-        case 1:
+            selecaoRanking();
+            opcao = 0;
+        } else if ((opcao > 48) && (opcao < 52)){
             system("cls");
             rankingTempo();
-            break;
-        
-        case 2:
-            system("cls");
-            rankingTempo();
-            break;
-
-        case 3:
-            system("cls");
-            rankingTempo();
-            break;
-
-        case 4:
-            system("cls");
-            rankingTempo();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
+            opcao = 0;
         }
-    } while (opcao > 4 || opcao < 0);
+    } while (opcao != 0);
 }
 
 rankingTempo(){
 
     logo();
 
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t     RANKING DE TEMPO    \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t        MODO: XXXXXX     \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t         [0] VOLTAR      \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                              RANKING DE TEMPO                              %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                MODO: XXXXXX                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                               [ENTER] VOLTAR                               %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c    COLOCACAO     %c%c     JOGADOR     %c%c       TEMPO        %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c        COLOCACAO        %c%c       JOGADOR      %c%c           TEMPO           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
 
     tijolos();
 
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c    1%c LUGAR      %c%c    Augusto01    %c%c     [2min 24s]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c    2%c LUGAR      %c%c  PedroTeste123  %c%c     [2min 56s]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c    3%c LUGAR      %c%c  TerceiroLugar  %c%c     [3min 15s]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c    4%c LUGAR      %c%c  PedroTeste002  %c%c     [3min 49s]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c    5%c LUGAR      %c%c   QuintoLugar   %c%c     [4min 03s]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c    24%c LUGAR     %c%c VigesimoQuarto  %c%c     [9min 42s]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                  %c%c                 %c%c                    %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c      1 %c   LUGAR        %c%c      Augusto01     %c%c    [  52 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c      2 %c   LUGAR        %c%c    PedroTeste123   %c%c    [  59 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c      3 %c   LUGAR        %c%c    TerceiroLugar   %c%c    [  61 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c      4 %c   LUGAR        %c%c    PedroTeste002   %c%c    [  64 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c      5 %c   LUGAR        %c%c     QuintoLugar    %c%c    [  70 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c      24 %c  LUGAR        %c%c   VigesimoQuarto   %c%c    [  103 MOVIMENTOS ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     
     tijolos();
 
-    do
-    {
-        printf("Digite aqui a opcao desejada: ");
-        scanf("%i", &opcao);
-        switch (opcao)
-        {
-        case 0:
+    do{
+        opcao = getch();
+        if (opcao == 13){
             system("cls");
             selecao();
-            break;
-
-        default:
-            printf("\nOpcao invalida. Tente novamente\n\n");
         }
-    } while (opcao != 0);
+    } while (opcao != 13);
+    
 }
 
 logo(){
     tijolos();
     
-    printf("%c%c*********|                                                        |*********%c%c\n", 219, 219, 219, 219);
-    printf("%c%c****_****|      .d8888b.    .d8888b.       d8888    .d8888b.      |****_****%c%c\n", 219, 219, 219, 219);
-    printf("%c%c***/ \\***|     d88P  Y88b  d88P  Y88b     d8P888   d88P  Y88b     |***/ \\***%c%c\n", 219, 219, 219, 219);
-    printf("%c%c**( 2 )**|            888  888    888    d8P 888   Y88b. d88P     |**( 4 )**%c%c\n", 219, 219, 219, 219);
-    printf("%c%c***\\_/***|          .d88P  888    888   d8P  888    'Y88888'      |***\\_/***%c%c\n", 219, 219, 219, 219);
-    printf("%c%c****_****|      .od888P'   888    888  d88   888   .d8P''Y8b.     |****_****%c%c\n", 219, 219, 219, 219);
-    printf("%c%c***/ \\***|     d88P'       888    888  8888888888  888    888     |***/ \\***%c%c\n", 219, 219, 219, 219);
-    printf("%c%c**( 0 )**|     888'        Y88b  d88P        888   Y88b  d88P     |**( 8 )**%c%c\n", 219, 219, 219, 219);
-    printf("%c%c***\\_/***|     888888888    'Y8888P'         888    'Y8888P'      |***\\_/***%c%c\n", 219, 219, 219, 219);
-    printf("%c%c*********|                                                        |*********%c%c\n", 219, 219, 219, 219);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c****_****%c      .d8888b.    .d8888b.       d8888    .d8888b.      %c****_****%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c***/ \\***%c     d88P  Y88b  d88P  Y88b     d8P888   d88P  Y88b     %c***/ \\***%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c**( 2 )**%c            888  888    888    d8P 888   Y88b. d88P     %c**( 4 )**%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c***\\_/***%c          .d88P  888    888   d8P  888    'Y88888'      %c***\\_/***%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c****_****%c      .od888P'   888    888  d88   888   .d8P''Y8b.     %c****_****%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c***/ \\***%c     d88P'       888    888  8888888888  888    888     %c***/ \\***%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c**( 0 )**%c     888'        Y88b  d88P        888   Y88b  d88P     %c**( 8 )**%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c***\\_/***%c     888888888    'Y8888P'         888    'Y8888P'      %c***\\_/***%c%c\n", 219, 219, 219, 219, 219, 219);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
 
     tijolos();
 }

@@ -349,5 +349,7 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# .docx Archives
+# .Archives
 *.docx
+*.pptx
+*.txt
