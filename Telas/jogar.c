@@ -41,8 +41,8 @@ int rankingVel();
 
 
 //  PRINCIPAL
-int main ()
-{
+int main (){
+    SetConsoleTitle("JOGO 2048");
     inicio();
 }
 
@@ -469,7 +469,7 @@ cores(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
     printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c    ALTERAR CORES DA TELA    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c     ALTERAR COR DA TELA     %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -991,16 +991,34 @@ selecaoRanking(){
 
     logo();
 
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t         RANKING         \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[1] PONTUACAO  [2] TEMPO \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t        [0] VOLTAR       \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t           \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        R A N K I N G        %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [1] PONTOS  [2] VELOCIDADE                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
@@ -1027,17 +1045,34 @@ rankingPontuacaoDif(){
 
     logo();
 
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t   RANKING DE PONTUACAO   \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[1] FACIL   \t[2] NORMAL  \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[3] DIFICIL \t[4] HARDCORE\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t      [ESC] VOLTAR        \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c      RANKING DE PONTOS      %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [1] FACIL     [2] MEDIA                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [3] DIFICIL   [4] HARDCORE                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
@@ -1061,33 +1096,36 @@ rankingPontuacao(){
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                            RANKING DE PONTUACAO                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                MODO: XXXXXX                                %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c      RANKING DE PONTOS      %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c    DIFICULDADE: XXXXXXXX    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        [ESC] VOLTAR         %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c        COLOCACAO        %c%c       JOGADOR      %c%c         PONTUACAO         %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c      COLOCACAO      %c%c         JOGADOR        %c%c         PONTUACAO         %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     1%c  LUGAR       %c%c        Exemplo01       %c%c     [ 10.892 PONTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     2%c  LUGAR       %c%c        Exemplo02       %c%c     [ 10.128 PONTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     3%c  LUGAR       %c%c      TerceiroLugar     %c%c     [ 9.626  PONTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     4%c  LUGAR       %c%c       QuartoLugar      %c%c     [ 9.338  PONTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     5%c  LUGAR       %c%c       QuintoLugar      %c%c     [ 8.928  PONTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     24%c LUGAR       %c%c     VigesimoQuarto     %c%c     [ 4.628  PONTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
 
-    tijolos();
-
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      1 %c   LUGAR        %c%c      Augusto01     %c%c     [  12.564  pts  ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      2 %c   LUGAR        %c%c    PedroTeste123   %c%c     [  11.866  pts  ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      3 %c   LUGAR        %c%c    TerceiroLugar   %c%c     [  10.528  pts  ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      4 %c   LUGAR        %c%c    PedroTeste002   %c%c     [  9.444   pts  ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      5 %c   LUGAR        %c%c     QuintoLugar    %c%c     [  9.134   pts  ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      24 %c  LUGAR        %c%c   VigesimoQuarto   %c%c     [  6.232   pts  ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    
     tijolos();
 
     do{
@@ -1104,17 +1142,34 @@ rankingVelDif(){
 
     logo();
 
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t     RANKING DE TEMPO     \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[1] FACIL   \t[2] NORMAL  \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t[3] DIFICIL \t[4] HARDCORE\t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t      [ESC] VOLTAR        \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c             \t            \t            \t             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c    RANKING DE VELOCIDADE    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [1] FACIL     [2] MEDIA                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [3] DIFICIL   [4] HARDCORE                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
@@ -1138,32 +1193,35 @@ rankingVel(){
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                            RANKING DE VELOCIDADE                           %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                MODO: XXXXXX                                %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c    RANKING DE VELOCIDADE    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c    DIFICULDADE: XXXXXXXX    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        [ESC] VOLTAR         %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
 
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c        COLOCACAO        %c%c       JOGADOR      %c%c         VELOCIDADE        %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-
-    tijolos();
-
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      1 %c   LUGAR        %c%c      Augusto01     %c%c    [  52 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      2 %c   LUGAR        %c%c    PedroTeste123   %c%c    [  59 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      3 %c   LUGAR        %c%c    TerceiroLugar   %c%c    [  61 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      4 %c   LUGAR        %c%c    PedroTeste002   %c%c    [  64 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      5 %c   LUGAR        %c%c     QuintoLugar    %c%c    [  70 MOVIMENTOS  ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      24 %c  LUGAR        %c%c   VigesimoQuarto   %c%c    [  103 MOVIMENTOS ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                         %c%c                    %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c      COLOCACAO      %c%c         JOGADOR        %c%c         VELOCIDADE        %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     1%c  LUGAR       %c%c        Exemplo01       %c%c     [ 50 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     2%c  LUGAR       %c%c        Exemplo02       %c%c     [ 58 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     3%c  LUGAR       %c%c      TerceiroLugar     %c%c     [ 63 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     4%c  LUGAR       %c%c       QuartoLugar      %c%c     [ 71 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     5%c  LUGAR       %c%c       QuintoLugar      %c%c     [ 73 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c     24%c LUGAR       %c%c     VigesimoQuarto     %c%c     [ 109 MOVIMENTOS ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     
     tijolos();
 
