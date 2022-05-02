@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>  // SetConsoleCursorPosition
+#include <string.h> // funçoes str
+#include <conio.h> // getch()
+#include <ctype.h> // isdigit, isalpha, etc.
 
 void gotoxy(int x, int y)
 {
@@ -43,6 +46,52 @@ int rankingVel();
 //  PRINCIPAL
 int main (){
     SetConsoleTitle("JOGO 2048");
+
+    tijolos();
+    Sleep(300);
+    Beep(370, 200);
+
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c****_****%c      .d8888b.    .d8888b.       d8888    .d8888b.      %c****_****%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c***/ \\***%c     d88P  Y88b  d88P  Y88b     d8P888   d88P  Y88b     %c***/ \\***%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c**( 2 )**%c            888  888    888    d8P 888   Y88b. d88P     %c**( 4 )**%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c***\\_/***%c          .d88P  888    888   d8P  888    'Y88888'      %c***\\_/***%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c****_****%c      .od888P'   888    888  d88   888   .d8P''Y8b.     %c****_****%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c***/ \\***%c     d88P'       888    888  8888888888  888    888     %c***/ \\***%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c**( 0 )**%c     888'        Y88b  d88P        888   Y88b  d88P     %c**( 8 )**%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c***\\_/***%c     888888888    'Y8888P'         888    'Y8888P'      %c***\\_/***%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    Sleep(150);
+    Beep(370, 200);
+
+    tijolos();
+    Sleep(300);
+    Beep(370, 150);
+    Beep(370, 150);
+    Beep(400, 150);
+    Beep(440, 150);
+    Beep(470, 200);
+    Beep(260, 200);
+
+    system("cls");
     inicio();
 }
 
@@ -88,21 +137,25 @@ inicio(){                                                                       
         opcao = getch();
 
         if (opcao == 27){
+            Beep(370, 200);
             gotoxy(2,34);
             printf("        APERTE [ESC] NOVAMENTE PARA SAIR OU OUTRA TECLA PARA CANCELAR\n\n\n\n\n\n\n\n\n\n");
             opcao = getch();
             if (opcao == 27){
                 exit(0);
             } else {
+                Beep(370, 200);
                 gotoxy(2,34);
                 printf("                                                                            ");
                 opcao = 1;
             }
         } else if (opcao == 49){
+            Beep(370, 200);
             system("cls");
             login();
             opcao = 0;
         } else if (opcao == 50){
+            Beep(370, 200);
             system("cls");
             cadastro();
             opcao = 0;
@@ -199,10 +252,12 @@ login(){                                                                        
     {
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             inicio();
             opcao = 0;
         } else if (opcao == 13){
+            Beep(370, 200);
             system("cls");
             selecao();
             opcao = 0;
@@ -344,6 +399,7 @@ cadastro(){                                                                     
     {
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             inicio();
             opcao = 0;
@@ -357,6 +413,7 @@ cadastro(){                                                                     
 }
 
 cadastroSucesso(){
+
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -390,14 +447,23 @@ cadastroSucesso(){
     
     tijolos();
 
+    Beep(880, 200);
+    Beep(932, 200);
+    Beep(987, 200);
+    Beep(1046, 200);
+    Beep(987, 250);
+    Beep(1046, 250);
+
     do
     {
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             inicio();
             opcao = 0;
         } else if (opcao == 13){
+            Beep(370, 200);
             system("cls");
             login();
             opcao = 0;
@@ -448,10 +514,12 @@ configuracoes(){                                                                
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
             opcao = 0;
         } else if (opcao == 49){
+            Beep(370, 200);
             system("cls");
             cores();
             opcao = 0;
@@ -498,28 +566,59 @@ cores(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             configuracoes();
         } else if (opcao == 49){
             system("color 06");     // 1- AMARELO
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         } else if (opcao == 50){
             system("color 01");     // 2- AZUL
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         }  else if (opcao == 51){
             system("color 09");     // 3- AZUL CLARO
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         } else if (opcao == 52){
             system("color 0F");     // 4- BRANCO
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         } else if (opcao == 53){
             system("color 0B");     // 5- CIANO
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         } else if (opcao == 54){
             system("color 07");     // 6- CINZA (PADRAO)
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         } else if (opcao == 55){
             system("color 0D");     // 7- LILAS
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         } else if (opcao == 56){
             system("color 0C");     // 8- SALMAO
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         } else if (opcao == 57){
             system("color 0A");     // 9- VERDE
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         } else if (opcao == 48){
             system("color 04");     // 0- VERMELHO
+            Beep(470, 200);
+            Beep(470, 200);
+            Beep(570, 400);
         }
     } while (opcao != 27);
 }
@@ -562,26 +661,32 @@ selecao(){
     do{
         opcao = getch();
         if (opcao == 49){
+            Beep(370, 200);
             system("cls");
             dificuldadeFacil();
             opcao = 0;
         } else if (opcao == 50){
+            Beep(370, 200);
             system("cls");
             selecaoRanking();
             opcao = 0;
         } else if (opcao == 51){
+            Beep(370, 200);
             system("cls");
             configuracoes();
             opcao = 0;
         } else if (opcao == 27){
+            Beep(370, 200);
             gotoxy(2,34);
             printf("  APERTE [ESC] NOVAMENTE PARA ENCERRAR SESSAO OU OUTRA TECLA PARA CANCELAR\n\n\n\n\n\n");
             opcao = getch();
             if (opcao == 27){
+                Beep(370, 200);
                 system("cls");
                 inicio();
                 opcao = 0;
             } else {
+                Beep(370, 200);
                 gotoxy(2,34);
                 printf("                                                                            ");
                 opcao = 1;
@@ -628,13 +733,16 @@ dificuldadeFacil(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
         } else if (opcao == 13){
+            Beep(370, 200);
             system("cls");
             jogar5x5();
             opcao = 0;
         } else if ((opcao == 100) || (opcao == 68)){
+            Beep(370, 200);
             system("cls");
             dificuldadeMedia();
             opcao = 0;
@@ -679,17 +787,21 @@ dificuldadeMedia(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
         } else if (opcao == 13){
+            Beep(370, 200);
             system("cls");
             jogar4x4Media();
             opcao = 0;
         } else if ((opcao == 100) || (opcao == 68)){
+            Beep(370, 200);
             system("cls");
             dificuldadeDificil();
             opcao = 0;
         } else if ((opcao == 97) || (opcao == 65)){
+            Beep(370, 200);
             system("cls");
             dificuldadeFacil();
             opcao = 0;
@@ -735,17 +847,21 @@ dificuldadeDificil(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
         } else if (opcao == 13){
+            Beep(370, 200);
             system("cls");
             jogar4x4Dificil();
             opcao = 0;
         } else if ((opcao == 100) || (opcao == 68)){
+            Beep(370, 200);
             system("cls");
             dificuldadeHardcore();
             opcao = 0;
         } else if ((opcao == 97) || (opcao == 65)){
+            Beep(370, 200);
             system("cls");
             dificuldadeMedia();
             opcao = 0;
@@ -791,13 +907,16 @@ dificuldadeHardcore(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
         } else if (opcao == 13){
+            Beep(370, 200);
             system("cls");
             jogar3x3();
             opcao = 0;
         } else if ((opcao == 97) || (opcao == 65)){
+            Beep(370, 200);
             system("cls");
             dificuldadeDificil();
             opcao = 0;
@@ -854,6 +973,7 @@ jogar5x5(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
         }
@@ -918,6 +1038,7 @@ jogar4x4Media(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
         }
@@ -982,6 +1103,7 @@ jogar4x4Dificil(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
         }
@@ -1055,6 +1177,7 @@ jogar3x3(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
         }
@@ -1100,14 +1223,17 @@ selecaoRanking(){
     {
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecao();
             opcao = 0;
         } else if ((opcao == 49)){
+            Beep(370, 200);
             system("cls");
             rankingPontuacaoDif();
             opcao = 0;
         } else if ((opcao == 50)){
+            Beep(370, 200);
             system("cls");
             rankingVelDif();
             opcao = 0;
@@ -1154,10 +1280,12 @@ rankingPontuacaoDif(){
     {
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecaoRanking();
             opcao = 0;
         } else if ((opcao > 48) && (opcao < 53)){
+            Beep(370, 200);
             system("cls");
             rankingPontuacao();
             opcao = 0;
@@ -1204,6 +1332,7 @@ rankingPontuacao(){
 
     do{
         opcao = getch();
+        Beep(370, 200);
         if (opcao == 27){
             system("cls");
             rankingPontuacaoDif();
@@ -1251,10 +1380,12 @@ rankingVelDif(){
     {
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             selecaoRanking();
             opcao = 0;
         } else if ((opcao > 48) && (opcao < 53)){
+            Beep(370, 200);
             system("cls");
             rankingVel();
             opcao = 0;
@@ -1302,6 +1433,7 @@ rankingVel(){
     do{
         opcao = getch();
         if (opcao == 27){
+            Beep(370, 200);
             system("cls");
             rankingVelDif();
         }
