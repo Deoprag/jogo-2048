@@ -12,7 +12,7 @@
 #define ENTER 13
 
 int valorAleatorio();
-int x, y, i, tecla = 0;
+int x, y, i, tecla, jogada, pontos = 0;
 int matrizJogo[4][4];
 
 int main(){
@@ -25,20 +25,103 @@ int main(){
     }
 
     valorAleatorio();
+    system("cls");
+    valorAleatorio();
 
     do{
         tecla = getch();
-        if (tecla == 13){
+
+        if (tecla == 77){               // DIREITA
+            for (i = 0; i < 4; i++){
+                for(x = 3; x >= 0; x--) {
+                    for(y = 0; y < 4; y++) {
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y != 0) ) {
+                            matrizJogo[x][y - 1] = matrizJogo[x][y]*2;
+                            pontos = pontos + matrizJogo[x][y];
+                            matrizJogo[x][y] = 0;
+                        }
+                        if( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y] != 0) && (y != 0)) {
+                            matrizJogo[x][y - 1] = matrizJogo[x][y];
+                            matrizJogo[x][y] = 0;
+                        }
+                    }
+                }
+            }
+            jogada++;
+            valorAleatorio();
+        } else if (tecla == 75) {       // ESQUERDA
+            for (i = 0; i < 4; i++){
+                for(x = 3; x >= 0; x--) {
+                    for(y = 3; y >= 0; y--) {
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y != 3) ) {
+                            matrizJogo[x][y + 1] = matrizJogo[x][y]*2;
+                            pontos = pontos + matrizJogo[x][y];
+                            matrizJogo[x][y] = 0;
+                        }
+                        if( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y] != 0) && (y != 3)) {
+                            matrizJogo[x][y + 1] = matrizJogo[x][y];
+                            matrizJogo[x][y] = 0;
+                        }
+                    }
+                }
+            }
+            jogada++;
+            valorAleatorio();
+        } else if (tecla == 80) {       // BAIXO
+            for (i = 0; i < 4; i++){
+                for(y = 3; y >= 0; y--) {
+                    for(x = 0; x < 4; x++) {
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x != 0) ) {
+                            matrizJogo[x - 1][y] = matrizJogo[x][y]*2;
+                            pontos = pontos + matrizJogo[x][y];
+                            matrizJogo[x][y] = 0;
+                        }
+                        if( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 0)) {
+                            matrizJogo[x - 1][y] = matrizJogo[x][y];
+                            matrizJogo[x][y] = 0;
+                        }
+                    }
+                }
+            }
+            jogada++;
+            valorAleatorio();
+        } else if (tecla == 72) {       // CIMA
+            for (i = 0; i < 4; i++){
+                for(x = 3; x >= 0; x--) {
+                    for(y = 3; y >= 0; y--) {
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x != 3) ) {
+                            matrizJogo[x + 1][y] = matrizJogo[x][y]*2;
+                            pontos = pontos + matrizJogo[x][y];
+                            matrizJogo[x][y] = 0;
+                        }
+                        if( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 3)) {
+                            matrizJogo[x + 1][y] = matrizJogo[x][y];
+                            matrizJogo[x][y] = 0;
+                        }
+                    }
+                }
+            }
+            jogada++;
             valorAleatorio();
         } else if (tecla == 27){
             tecla = 0;
         }
 
+        for(x = 3; x >= 0; x--) {
+            for(y = 0; y < 4; y++) {
+                if (matrizJogo[x][y] == 2048){
+                    system("cls");
+                    printf("VOCE GANHOU!");
+                }
+            }
+        }
     } while (tecla != 0);
+
+
 }
 
 valorAleatorio(){
-    
+
     srand(time(0));
 
     do{
@@ -54,10 +137,16 @@ valorAleatorio(){
     }while(i != 1);
 
     printf("---------------------------------------------------\n");
-    for (x = 0; x < 4; x++){
-        for (y = 0; y < 4; y++){
+    for (x = 3; x >= 0; x--){
+        for (y = 3; y >= 0; y--){
             printf("%i\t", matrizJogo[x][y]);
         }
         printf("\n");
     }
+
+    printf("---------------------------------------------------\n");
+    printf("                    JOGADAS: %i                    \n", jogada);
+    printf("                    PONTOS:  %i                    \n", pontos);
+    printf("---------------------------------------------------\n");
+
 }
