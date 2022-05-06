@@ -458,22 +458,22 @@ cadastroSucesso(){
     Beep(987, 250);
     Beep(1046, 250);
 
-    do
+    do                              // COLOCA O GETCH EM LOOP PRA FICAR LENDO AS TECLAS ATÉ QUE UMA DAS TECLAS ESPECIFICADAS ABAIXO SEJA DIGITADA
     {
-        opcao = getch();
-        if (opcao == 27){
+        opcao = getch();            // SERVE PRA LER A TECLA QUE O USUARIO DIGITOU E GUARDA O CODIGO ASCII DA TECLA NA VARIAVEL OPCAO
+        if (opcao == 27){           // SE A OPCAO FOR IGUAL A 27 (CODIGO ASCII DA TECLA ESC)
             Beep(370, 200);
-            system("cls");
-            inicio();
-            opcao = 0;
-        } else if (opcao == 13){
+            system("cls");          // LIMPA A TELA
+            inicio();               // TE LEVA PARA A TELA DE INICIO
+            opcao = 0;              // OPCAO RECEBE O VALOR 0 PARA TERMINAR O LOOP
+        } else if (opcao == 13){    // SE A OPCAO FOR IGUAL A 13 (CODIGO ASCII DA TECLA ENTER)
             Beep(370, 200);
-            system("cls");
-            login();
-            opcao = 0;
+            system("cls");          // LIMPA A TELA
+            login();                // TE LEVA PARA A TELA DE LOGIN
+            opcao = 0;              // OPCAO RECEBE O VALOR 0 PARA TERMINAR O LOOP
         }
 
-    } while (opcao != 0);
+    } while (opcao != 0);           // DEIXA ISSO EM LOOP ATÉ QUE A OPCAO SEJA IGUAL A 0
 }
 
 cadastroFalhou(){
