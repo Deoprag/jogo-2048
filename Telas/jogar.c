@@ -44,6 +44,7 @@ int rankingPontuacaoDif();
 int rankingPontuacao();
 int rankingVelDif();
 int rankingVel();
+int jogosSalvos();
 int valorAleatorio();
 
 
@@ -645,11 +646,11 @@ selecao(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                        [1] JOGAR    [2] VER RANKING                        %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                      [1] NOVO JOGO    [2] VER RANKING                      %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                             [3]  CONFIGURACOES                             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                    [3] JOGOS SALVOS   [4] CONFIGURACOES                    %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -674,6 +675,11 @@ selecao(){
             selecaoRanking();
             opcao = 0;
         } else if (opcao == 51){
+            Beep(370, 200);
+            system("cls");
+            jogosSalvos();
+            opcao = 0;
+        } else if (opcao == 52){
             Beep(370, 200);
             system("cls");
             configuracoes();
@@ -721,7 +727,7 @@ dificuldadeFacil(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       [ENTER] SELECIONAR DIFICULDADE                       %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [D]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [>]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                  | 5x5 |                                   %c%c\n", 219, 219, 219, 219);
@@ -775,8 +781,8 @@ dificuldadeMedia(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       [ENTER] SELECIONAR DIFICULDADE                       %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [D]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [A]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [>]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [<]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                  | 4x4 |                                   %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -835,8 +841,8 @@ dificuldadeDificil(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       [ENTER] SELECIONAR DIFICULDADE                       %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [D]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [A]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [>]   PROXIMA DIFICULDADE                          %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [<]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                  | 4x4 |                                   %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -896,7 +902,7 @@ dificuldadeHardcore(){
     printf("%c%c                       [ENTER] SELECIONAR DIFICULDADE                       %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [A]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [<]   DIFICULDADE ANTERIOR                         %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                  | 3x3 |                                   %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -1035,93 +1041,97 @@ jogar4x4Media(){
     tijolos();
 
     valorAleatorio();
+    valorAleatorio();                           // GERA 2 NUMEROS 2 EM LUGARES ALEATORIOS
+
+    pontos = jogada = 0;                        // DEFINE A PONTUACAO E AS JOGADAS PRA 0
 
     do{
-        opcao = getch();
 
         gotoxy(71,18);
         printf("%i", pontos);                   // PRINTA OS PONTOS NA TELA
         gotoxy(71,19);
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
+        gotoxy(80,40);
+        opcao = getch();
         
         if (opcao == 27){                       // ESC
             Beep(370, 200);
             system("cls");
             selecao();
         } else if (opcao == 75){               // ESQUERDA
-            for (i = 0; i < 4; i++){
+            for (i = 0; i < 2; i++){                                                                                    // PERCORRE O TABULEIRO INTEIRO 3 VEZES
                 for(x = 3; x >= 0; x--) {
                     for(y = 0; y < 4; y++) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y != 0) ) {
-                            matrizJogo[x][y - 1] = matrizJogo[x][y]*2;
-                            pontos = pontos + matrizJogo[x][y];
-                            matrizJogo[x][y] = 0;
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y != 0) ) {       // VERIFICA SE O NUMERO DO LADO ESQUERDO É DIFERENTE DE 0 E IGUAL AO [x][y]
+                            matrizJogo[x][y - 1] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x][y - 1]
+                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
                         }
-                        if( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y] != 0) && (y != 0)) {
-                            matrizJogo[x][y - 1] = matrizJogo[x][y];
-                            matrizJogo[x][y] = 0;
+                        if( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y] != 0) && (y != 0)) {                       // VERIFICA SE O NUMERO DO LADO DIREITO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [y] É DIFERENTE DE 0
+                            matrizJogo[x][y - 1] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA O LADO ESQUERDO
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
                         }
                     }
                 }
             }
             jogada++;
             valorAleatorio();
-        } else if (opcao == 77) {       // DIREITA
-            for (i = 0; i < 4; i++){
-                for(x = 3; x >= 0; x--) {
+        } else if (opcao == 77) {       // DIREITA                                                                      // PERCORRE O TABULEIRO INTEIRO 3 VEZES
+            for (i = 0; i < 2; i++){                                                                                    
+                for(x = 3; x >= 0; x--) {                                                                               
                     for(y = 3; y >= 0; y--) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y != 3) ) {
-                            matrizJogo[x][y + 1] = matrizJogo[x][y]*2;
-                            pontos = pontos + matrizJogo[x][y];
-                            matrizJogo[x][y] = 0;
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y != 3) ) {       // VERIFICA SE O NUMERO DO LADO DIREITO É DIFERENTE DE 0 E IGUAL AO [x][y]
+                            matrizJogo[x][y + 1] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x][y + 1]
+                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
                         }
-                        if( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y] != 0) && (y != 3)) {
-                            matrizJogo[x][y + 1] = matrizJogo[x][y];
-                            matrizJogo[x][y] = 0;
+                        if( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y] != 0) && (y != 3)) {                       // VERIFICA SE O NUMERO DO LADO ESQUERDO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [y] É DIFERENTE DE 3
+                            matrizJogo[x][y + 1] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA O LADO DIREITO
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
                         }
                     }
                 }
             }
             jogada++;
             valorAleatorio();
-        } else if (opcao == 72) {       // CIMA
-            for (i = 0; i < 4; i++){
+        } else if (opcao == 72) {       // CIMA                                                                         // PERCORRE O TABULEIRO INTEIRO 3 VEZES
+            for (i = 0; i < 2; i++){
                 for(y = 3; y >= 0; y--) {
                     for(x = 0; x < 4; x++) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x != 0) ) {
-                            matrizJogo[x - 1][y] = matrizJogo[x][y]*2;
-                            pontos = pontos + matrizJogo[x][y];
-                            matrizJogo[x][y] = 0;
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x != 0) ) {       // VERIFICA SE O NUMERO DE CIMA É DIFERENTE DE 0 E IGUAL AO [x][y]
+                            matrizJogo[x - 1][y] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x - 1][y]
+                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
                         }
-                        if( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 0)) {
-                            matrizJogo[x - 1][y] = matrizJogo[x][y];
-                            matrizJogo[x][y] = 0;
+                        if( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 0)) {                       // VERIFICA SE O NUMERO DE BAIXO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [x] É DIFERENTE DE 0
+                            matrizJogo[x - 1][y] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA CIMA
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
                         }
                     }
                 }
             }
             jogada++;
             valorAleatorio();
-        } else if (opcao == 80) {       // BAIXO
-            for (i = 0; i < 4; i++){
-                for(x = 3; x >= 0; x--) {
+        } else if (opcao == 80) {       // BAIXO                                                                        // PERCORRE O TABULEIRO INTEIRO 3 VEZES
+            for (i = 0; i < 2; i++){
+                for(x = 3; x >= 0; x--) {   
                     for(y = 3; y >= 0; y--) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x != 3) ) {
-                            matrizJogo[x + 1][y] = matrizJogo[x][y]*2;
-                            pontos = pontos + matrizJogo[x][y];
-                            matrizJogo[x][y] = 0;
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x != 3) ) {       // VERIFICA SE O NUMERO DE CIMA É DIFERENTE DE 0 E IGUAL AO [x][y]
+                            matrizJogo[x + 1][y] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x + 1][y]
+                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
                         }
-                        if( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 3)) {
-                            matrizJogo[x + 1][y] = matrizJogo[x][y];
-                            matrizJogo[x][y] = 0;
+                        if( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 3)) {                       // VERIFICA SE O NUMERO DE CIMA É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [x] É DIFERENTE DE 3
+                            matrizJogo[x + 1][y] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA BAIXO
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
                         }
                     }
                 }
             }
             jogada++;
             valorAleatorio();
-        } else if (opcao == 27){
-            opcao = 0;
+        } else if (opcao == 27){    // ESC
+            selecao();
         }
 
         for(x = 3; x >= 0; x--) {
@@ -1136,8 +1146,15 @@ jogar4x4Media(){
 }
 
 jogar4x4Dificil(){
+
+    for (x = 0; x < 4; x++){
+        for (y = 0; y < 4; y++){
+            matrizJogo[x][y] = 0;
+        }
+        matrizJogo[x][y] = 0;
+    }
     
-        logo();
+    logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                            DIFICULDADE: DIFICIL                            %c%c\n", 219, 219, 219, 219);
@@ -1179,12 +1196,107 @@ jogar4x4Dificil(){
 
     tijolos();
 
+    valorAleatorio();
+    valorAleatorio();                           // GERA 2 NUMEROS 2 EM LUGARES ALEATORIOS
+
+    pontos = jogada = 0;                        // DEFINE A PONTUACAO E AS JOGADAS PRA 0
+
     do{
+
+        gotoxy(71,18);
+        printf("%i", pontos);                   // PRINTA OS PONTOS NA TELA
+        gotoxy(71,19);
+        printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
+        gotoxy(80,40);
         opcao = getch();
-        if (opcao == 27){
+        
+        if (opcao == 27){                       // ESC
             Beep(370, 200);
             system("cls");
             selecao();
+        } else if (opcao == 75){               // ESQUERDA
+            for (i = 0; i < 4; i++){                                                                                    // PERCORRE O TABULEIRO INTEIRO 3 VEZES
+                for(x = 3; x >= 0; x--) {
+                    for(y = 0; y < 4; y++) {
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y != 0) ) {       // VERIFICA SE O NUMERO DO LADO ESQUERDO É DIFERENTE DE 0 E IGUAL AO [x][y]
+                            matrizJogo[x][y - 1] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x][y - 1]
+                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
+                        }
+                        if( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y] != 0) && (y != 0)) {                       // VERIFICA SE O NUMERO DO LADO DIREITO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [y] É DIFERENTE DE 0
+                            matrizJogo[x][y - 1] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA O LADO ESQUERDO
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
+                        }
+                    }
+                }
+            }
+            jogada++;
+            valorAleatorio();
+        } else if (opcao == 77) {       // DIREITA                                                                      // PERCORRE O TABULEIRO INTEIRO 3 VEZES
+            for (i = 0; i < 4; i++){                                                                                    
+                for(x = 3; x >= 0; x--) {                                                                               
+                    for(y = 3; y >= 0; y--) {
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y != 3) ) {       // VERIFICA SE O NUMERO DO LADO DIREITO É DIFERENTE DE 0 E IGUAL AO [x][y]
+                            matrizJogo[x][y + 1] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x][y + 1]
+                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
+                        }
+                        if( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y] != 0) && (y != 3)) {                       // VERIFICA SE O NUMERO DO LADO ESQUERDO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [y] É DIFERENTE DE 3
+                            matrizJogo[x][y + 1] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA O LADO DIREITO
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
+                        }
+                    }
+                }
+            }
+            jogada++;
+            valorAleatorio();
+        } else if (opcao == 72) {       // CIMA                                                                         // PERCORRE O TABULEIRO INTEIRO 3 VEZES
+            for (i = 0; i < 4; i++){
+                for(y = 3; y >= 0; y--) {
+                    for(x = 0; x < 4; x++) {
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x != 0) ) {       // VERIFICA SE O NUMERO DE CIMA É DIFERENTE DE 0 E IGUAL AO [x][y]
+                            matrizJogo[x - 1][y] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x - 1][y]
+                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
+                        }
+                        if( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 0)) {                       // VERIFICA SE O NUMERO DE BAIXO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [x] É DIFERENTE DE 0
+                            matrizJogo[x - 1][y] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA CIMA
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
+                        }
+                    }
+                }
+            }
+            jogada++;
+            valorAleatorio();
+        } else if (opcao == 80) {       // BAIXO                                                                        // PERCORRE O TABULEIRO INTEIRO 3 VEZES
+            for (i = 0; i < 4; i++){
+                for(x = 3; x >= 0; x--) {   
+                    for(y = 3; y >= 0; y--) {
+                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x != 3) ) {       // VERIFICA SE O NUMERO DE CIMA É DIFERENTE DE 0 E IGUAL AO [x][y]
+                            matrizJogo[x + 1][y] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x + 1][y]
+                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
+                        }
+                        if( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 3)) {                       // VERIFICA SE O NUMERO DE CIMA É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [x] É DIFERENTE DE 3
+                            matrizJogo[x + 1][y] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA BAIXO
+                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
+                        }
+                    }
+                }
+            }
+            jogada++;
+            valorAleatorio();
+        } else if (opcao == 27){    // ESC
+            selecao();
+        }
+
+        for(x = 3; x >= 0; x--) {
+            for(y = 0; y < 4; y++) {
+                if (matrizJogo[x][y] == 4096){
+                    system("cls");
+                    printf("VOCE GANHOU!");
+                }
+            }
         }
     } while (opcao != 27);
 }
@@ -1520,6 +1632,55 @@ rankingVel(){
     
 }
 
+
+jogosSalvos(){
+
+    logo();
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        JOGOS SALVOS         %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                     SEUS JOGOS SALVOS APARECERAO AQUI:                     %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [1] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [2] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [3] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [4] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [5] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+
+    tijolos();
+
+    do
+    {
+        opcao = getch();
+        if (opcao == 27){
+            Beep(370, 200);
+            system("cls");
+            selecao();
+            opcao = 0;
+        }
+    } while (opcao != 0);
+
+}
+
 logo(){
     tijolos();
     
@@ -1555,8 +1716,6 @@ void gotoxy(int x, int y)
 valorAleatorio(){
 
     srand(time(0));
-    
-	fflush(stdin);
 	
     do{
         x = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO HORIZONTAL
