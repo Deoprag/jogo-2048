@@ -50,7 +50,7 @@ int valorAleatorio();
 
 //  PRINCIPAL
 int main (){
-    SetConsoleTitle("JOGO 2048");
+    SetConsoleTitle("2048 :: Pedro Rocha");
 
     tijolos();
     Sleep(300);

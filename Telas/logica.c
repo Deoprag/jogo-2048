@@ -11,10 +11,17 @@
 #define ESC 27
 #define ENTER 13
 
+
+// FUNCOES
+int checarMovimento();
+int checarVazios();
 int valorAleatorio();
-int x, y, i, opcao, jogada, pontos, contagem = 0;
+
+// VAR GLOBAIS
+int x, y, i, opcao, jogada, pontos, contagem, mov = 0;
 int matrizJogo[4][4];
 
+// PRINCIPAL
 int main(){
 
     for (x = 0; x < 4; x++){
@@ -30,6 +37,21 @@ int main(){
 
     do{
         
+    system("cls");
+    printf("---------------------------------------------------\n");
+    for (x = 0; x < 4; x++) {
+		for (y = 0; y < 4; y++){
+	        printf("%i\t", matrizJogo[x][y]);
+	    }
+	    printf("\n");
+	}
+	
+    printf("------------------------------------------------------\n");
+    printf("                    JOGADAS:   %i                     \n", jogada);
+    printf("                    PONTOS:    %i                     \n", pontos);
+    printf("               ULTIMO MOVIMENTO:    %i                \n", opcao);
+    printf("------------------------------------------------------\n");
+
 	opcao = getch();
 	
 	/*
@@ -37,28 +59,15 @@ int main(){
 	E SE NAO PUDER SER FEITO, A TECLA DIGITADA NAO TEM VALOR
 	*/
 
-	if (opcao == 77){               // DIREITA
+	if ( (opcao == 77) ) {               // DIREITA
 
-        for(y = 3; y >= 0; y--) {
+        if (checarMovimento(mov) == 0){
+
+            for(y = 3; y >= 0; y--) {
                     
                 for(x = 0; x < 4; x++) {
 
-                if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] != 0) && (y > 2) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x][y - 3];
-                    matrizJogo[x][y - 3] = 0;
-                    
-                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] != 0) && (y > 1) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x][y - 2];
-                    matrizJogo[x][y - 2] = 0;
-                    
-                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] != 0) && (y > 0) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x][y - 1];
-                    matrizJogo[x][y - 1] = 0;
-                    
-                } else if ( (matrizJogo[x][y]) != 0 ){
+                if ( (matrizJogo[x][y]) != 0 ){
 
                     if ( (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y > 0) ) {
 
@@ -82,34 +91,41 @@ int main(){
 
                 }
 
+                if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] != 0) && (y > 2) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x][y - 3];
+                    matrizJogo[x][y - 3] = 0;
+                    
+                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] != 0) && (y > 1) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x][y - 2];
+                    matrizJogo[x][y - 2] = 0;
+                    
+                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] != 0) && (y > 0) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x][y - 1];
+                    matrizJogo[x][y - 1] = 0;
+                    
+                }
+
             }
 
         }
+
         jogada++;
         valorAleatorio();
 
-    } else if (opcao == 75) {			// ESQUERDA
+        }
+        
 
-        for(y = 0; y < 4; y++) {
+    } else if ( (opcao == 75) ) {			// ESQUERDA
+
+        if (checarMovimento(mov) == 1){
+            for(y = 0; y < 4; y++) {
             
             for(x = 3; x >= 0; x--) {
 
-                if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] != 0) && (y < 1) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x][y + 3];
-                    matrizJogo[x][y + 3] = 0;
-                    
-                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] != 0) && (y < 2) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x][y + 2];
-                    matrizJogo[x][y + 2] = 0;
-                    
-                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] != 0) && (y < 3) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x][y + 1];
-                    matrizJogo[x][y + 1] = 0;
-                    
-                } else if ( (matrizJogo[x][y]) != 0 ){
+                if ( (matrizJogo[x][y]) != 0 ){
 
                     if ( (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y < 3) ) {
 
@@ -130,7 +146,24 @@ int main(){
                         matrizJogo[x][y + 3] = 0;
 
                     }
+            
+                }
 
+                if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] != 0) && (y < 1) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x][y + 3];
+                    matrizJogo[x][y + 3] = 0;
+                    
+                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] != 0) && (y < 2) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x][y + 2];
+                    matrizJogo[x][y + 2] = 0;
+                    
+                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] != 0) && (y < 3) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x][y + 1];
+                    matrizJogo[x][y + 1] = 0;
+                    
                 }
 
             }
@@ -138,29 +171,16 @@ int main(){
         }
         jogada++;
         valorAleatorio();
+        }
+        
+    } else if ( (opcao == 80) ) {			// BAIXO
 
-    } else if (opcao == 80) {			// BAIXO
-
-		for(x = 3; x >= 0; x--) {
+        if (checarMovimento(mov) == 2){
+            for(x = 3; x >= 0; x--) {
 			
         	for(y = 0; y < 4; y++) {
 
-                if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] != 0) && (x > 2) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x - 3][y];
-                    matrizJogo[x - 3][y] = 0;
-                    
-                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] != 0) && (x > 1) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x - 2][y];
-                    matrizJogo[x - 2][y] = 0;
-                    
-                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] != 0) && (x > 0) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x - 1][y];
-                    matrizJogo[x - 1][y] = 0;
-                    
-                } else if ( (matrizJogo[x][y]) != 0 ){
+                if ( (matrizJogo[x][y]) != 0 ){
 
                     if ( (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x > 0) ) {
 
@@ -185,34 +205,38 @@ int main(){
 
                 }
 
+                if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] != 0) && (x > 2) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x - 3][y];
+                    matrizJogo[x - 3][y] = 0;
+                    
+                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] != 0) && (x > 1) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x - 2][y];
+                    matrizJogo[x - 2][y] = 0;
+                    
+                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] != 0) && (x > 0) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x - 1][y];
+                    matrizJogo[x - 1][y] = 0;
+                    
+                }
+
             }
 
         }
         jogada++;
         valorAleatorio();
+        }
 
-    } else if (opcao == 72) {			// CIMA
+    } else if ( (opcao == 72) ) {			// CIMA
 
-        for(x = 0; x < 4; x++) {   
+        if (checarMovimento(mov) == 3){
+            for(x = 0; x < 4; x++) {   
 
             for(y = 3; y >= 0; y--) {
-                
-                if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] != 0) && (x < 1) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x + 3][y];
-                    matrizJogo[x + 3][y] = 0;
-                    
-                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] != 0) && (x < 2) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x + 2][y];
-                    matrizJogo[x + 2][y] = 0;
-                    
-                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] != 0) && (x < 3) ) {
-                
-                    matrizJogo[x][y] = matrizJogo[x + 1][y];
-                    matrizJogo[x + 1][y] = 0;
-                    
-                } else if ( (matrizJogo[x][y]) != 0 ){
+
+                if ( (matrizJogo[x][y]) != 0 ){
 
                     if ( (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x < 3) ) {
 
@@ -236,11 +260,29 @@ int main(){
 
                 }
 
+                if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] != 0) && (x < 1) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x + 3][y];
+                    matrizJogo[x + 3][y] = 0;
+                    
+                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] != 0) && (x < 2) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x + 2][y];
+                    matrizJogo[x + 2][y] = 0;
+                    
+                } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] != 0) && (x < 3) ) {
+                
+                    matrizJogo[x][y] = matrizJogo[x + 1][y];
+                    matrizJogo[x + 1][y] = 0;
+                    
+                }
+
             }
 
         }
         jogada++;
         valorAleatorio();
+        }
 
     } else if (opcao == 27) {    // ESC
         return 1;
@@ -259,33 +301,73 @@ int main(){
 
 }
 
+checarMovimento(){
+    int dir, esq, cim, bai = 0;
+    for (x = 0; x < 4; x++){
+        for (y = 0; y < 4; y++){
+
+            if ( (matrizJogo[x][y] == matrizJogo[x][y - 1] || matrizJogo[x][y - 1] == 0) ) {            // DIREITA
+                dir++;
+            } else if ( (matrizJogo[x][y] == matrizJogo[x][y + 1] || matrizJogo[x][y + 1] == 0) ) {     // ESQUERDA
+                esq++;
+            } else if ( (matrizJogo[x][y] == matrizJogo[x + 1][y] || matrizJogo[x + 1][y] == 0) ) {     // CIMA
+                cim++;
+            } else if ( (matrizJogo[x][y] == matrizJogo[x - 1][y] || matrizJogo[x - 1][y] == 0) ) {     // BAIXO
+                bai++;
+            }
+        }
+    }
+    
+    if (opcao == 77 && dir > 0){
+        return 0;
+    } else if (opcao == 75 && esq > 0) {
+        return 1;
+    } else if (opcao == 72 && cim > 0) {
+        return 2;
+    } else if (opcao == 80 && bai > 0) {
+        return 3;
+    } else {
+        return 4;
+    }
+
+}
+
+checarVazios(){
+    int vazios = 16;
+    for (x = 0; x < 4; x++){
+        for (y = 0; y < 4; y++){
+            if (matrizJogo[x][y] != 0){
+                vazios--;
+            }
+        }
+    }
+    if (vazios == 0){
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 valorAleatorio(){
 
-    srand(time(0));
+    int ver = 0;
 
-    do{
-        x = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO HORIZONTAL
-        y = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO VERTICAL
+    if(checarVazios(ver) == 0){
 
-        if (matrizJogo[x][y] == 0) {
-            matrizJogo[x][y] = 2;
-            i = 1;
-        } else {
-            i = 0;
-        }
-    }while(i != 1);
+        srand(time(0));
 
-    printf("---------------------------------------------------\n");
-    for (x = 0; x < 4; x++) {
-		for (y = 0; y < 4; y++){
-	        printf("%i\t", matrizJogo[x][y]);
-	    }
-	    printf("\n");
-	}
-	
-    printf("------------------------------------------------------\n");
-    printf("                    JOGADAS:   %i                     \n", jogada);
-    printf("                    PONTOS:    %i                     \n", pontos);
-    printf("               ULTIMO MOVIMENTO:    %i                \n", opcao);
-    printf("------------------------------------------------------\n");
+        do{
+            x = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO HORIZONTAL
+            y = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO VERTICAL
+
+            if (matrizJogo[x][y] == 0) {
+                matrizJogo[x][y] = 2;
+                i = 1;
+            } else {
+                i = 0;
+            }
+        }while(i != 1);
+
+    }
+
 }
