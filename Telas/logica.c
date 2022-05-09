@@ -53,21 +53,16 @@ int main(){
     printf("------------------------------------------------------\n");
 
 	opcao = getch();
-	
-	/*
-	ADICIONAR FUNCAO PARA VERIFICAR QUAIS MOVIMENTOS PODEM SER FEITOS
-	E SE NAO PUDER SER FEITO, A TECLA DIGITADA NAO TEM VALOR
-	*/
 
 	if ( (opcao == 77) ) {               // DIREITA
 
-        if (checarMovimento(mov) == 0){
+        if (checarMovimento(mov) == 0) {
 
             for(y = 3; y >= 0; y--) {
                     
                 for(x = 0; x < 4; x++) {
 
-                if ( (matrizJogo[x][y]) != 0 ){
+                if ( (matrizJogo[x][y]) != 0 ) {
 
                     if ( (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y > 0) ) {
 
@@ -120,12 +115,12 @@ int main(){
 
     } else if ( (opcao == 75) ) {			// ESQUERDA
 
-        if (checarMovimento(mov) == 1){
+        if (checarMovimento(mov) == 0) {
             for(y = 0; y < 4; y++) {
             
             for(x = 3; x >= 0; x--) {
 
-                if ( (matrizJogo[x][y]) != 0 ){
+                if ( (matrizJogo[x][y]) != 0 ) {
 
                     if ( (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y < 3) ) {
 
@@ -175,12 +170,12 @@ int main(){
         
     } else if ( (opcao == 80) ) {			// BAIXO
 
-        if (checarMovimento(mov) == 2){
+        if (checarMovimento(mov) == 0) {
             for(x = 3; x >= 0; x--) {
 			
         	for(y = 0; y < 4; y++) {
 
-                if ( (matrizJogo[x][y]) != 0 ){
+                if ( (matrizJogo[x][y]) != 0 ) {
 
                     if ( (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x > 0) ) {
 
@@ -231,12 +226,12 @@ int main(){
 
     } else if ( (opcao == 72) ) {			// CIMA
 
-        if (checarMovimento(mov) == 3){
+        if (checarMovimento(mov) == 0) {
             for(x = 0; x < 4; x++) {   
 
             for(y = 3; y >= 0; y--) {
 
-                if ( (matrizJogo[x][y]) != 0 ){
+                if ( (matrizJogo[x][y]) != 0 ) {
 
                     if ( (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x < 3) ) {
 
@@ -302,34 +297,40 @@ int main(){
 }
 
 checarMovimento(){
-    int dir, esq, cim, bai = 0;
+    int dir, esq, cima, baixo = 0;
     for (x = 0; x < 4; x++){
         for (y = 0; y < 4; y++){
-
-            if ( (matrizJogo[x][y] == matrizJogo[x][y - 1] || matrizJogo[x][y - 1] == 0) ) {            // DIREITA
-                dir++;
-            } else if ( (matrizJogo[x][y] == matrizJogo[x][y + 1] || matrizJogo[x][y + 1] == 0) ) {     // ESQUERDA
-                esq++;
-            } else if ( (matrizJogo[x][y] == matrizJogo[x + 1][y] || matrizJogo[x + 1][y] == 0) ) {     // CIMA
-                cim++;
-            } else if ( (matrizJogo[x][y] == matrizJogo[x - 1][y] || matrizJogo[x - 1][y] == 0) ) {     // BAIXO
-                bai++;
+            if ( (opcao == 77) && (matrizJogo[x][y] != 0) ) {
+                if ( (matrizJogo[x][y] == matrizJogo[x][y - 1] || matrizJogo[x][y - 1] == 0) ) {            // DIREITA
+                    dir++;
+                }
+            } else if ( (opcao == 75) && (matrizJogo[x][y] != 0) ) {
+                if ( (matrizJogo[x][y] == matrizJogo[x][y + 1] || matrizJogo[x][y + 1] == 0) ) {            // ESQUERDA
+                    esq++;
+                }
+            } else if ( (opcao == 72) && (matrizJogo[x][y] != 0) ) {
+                if ( (matrizJogo[x][y] == matrizJogo[x + 1][y] || matrizJogo[x + 1][y] == 0) ) {            // CIMA
+                    cima++;
+                }
+            } else if ( (opcao == 80) && (matrizJogo[x][y] != 0) ) {
+                if ( (matrizJogo[x][y] == matrizJogo[x - 1][y] || matrizJogo[x - 1][y] == 0) ) {            // BAIXO
+                    baixo++;
+                }
             }
         }
     }
-    
-    if (opcao == 77 && dir > 0){
-        return 0;
-    } else if (opcao == 75 && esq > 0) {
-        return 1;
-    } else if (opcao == 72 && cim > 0) {
-        return 2;
-    } else if (opcao == 80 && bai > 0) {
-        return 3;
-    } else {
-        return 4;
-    }
 
+    if ( (opcao == 77) && (dir > 0) ) {
+        return 0;
+    } else if ( (opcao == 75) && (esq > 0) ) {
+        return 0;
+    } else if ( (opcao == 72) && (cima > 0) ) {
+        return 0;
+    } else if ( (opcao == 80) && (baixo > 0) ) {
+        return 0;
+    } else {
+        return 1;
+    }
 }
 
 checarVazios(){
