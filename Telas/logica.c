@@ -298,39 +298,7 @@ int main(){
 
 checarMovimento(){
     int dir, esq, cima, baixo = 0;
-    for (x = 0; x < 4; x++){
-        for (y = 0; y < 4; y++){
-            if ( (opcao == 77) && (matrizJogo[x][y] != 0) ) {
-                if ( (matrizJogo[x][y] == matrizJogo[x][y - 1] || matrizJogo[x][y - 1] == 0) ) {            // DIREITA
-                    dir++;
-                }
-            } else if ( (opcao == 75) && (matrizJogo[x][y] != 0) ) {
-                if ( (matrizJogo[x][y] == matrizJogo[x][y + 1] || matrizJogo[x][y + 1] == 0) ) {            // ESQUERDA
-                    esq++;
-                }
-            } else if ( (opcao == 72) && (matrizJogo[x][y] != 0) ) {
-                if ( (matrizJogo[x][y] == matrizJogo[x + 1][y] || matrizJogo[x + 1][y] == 0) ) {            // CIMA
-                    cima++;
-                }
-            } else if ( (opcao == 80) && (matrizJogo[x][y] != 0) ) {
-                if ( (matrizJogo[x][y] == matrizJogo[x - 1][y] || matrizJogo[x - 1][y] == 0) ) {            // BAIXO
-                    baixo++;
-                }
-            }
-        }
-    }
-
-    if ( (opcao == 77) && (dir > 0) ) {
-        return 0;
-    } else if ( (opcao == 75) && (esq > 0) ) {
-        return 0;
-    } else if ( (opcao == 72) && (cima > 0) ) {
-        return 0;
-    } else if ( (opcao == 80) && (baixo > 0) ) {
-        return 0;
-    } else {
-        return 1;
-    }
+    
 }
 
 checarVazios(){
