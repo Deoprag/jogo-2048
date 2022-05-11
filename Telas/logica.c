@@ -22,17 +22,18 @@ int checarVitoria();
 // VAR GLOBAIS
 int x, y, opcao, jogada, pontos, contagem, mov = 0;
 int matrizJogo[TAM][TAM];
+int matrizJogoChecar[TAM][TAM];
 
 // PRINCIPAL
 int main(){
 	
 	int ver = 0;
 	
-    for (x = 0; x < 4; x++){
-        for (y = 0; y < 4; y++){
+    for (x = 0; x < TAM; x++){
+        for (y = 0; y < TAM; y++){
             matrizJogo[x][y] = 0;
+			matrizJogoChecar[x][y] = 0;
         }
-        matrizJogo[x][y] = 0;
     }
 
     valorAleatorio();
@@ -59,12 +60,13 @@ int main(){
 
 	opcao = getch();
 
-	if ( (opcao == 77) ) {               // DIREITA
+	if ( (opcao == DIREITA) ) {               // DIREITA
 
 		for(y = 3; y >= 0; y--) {
 				
-			for(x = 0; x < 4; x++) {
+			for(x = 0; x < TAM; x++) {
 				
+				matrizJogoChecar[x][y] = matrizJogo[x][y];
 			
 				if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] != 0) && (y > 2) ) {
 				
@@ -112,11 +114,13 @@ int main(){
 			valorAleatorio();
     	}    
         
-    } else if ( (opcao == 75) ) {			// ESQUERDA
+    } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
 
-		for(y = 0; y < 4; y++) {
+		for(y = 0; y < TAM; y++) {
 		
 			for(x = 3; x >= 0; x--) {
+
+				matrizJogoChecar[x][y] = matrizJogo[x][y];
 
 				if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] != 0) && (y < 1) ) {
 				
@@ -164,11 +168,13 @@ int main(){
 			valorAleatorio();
     	}
         
-    } else if ( (opcao == 80) ) {			// BAIXO
+    } else if ( (opcao == BAIXO) ) {			// BAIXO
 
 		for(x = 3; x >= 0; x--) {
 		
-			for(y = 0; y < 4; y++) {
+			for(y = 0; y < TAM; y++) {
+
+				matrizJogoChecar[x][y] = matrizJogo[x][y];
 				
 				if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] != 0) && (x > 2) ) {
 				
@@ -217,11 +223,13 @@ int main(){
         	valorAleatorio();
         }
 
-    } else if ( (opcao == 72) ) {			// CIMA
+    } else if ( (opcao == CIMA) ) {			// CIMA
 
-		for(x = 0; x < 4; x++) {   
+		for(x = 0; x < TAM; x++) {   
 
 			for(y = 3; y >= 0; y--) {
+
+				matrizJogoChecar[x][y] = matrizJogo[x][y];
 				
 				if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] != 0) && (x < 1) ) {
 				
@@ -285,10 +293,10 @@ int main(){
 }
 
 checarMovimento(){
-    int matrizJogoChecar[TAM][TAM];
-	if (jogada > 1){
-		for(x = 0; x < 4; x++){
-			for(y = 0; y < 4; y++){
+    
+	if (jogada > 0){
+		for(x = 0; x < TAM; x++){
+			for(y = 0; y < TAM; y++){
 				if (matrizJogo[x][y] != matrizJogoChecar[x][y]){
 					return 0;
 					break;
@@ -298,20 +306,14 @@ checarMovimento(){
 		return 1;
 	} else {
 		return 0;
-	
-		for(x = 0; x < 4; x++){
-			for(y = 0; y < 4; y++){
-				matrizJogoChecar[x][y] = matrizJogo[x][y];
-			}
-		}
-		
 	}
+
 }
 
 checarVazios(){
     int vazios = 16;
-    for (x = 0; x < 4; x++){
-        for (y = 0; y < 4; y++){
+    for (x = 0; x < TAM; x++){
+        for (y = 0; y < TAM; y++){
             if (matrizJogo[x][y] != 0){
                 vazios--;
             }
@@ -325,8 +327,8 @@ checarVazios(){
 }
 
 checarVitoria(){
-	for ((x = 0); (x < 4); x++) {
-		for ((y = 0); (y < 4); y++) {
+	for ((x = 0); (x < TAM); x++) {
+		for ((y = 0); (y < TAM); y++) {
 			if (matrizJogo[x][y] == 2048) {
 				return 0;
 				break;
