@@ -12,9 +12,12 @@
 #define DIREITA 77
 #define ESC 27
 #define ENTER 13
+#define TAM5
+#define TAM4
+#define TAM3
 
 // VARIAVEIS GLOBAIS
-int tijolo, inicial, opcao, tam, jogada, pontos, posx, posy = 0;
+int tijolo, inicial, opcao, tam, jogada, pontos = 0;
 int x, y, i = 0;
 int matrizJogo[4][4];
 char apelido[20], senha[20], confSenha[20], celular[15];
@@ -1714,7 +1717,7 @@ void gotoxy(int x, int y)
 }
 
 valorAleatorio(){
-
+	int posx, posy = 0;
     srand(time(0));
 	
     do{
