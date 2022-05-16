@@ -12,9 +12,9 @@
 #define DIREITA 77
 #define ESC 27
 #define ENTER 13
-#define TAM5
-#define TAM4
-#define TAM3
+#define TAM5 5
+#define TAM4 4
+#define TAM3 3
 
 // VARIAVEIS GLOBAIS
 int tijolo, inicial, opcao, tam, jogada, pontos = 0;
@@ -1717,12 +1717,13 @@ void gotoxy(int x, int y)
 }
 
 valorAleatorio(){
-	int posx, posy = 0;
+	int posx = 20;
+	int posy = 11;
     srand(time(0));
 	
     do{
-        x = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO HORIZONTAL
-        y = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO VERTICAL
+        x = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO X
+        y = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO Y
 
         if (matrizJogo[x][y] == 0) {
             matrizJogo[x][y] = 2;
@@ -1732,19 +1733,17 @@ valorAleatorio(){
         }
     }while(i != 0);
 
-    posy = 20;
-
     for (x = 0; x < 4; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
-        posx = 11;
+        posy = 11;
         for (y = 0; y < 4; y++){
-            gotoxy(posx,posy);                 // COLUNA / LINHA
+            gotoxy(posy,posx);                 // COLUNA / LINHA
                 if (matrizJogo[x][y] != 0){
                     printf("%i  ", matrizJogo[x][y]);
                 } else {
                     printf("     ");
                 }
-            posx += 11;
+            posy += 11;
         }
-        posy += 5;
+        posx += 5;
     }
 }
