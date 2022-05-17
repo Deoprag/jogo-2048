@@ -8,26 +8,25 @@
 #define DIREITA 77
 #define ESC 27
 #define ENTER 13
-#define TAM 5
+#define TAM5 5
 
 
 void gotoxy(int x, int y);
-void movEsquerda();
-void movDireita();
-void movCima();
-void movBaixo();
+void movEsquerda5x5();
+void movDireita5x5();
+void movCima5x5();
+void movBaixo5x5();
 int logo();
 int tijolos();
-int tijoloMenor();
 int jogar5x5();
-int checarMovimento();
-int checarVazios();
-int valorAleatorio();
-int checarVitoria();
+int checarMovimento5x5();
+int checarVazios5x5();
+int valorAleatorio5x5();
+int checarVitoria5x5();
 
 int x, y, opcao, jogada, pontos, contagem, mov, tijolo = 0;
-int matrizJogo[TAM][TAM];
-int matrizJogoChecar[TAM][TAM];
+int matrizJogo5x5[TAM5][TAM5];
+int matrizJogoChecar5x5[TAM5][TAM5];
 
 int main(){
     jogar5x5();
@@ -38,7 +37,7 @@ jogar5x5(){
     
     int ver = 0;
 
-    valorAleatorio();
+    valorAleatorio5x5();
     system("cls");
 
     logo();
@@ -51,47 +50,47 @@ jogar5x5(){
     tijolos();
 
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c    PONTOS:  |      |%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c  MOVIMENTOS:|      |%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c   PONTOS:  |      | %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c MOVIMENTOS:|      | %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
-    tijoloMenor();
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [P] SALVAR JOGO     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [R] REINICIAR JOGO  %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [O] RANKING         %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
-    tijoloMenor();
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c        DICA:        %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     
-    tijoloMenor();
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   UTILIZE AS SETAS  %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c   DO TECLADO PARA   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c    MOVIMENTAR O     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c     TABULEIRO       %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
-    tijoloMenor();
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c  UNIFACEAR - 2022   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     tijolos();
 
-    valorAleatorio();
+    valorAleatorio5x5();
 
     do{
 
-        gotoxy(71,18);
+        gotoxy(70,18);
         printf("%i", pontos);                   // PRINTA OS PONTOS NA TELA
-        gotoxy(71,19);
+        gotoxy(70,19);
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
 
@@ -99,25 +98,25 @@ jogar5x5(){
 
         if ( (opcao == DIREITA) ) {               // DIREITA
 
-            movDireita();    
+            movDireita5x5();    
             
         } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
 
-            movEsquerda();
+            movEsquerda5x5();
             
         } else if ( (opcao == BAIXO) ) {			// BAIXO
 
-            movBaixo();
+            movBaixo5x5();
 
         } else if ( (opcao == CIMA) ) {			// CIMA
 
-            movCima();
+            movCima5x5();
 
         } else if (opcao == 27) {    // ESC
             return 1;
         }
 
-        if(checarVitoria(ver) == 0){
+        if(checarVitoria5x5(ver) == 0){
             gotoxy(40,40);
 			printf("VITORIA");
         }
@@ -149,273 +148,266 @@ tijolos(){
     printf("\n");
 }
 
-tijoloMenor(){
-    for (tijolo = 0; tijolo != 57; tijolo ++){
-        printf("%c", 219);
-    }
-    printf("\n");
-}
-
-movDireita(){
+movDireita5x5(){
 
     for(y = 4; y >= 0; y--) {
                     
-        for(x = 0; x < TAM; x++) {
+        for(x = 0; x < TAM5; x++) {
             
-            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            matrizJogoChecar5x5[x][y] = matrizJogo5x5[x][y];
         
-            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] != 0) && (y > 2) && (matrizJogo[x][y - 4] != 0) && (y > 3) ) {
+            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] == 0) && (matrizJogo5x5[x][y - 3] != 0) && (y > 2) && (matrizJogo5x5[x][y - 4] != 0) && (y > 3) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y - 3];
-                matrizJogo[x][y - 3] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y - 3];
+                matrizJogo5x5[x][y - 3] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] != 0) && (y > 2) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] == 0) && (matrizJogo5x5[x][y - 3] != 0) && (y > 2) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y - 3];
-                matrizJogo[x][y - 3] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y - 3];
+                matrizJogo5x5[x][y - 3] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] != 0) && (y > 1) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] != 0) && (y > 1) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y - 2];
-                matrizJogo[x][y - 2] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y - 2];
+                matrizJogo5x5[x][y - 2] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] != 0) && (y > 0) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y - 1] != 0) && (y > 0) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y - 1];
-                matrizJogo[x][y - 1] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y - 1];
+                matrizJogo5x5[x][y - 1] = 0;
                 
             }
 
-            if ( (matrizJogo[x][y]) != 0 ) {
+            if ( (matrizJogo5x5[x][y]) != 0 ) {
 
-                if ( (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y > 0) ) {
+                if ( (matrizJogo5x5[x][y - 1] == matrizJogo5x5[x][y]) && (y > 0) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y - 1] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x][y - 1] = 0;
 
-                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == matrizJogo[x][y]) && (y > 1) ) {
+                } else if ( (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] == matrizJogo5x5[x][y]) && (y > 1) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y - 2] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x][y - 2] = 0;
 
-                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] == matrizJogo[x][y]) && (y > 2) ) {
+                } else if ( (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] == 0) && (matrizJogo5x5[x][y - 3] == matrizJogo5x5[x][y]) && (y > 2) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y - 3] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x][y - 3] = 0;
 
-                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] == 0) && (matrizJogo[x][y - 4] == matrizJogo[x][y]) && (y > 3) ) {
+                } else if ( (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] == 0) && (matrizJogo5x5[x][y - 3] == 0) && (matrizJogo5x5[x][y - 4] == matrizJogo5x5[x][y]) && (y > 3) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y - 3] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x][y - 3] = 0;
 
                 }
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento5x5(mov) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio5x5();
     }
 
 }
 
-movEsquerda(){
-    for(y = 0; y < TAM; y++) {
+movEsquerda5x5(){
+    for(y = 0; y < TAM5; y++) {
             
         for(x = 4; x >= 0; x--) {
 
-            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            matrizJogoChecar5x5[x][y] = matrizJogo5x5[x][y];
 
-            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] != 0) && (matrizJogo[x][y + 4] != 0) && (y < 1) ) {
+            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] == 0) && (matrizJogo5x5[x][y + 3] != 0) && (matrizJogo5x5[x][y + 4] != 0) && (y < 1) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y + 3];
-                matrizJogo[x][y + 3] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y + 3];
+                matrizJogo5x5[x][y + 3] = 0;
             
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] != 0) && (y < 2) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] == 0) && (matrizJogo5x5[x][y + 3] != 0) && (y < 2) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y + 3];
-                matrizJogo[x][y + 3] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y + 3];
+                matrizJogo5x5[x][y + 3] = 0;
             
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] != 0) && (y < 3) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] != 0) && (y < 3) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y + 2];
-                matrizJogo[x][y + 2] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y + 2];
+                matrizJogo5x5[x][y + 2] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] != 0) && (y < 4) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y + 1] != 0) && (y < 4) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y + 1];
-                matrizJogo[x][y + 1] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y + 1];
+                matrizJogo5x5[x][y + 1] = 0;
         
             }
             
-            if ( (matrizJogo[x][y]) != 0 ) {
+            if ( (matrizJogo5x5[x][y]) != 0 ) {
                 
-                if ( (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y < 4) ) {
+                if ( (matrizJogo5x5[x][y + 1] == matrizJogo5x5[x][y]) && (y < 4) ) {
 
-                pontos = pontos + (matrizJogo[x][y]*2);
-                matrizJogo[x][y] = matrizJogo[x][y]*2;
-                matrizJogo[x][y + 1] = 0;
+                pontos = pontos + (matrizJogo5x5[x][y]*2);
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                matrizJogo5x5[x][y + 1] = 0;
 
-                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == matrizJogo[x][y]) && (y < 3) ) {
+                } else if ( (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] == matrizJogo5x5[x][y]) && (y < 3) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y + 2] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x][y + 2] = 0;
 
-                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] == matrizJogo[x][y]) && (y < 2) ) {
+                } else if ( (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] == 0) && (matrizJogo5x5[x][y + 3] == matrizJogo5x5[x][y]) && (y < 2) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y + 3] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x][y + 3] = 0;
 
-                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] == 0) && (matrizJogo[x][y + 4] == matrizJogo[x][y]) && (y < 1) ) {
+                } else if ( (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] == 0) && (matrizJogo5x5[x][y + 3] == 0) && (matrizJogo5x5[x][y + 4] == matrizJogo5x5[x][y]) && (y < 1) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y + 3] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x][y + 3] = 0;
 
                 }
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento5x5(mov) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio5x5();
     }
 }
 
-movBaixo(){
+movBaixo5x5(){
     for(x = 4; x >= 0; x--) {
             
-        for(y = 0; y < TAM; y++) {
+        for(y = 0; y < TAM5; y++) {
 
-            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            matrizJogoChecar5x5[x][y] = matrizJogo5x5[x][y];
             
-            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] != 0) && (matrizJogo[x - 4][y] != 0) && (x > 3) ) {
+            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] == 0) && (matrizJogo5x5[x - 3][y] != 0) && (matrizJogo5x5[x - 4][y] != 0) && (x > 3) ) {
             
-                matrizJogo[x][y] = matrizJogo[x - 3][y];
-                matrizJogo[x - 3][y] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x - 3][y];
+                matrizJogo5x5[x - 3][y] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] != 0) && (x > 2) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] == 0) && (matrizJogo5x5[x - 3][y] != 0) && (x > 2) ) {
             
-                matrizJogo[x][y] = matrizJogo[x - 3][y];
-                matrizJogo[x - 3][y] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x - 3][y];
+                matrizJogo5x5[x - 3][y] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] != 0) && (x > 1) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] != 0) && (x > 1) ) {
             
-                matrizJogo[x][y] = matrizJogo[x - 2][y];
-                matrizJogo[x - 2][y] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x - 2][y];
+                matrizJogo5x5[x - 2][y] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] != 0) && (x > 0) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x - 1][y] != 0) && (x > 0) ) {
             
-                matrizJogo[x][y] = matrizJogo[x - 1][y];
-                matrizJogo[x - 1][y] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x - 1][y];
+                matrizJogo5x5[x - 1][y] = 0;
                 
             }
             
-            if ( (matrizJogo[x][y]) != 0 ) {
+            if ( (matrizJogo5x5[x][y]) != 0 ) {
 
-                if ( (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x > 0) ) {
+                if ( (matrizJogo5x5[x - 1][y] == matrizJogo5x5[x][y]) && (x > 0) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
 
-                    matrizJogo[x - 1][y] = 0;
+                    matrizJogo5x5[x - 1][y] = 0;
 
-                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == matrizJogo[x][y]) && (x > 1) ) {
+                } else if ( (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] == matrizJogo5x5[x][y]) && (x > 1) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x - 2][y] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x - 2][y] = 0;
 
-                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] == matrizJogo[x][y]) && (x > 2) ) {
+                } else if ( (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] == 0) && (matrizJogo5x5[x - 3][y] == matrizJogo5x5[x][y]) && (x > 2) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x - 3][y] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x - 3][y] = 0;
 
-                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] == 0) && (matrizJogo[x - 4][y] == matrizJogo[x][y]) && (x > 3) ) {
+                } else if ( (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] == 0) && (matrizJogo5x5[x - 3][y] == 0) && (matrizJogo5x5[x - 4][y] == matrizJogo5x5[x][y]) && (x > 3) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x - 3][y] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x - 3][y] = 0;
 
                 }
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento5x5(mov) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio5x5();
     }
 }
 
-movCima(){
-    for(x = 0; x < TAM; x++) {   
+movCima5x5(){
+    for(x = 0; x < TAM5; x++) {   
 
         for(y = 4; y >= 0; y--) {
 
-            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            matrizJogoChecar5x5[x][y] = matrizJogo5x5[x][y];
             
-            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] != 0) && (matrizJogo[x + 4][y] != 0) && (x < 1) ) {
+            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] == 0) && (matrizJogo5x5[x + 3][y] != 0) && (matrizJogo5x5[x + 4][y] != 0) && (x < 1) ) {
             
-                matrizJogo[x][y] = matrizJogo[x + 3][y];
-                matrizJogo[x + 3][y] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x + 3][y];
+                matrizJogo5x5[x + 3][y] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] != 0) && (x < 2) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] == 0) && (matrizJogo5x5[x + 3][y] != 0) && (x < 2) ) {
             
-                matrizJogo[x][y] = matrizJogo[x + 3][y];
-                matrizJogo[x + 3][y] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x + 3][y];
+                matrizJogo5x5[x + 3][y] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] != 0) && (x < 3) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] != 0) && (x < 3) ) {
             
-                matrizJogo[x][y] = matrizJogo[x + 2][y];
-                matrizJogo[x + 2][y] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x + 2][y];
+                matrizJogo5x5[x + 2][y] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] != 0) && (x < 4) ) {
+            } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x + 1][y] != 0) && (x < 4) ) {
             
-                matrizJogo[x][y] = matrizJogo[x + 1][y];
-                matrizJogo[x + 1][y] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x + 1][y];
+                matrizJogo5x5[x + 1][y] = 0;
                 
             }
             
-            if ( (matrizJogo[x][y]) != 0 ) {
+            if ( (matrizJogo5x5[x][y]) != 0 ) {
 
-                if ( (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x < 4) ) {
+                if ( (matrizJogo5x5[x + 1][y] == matrizJogo5x5[x][y]) && (x < 4) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x + 1][y] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x + 1][y] = 0;
 
-                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == matrizJogo[x][y]) && (x < 3) ) {
+                } else if ( (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] == matrizJogo5x5[x][y]) && (x < 3) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x + 2][y] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x + 2][y] = 0;
 
-                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] == matrizJogo[x][y]) && (x < 2) ) {
+                } else if ( (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] == 0) && (matrizJogo5x5[x + 3][y] == matrizJogo5x5[x][y]) && (x < 2) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x + 3][y] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x + 3][y] = 0;
 
-                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] == 0) && (matrizJogo[x + 4][y] == matrizJogo[x][y]) && (x < 1) ) {
+                } else if ( (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] == 0) && (matrizJogo5x5[x + 3][y] == 0) && (matrizJogo5x5[x + 4][y] == matrizJogo5x5[x][y]) && (x < 1) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x + 3][y] = 0;
+                    pontos = pontos + (matrizJogo5x5[x][y]*2);
+                    matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
+                    matrizJogo5x5[x + 3][y] = 0;
 
                 }
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento5x5(mov) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio5x5();
     }
 }
 
@@ -426,12 +418,12 @@ gotoxy(int x, int y){
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-checarMovimento(){
+checarMovimento5x5(){
     
 	if (jogada > 0){
-		for(x = 0; x < TAM; x++){
-			for(y = 0; y < TAM; y++){
-				if (matrizJogo[x][y] != matrizJogoChecar[x][y]){
+		for(x = 0; x < TAM5; x++){
+			for(y = 0; y < TAM5; y++){
+				if (matrizJogo5x5[x][y] != matrizJogoChecar5x5[x][y]){
 					return 0;
 					break;
 				}
@@ -444,11 +436,11 @@ checarMovimento(){
 
 }
 
-checarVazios(){
-    int vazios = TAM * TAM;
-    for (x = 0; x < TAM; x++){
-        for (y = 0; y < TAM; y++){
-            if (matrizJogo[x][y] != 0){
+checarVazios5x5(){
+    int vazios = TAM5 * TAM5;
+    for (x = 0; x < TAM5; x++){
+        for (y = 0; y < TAM5; y++){
+            if (matrizJogo5x5[x][y] != 0){
                 vazios--;
             }
         }
@@ -460,10 +452,10 @@ checarVazios(){
     }
 }
 
-checarVitoria(){
-	for ((x = 0); (x < TAM); x++) {
-		for ((y = 0); (y < TAM); y++) {
-			if (matrizJogo[x][y] == 2048) {
+checarVitoria5x5(){
+	for ((x = 0); (x < TAM5); x++) {
+		for ((y = 0); (y < TAM5); y++) {
+			if (matrizJogo5x5[x][y] == 2048) {
 				return 0;
 				break;
 			}
@@ -472,20 +464,20 @@ checarVitoria(){
 	return 1;
 }
 
-valorAleatorio(){
+valorAleatorio5x5(){
     
     int ver, confirmar, posx, posy = 0;
 
-    if(checarVazios(ver) == 0){
+    if(checarVazios5x5(ver) == 0){
 
         srand(time(NULL));
 
         do{
-            x = (rand() % TAM);     // GERAR VALOR ALEATORIO PRA LINHA
-            y = (rand() % TAM);     // GERAR VALOR ALEATORIO PRA COLUNA
+            x = (rand() % TAM5);     // GERAR VALOR ALEATORIO PRA LINHA
+            y = (rand() % TAM5);     // GERAR VALOR ALEATORIO PRA COLUNA
 
-            if (matrizJogo[x][y] == 0) {
-                matrizJogo[x][y] = 2;
+            if (matrizJogo5x5[x][y] == 0) {
+                matrizJogo5x5[x][y] = 2;
                 confirmar = 1;
             } else {
                 confirmar = 0;
@@ -493,14 +485,14 @@ valorAleatorio(){
         }while(confirmar != 1);
 
         posy = 18;
-        for (x = 0; x < TAM; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
+        for (x = 0; x < TAM5; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
             posx = 5;
-            for (y = 0; y < TAM; y++){
+            for (y = 0; y < TAM5; y++){
                 gotoxy(posx,posy);                 // COLUNA / LINHA
-                    if (matrizJogo[x][y] != 0){
+                    if (matrizJogo5x5[x][y] != 0){
                     	printf("      ");
                     	gotoxy(posx,posy);
-                        printf("%i  ", matrizJogo[x][y]);
+                        printf("%i  ", matrizJogo5x5[x][y]);
                     } else {
                         printf("      ");
                     }
