@@ -22,9 +22,9 @@ int jogar5x5();
 int checarMovimento5x5();
 int checarVazios5x5();
 int valorAleatorio5x5();
-int checarVitoria5x5();
+int checarVitoriaFacil();
 
-int x, y, opcao, jogada, pontos, contagem, mov, tijolo = 0;
+int x, y, opcao, jogada, pontos, mov, tijolo = 0;
 int matrizJogo5x5[TAM5][TAM5];
 int matrizJogoChecar5x5[TAM5][TAM5];
 
@@ -116,7 +116,7 @@ jogar5x5(){
             return 1;
         }
 
-        if(checarVitoria5x5(ver) == 0){
+        if(checarVitoriaFacil(ver) == 0){
             gotoxy(40,40);
 			printf("VITORIA");
         }
@@ -452,7 +452,7 @@ checarVazios5x5(){
     }
 }
 
-checarVitoria5x5(){
+checarVitoriaFacil(){
 	for ((x = 0); (x < TAM5); x++) {
 		for ((y = 0); (y < TAM5); y++) {
 			if (matrizJogo5x5[x][y] == 2048) {

@@ -8,25 +8,25 @@
 #define DIREITA 77
 #define ESC 27
 #define ENTER 13
-#define TAM 3
+#define TAM3 3
 
 
 void gotoxy(int x, int y);
-void movEsquerda();
-void movDireita();
-void movCima();
-void movBaixo();
+void movEsquerda3x3();
+void movDireita3x3();
+void movCima3x3();
+void movBaixo3x3();
 int logo();
 int tijolos();
 int jogar3x3();
-int checarMovimento();
-int checarVazios();
-int valorAleatorio();
-int checarVitoria();
+int checarMovimento3x3();
+int checarVazios3x3();
+int valorAleatorio3x3();
+int checarVitoriaHardcore();
 
-int x, y, opcao, jogada, pontos, contagem, mov, tijolo = 0;
-int matrizJogo[TAM][TAM];
-int matrizJogoChecar[TAM][TAM];
+int x, y, opcao, jogada, pontos, mov, tijolo = 0;
+int matrizJogo3x3[TAM3][TAM3];
+int matrizJogoChecar3x3[TAM3][TAM3];
 
 int main(){
     jogar3x3();
@@ -37,7 +37,7 @@ jogar3x3(){
     
     int ver = 0;
 
-    valorAleatorio();
+    valorAleatorio3x3();
     system("cls");
 
     logo();
@@ -80,7 +80,7 @@ jogar3x3(){
 
     tijolos();
 
-    valorAleatorio();
+    valorAleatorio3x3();
 
     do{
 
@@ -94,25 +94,25 @@ jogar3x3(){
 
         if ( (opcao == DIREITA) ) {               // DIREITA
 
-            movDireita();    
+            movDireita3x3();    
             
         } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
 
-            movEsquerda();
+            movEsquerda3x3();
             
         } else if ( (opcao == BAIXO) ) {			// BAIXO
 
-            movBaixo();
+            movBaixo3x3();
 
         } else if ( (opcao == CIMA) ) {			// CIMA
 
-            movCima();
+            movCima3x3();
 
         } else if (opcao == 27) {    // ESC
             return 1;
         }
 
-        if(checarVitoria(ver) == 0){
+        if(checarVitoriaHardcore(ver) == 0){
             gotoxy(40,40);
 			printf("VITORIA");
         }
@@ -144,178 +144,178 @@ tijolos(){
     printf("\n");
 }
 
-movDireita(){
+movDireita3x3(){
 
     for(y = 2; y >= 0; y--) {
                     
-        for(x = 0; x < TAM; x++) {
+        for(x = 0; x < TAM3; x++) {
             
-            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            matrizJogoChecar3x3[x][y] = matrizJogo3x3[x][y];
         
-            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] != 0) && (y > 1) ) {
+            if ( (matrizJogo3x3[x][y] == 0) && (matrizJogo3x3[x][y - 1] == 0) && (matrizJogo3x3[x][y - 2] != 0) && (y > 1) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y - 2];
-                matrizJogo[x][y - 2] = 0;
+                matrizJogo3x3[x][y] = matrizJogo3x3[x][y - 2];
+                matrizJogo3x3[x][y - 2] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] != 0) && (y > 0) ) {
+            } else if ( (matrizJogo3x3[x][y] == 0) && (matrizJogo3x3[x][y - 1] != 0) && (y > 0) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y - 1];
-                matrizJogo[x][y - 1] = 0;
+                matrizJogo3x3[x][y] = matrizJogo3x3[x][y - 1];
+                matrizJogo3x3[x][y - 1] = 0;
                 
             }
 
-            if ( (matrizJogo[x][y]) != 0 ) {
+            if ( (matrizJogo3x3[x][y]) != 0 ) {
 
-                if ( (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y > 0) ) {
+                if ( (matrizJogo3x3[x][y - 1] == matrizJogo3x3[x][y]) && (y > 0) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y - 1] = 0;
+                    pontos = pontos + (matrizJogo3x3[x][y]*2);
+                    matrizJogo3x3[x][y] = matrizJogo3x3[x][y]*2;
+                    matrizJogo3x3[x][y - 1] = 0;
 
-                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == matrizJogo[x][y]) && (y > 1) ) {
+                } else if ( (matrizJogo3x3[x][y - 1] == 0) && (matrizJogo3x3[x][y - 2] == matrizJogo3x3[x][y]) && (y > 1) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y - 2] = 0;
+                    pontos = pontos + (matrizJogo3x3[x][y]*2);
+                    matrizJogo3x3[x][y] = matrizJogo3x3[x][y]*2;
+                    matrizJogo3x3[x][y - 2] = 0;
 
                 }
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento3x3(mov) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio3x3();
     }
 
 }
 
-movEsquerda(){
-    for(y = 0; y < TAM; y++) {
+movEsquerda3x3(){
+    for(y = 0; y < TAM3; y++) {
             
         for(x = 2; x >= 0; x--) {
 
-            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            matrizJogoChecar3x3[x][y] = matrizJogo3x3[x][y];
 
-            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] != 0) && (y < 1) ) {
+            if ( (matrizJogo3x3[x][y] == 0) && (matrizJogo3x3[x][y + 1] == 0) && (matrizJogo3x3[x][y + 2] != 0) && (y < 1) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y + 2];
-                matrizJogo[x][y + 2] = 0;
+                matrizJogo3x3[x][y] = matrizJogo3x3[x][y + 2];
+                matrizJogo3x3[x][y + 2] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] != 0) && (y < 2) ) {
+            } else if ( (matrizJogo3x3[x][y] == 0) && (matrizJogo3x3[x][y + 1] != 0) && (y < 2) ) {
             
-                matrizJogo[x][y] = matrizJogo[x][y + 1];
-                matrizJogo[x][y + 1] = 0;
+                matrizJogo3x3[x][y] = matrizJogo3x3[x][y + 1];
+                matrizJogo3x3[x][y + 1] = 0;
         
             }
             
-            if ( (matrizJogo[x][y]) != 0 ) {
+            if ( (matrizJogo3x3[x][y]) != 0 ) {
                 
-                if ( (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y < 2) ) {
+                if ( (matrizJogo3x3[x][y + 1] == matrizJogo3x3[x][y]) && (y < 2) ) {
 
-                pontos = pontos + (matrizJogo[x][y]*2);
-                matrizJogo[x][y] = matrizJogo[x][y]*2;
-                matrizJogo[x][y + 1] = 0;
+                pontos = pontos + (matrizJogo3x3[x][y]*2);
+                matrizJogo3x3[x][y] = matrizJogo3x3[x][y]*2;
+                matrizJogo3x3[x][y + 1] = 0;
 
-                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == matrizJogo[x][y]) && (y < 1) ) {
+                } else if ( (matrizJogo3x3[x][y + 1] == 0) && (matrizJogo3x3[x][y + 2] == matrizJogo3x3[x][y]) && (y < 1) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x][y + 2] = 0;
+                    pontos = pontos + (matrizJogo3x3[x][y]*2);
+                    matrizJogo3x3[x][y] = matrizJogo3x3[x][y]*2;
+                    matrizJogo3x3[x][y + 2] = 0;
 
                 }
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento3x3(mov) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio3x3();
     }
 }
 
-movBaixo(){
+movBaixo3x3(){
     for(x = 2; x >= 0; x--) {
             
-        for(y = 0; y < TAM; y++) {
+        for(y = 0; y < TAM3; y++) {
 
-            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            matrizJogoChecar3x3[x][y] = matrizJogo3x3[x][y];
             
-            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] != 0) && (x > 1) ) {
+            if ( (matrizJogo3x3[x][y] == 0) && (matrizJogo3x3[x - 1][y] == 0) && (matrizJogo3x3[x - 2][y] != 0) && (x > 1) ) {
             
-                matrizJogo[x][y] = matrizJogo[x - 2][y];
-                matrizJogo[x - 2][y] = 0;
+                matrizJogo3x3[x][y] = matrizJogo3x3[x - 2][y];
+                matrizJogo3x3[x - 2][y] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] != 0) && (x > 0) ) {
+            } else if ( (matrizJogo3x3[x][y] == 0) && (matrizJogo3x3[x - 1][y] != 0) && (x > 0) ) {
             
-                matrizJogo[x][y] = matrizJogo[x - 1][y];
-                matrizJogo[x - 1][y] = 0;
+                matrizJogo3x3[x][y] = matrizJogo3x3[x - 1][y];
+                matrizJogo3x3[x - 1][y] = 0;
                 
             }
             
-            if ( (matrizJogo[x][y]) != 0 ) {
+            if ( (matrizJogo3x3[x][y]) != 0 ) {
 
-                if ( (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x > 0) ) {
+                if ( (matrizJogo3x3[x - 1][y] == matrizJogo3x3[x][y]) && (x > 0) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    pontos = pontos + (matrizJogo3x3[x][y]*2);
+                    matrizJogo3x3[x][y] = matrizJogo3x3[x][y]*2;
 
-                    matrizJogo[x - 1][y] = 0;
+                    matrizJogo3x3[x - 1][y] = 0;
 
-                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == matrizJogo[x][y]) && (x > 1) ) {
+                } else if ( (matrizJogo3x3[x - 1][y] == 0) && (matrizJogo3x3[x - 2][y] == matrizJogo3x3[x][y]) && (x > 1) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x - 2][y] = 0;
+                    pontos = pontos + (matrizJogo3x3[x][y]*2);
+                    matrizJogo3x3[x][y] = matrizJogo3x3[x][y]*2;
+                    matrizJogo3x3[x - 2][y] = 0;
 
                 }
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento3x3(mov) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio3x3();
     }
 }
 
-movCima(){
-    for(x = 0; x < TAM; x++) {   
+movCima3x3(){
+    for(x = 0; x < TAM3; x++) {   
 
         for(y = 2; y >= 0; y--) {
 
-            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            matrizJogoChecar3x3[x][y] = matrizJogo3x3[x][y];
             
-            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] != 0) && (x < 1) ) {
+            if ( (matrizJogo3x3[x][y] == 0) && (matrizJogo3x3[x + 1][y] == 0) && (matrizJogo3x3[x + 2][y] != 0) && (x < 1) ) {
             
-                matrizJogo[x][y] = matrizJogo[x + 2][y];
-                matrizJogo[x + 2][y] = 0;
+                matrizJogo3x3[x][y] = matrizJogo3x3[x + 2][y];
+                matrizJogo3x3[x + 2][y] = 0;
                 
-            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] != 0) && (x < 2) ) {
+            } else if ( (matrizJogo3x3[x][y] == 0) && (matrizJogo3x3[x + 1][y] != 0) && (x < 2) ) {
             
-                matrizJogo[x][y] = matrizJogo[x + 1][y];
-                matrizJogo[x + 1][y] = 0;
+                matrizJogo3x3[x][y] = matrizJogo3x3[x + 1][y];
+                matrizJogo3x3[x + 1][y] = 0;
                 
             }
             
-            if ( (matrizJogo[x][y]) != 0 ) {
+            if ( (matrizJogo3x3[x][y]) != 0 ) {
 
-                if ( (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x < 2) ) {
+                if ( (matrizJogo3x3[x + 1][y] == matrizJogo3x3[x][y]) && (x < 2) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x + 1][y] = 0;
+                    pontos = pontos + (matrizJogo3x3[x][y]*2);
+                    matrizJogo3x3[x][y] = matrizJogo3x3[x][y]*2;
+                    matrizJogo3x3[x + 1][y] = 0;
 
-                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == matrizJogo[x][y]) && (x < 1) ) {
+                } else if ( (matrizJogo3x3[x + 1][y] == 0) && (matrizJogo3x3[x + 2][y] == matrizJogo3x3[x][y]) && (x < 1) ) {
 
-                    pontos = pontos + (matrizJogo[x][y]*2);
-                    matrizJogo[x][y] = matrizJogo[x][y]*2;
-                    matrizJogo[x + 2][y] = 0;
+                    pontos = pontos + (matrizJogo3x3[x][y]*2);
+                    matrizJogo3x3[x][y] = matrizJogo3x3[x][y]*2;
+                    matrizJogo3x3[x + 2][y] = 0;
 
                 }
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento3x3(mov) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio3x3();
     }
 }
 
@@ -327,12 +327,12 @@ gotoxy(int x, int y)
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-checarMovimento(){
+checarMovimento3x3(){
     
 	if (jogada > 0){
-		for(x = 0; x < TAM; x++){
-			for(y = 0; y < TAM; y++){
-				if (matrizJogo[x][y] != matrizJogoChecar[x][y]){
+		for(x = 0; x < TAM3; x++){
+			for(y = 0; y < TAM3; y++){
+				if (matrizJogo3x3[x][y] != matrizJogoChecar3x3[x][y]){
 					return 0;
 					break;
 				}
@@ -345,11 +345,11 @@ checarMovimento(){
 
 }
 
-checarVazios(){
-    int vazios = TAM * TAM;
-    for (x = 0; x < TAM; x++){
-        for (y = 0; y < TAM; y++){
-            if (matrizJogo[x][y] != 0){
+checarVazios3x3(){
+    int vazios = TAM3 * TAM3;
+    for (x = 0; x < TAM3; x++){
+        for (y = 0; y < TAM3; y++){
+            if (matrizJogo3x3[x][y] != 0){
                 vazios--;
             }
         }
@@ -361,10 +361,10 @@ checarVazios(){
     }
 }
 
-checarVitoria(){
-	for ((x = 0); (x < TAM); x++) {
-		for ((y = 0); (y < TAM); y++) {
-			if (matrizJogo[x][y] == 2048) {
+checarVitoriaHardcore(){
+	for ((x = 0); (x < TAM3); x++) {
+		for ((y = 0); (y < TAM3); y++) {
+			if (matrizJogo3x3[x][y] == 1024) {
 				return 0;
 				break;
 			}
@@ -373,20 +373,20 @@ checarVitoria(){
 	return 1;
 }
 
-valorAleatorio(){
+valorAleatorio3x3(){
     
     int ver, i, posx, posy = 0;
 
-    if(checarVazios(ver) == 0){
+    if(checarVazios3x3(ver) == 0){
 
         srand(time(NULL));
 
         do{
-            x = (rand() % TAM);     // GERAR VALOR ALEATORIO PRA POSICAO HORIZONTAL
-            y = (rand() % TAM);     // GERAR VALOR ALEATORIO PRA POSICAO VERTICAL
+            x = (rand() % TAM3);     // GERAR VALOR ALEATORIO PRA POSICAO HORIZONTAL
+            y = (rand() % TAM3);     // GERAR VALOR ALEATORIO PRA POSICAO VERTICAL
 
-            if (matrizJogo[x][y] == 0) {
-                matrizJogo[x][y] = 2;
+            if (matrizJogo3x3[x][y] == 0) {
+                matrizJogo3x3[x][y] = 2;
                 i = 1;
             } else {
                 i = 0;
@@ -394,14 +394,14 @@ valorAleatorio(){
         }while(i != 1);
 
         posy = 23;
-        for (x = 0; x < TAM; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
+        for (x = 0; x < TAM3; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
             posx = 16;
-            for (y = 0; y < TAM; y++){
+            for (y = 0; y < TAM3; y++){
                 gotoxy(posx,posy);                 // COLUNA / LINHA
-                    if (matrizJogo[x][y] != 0){
+                    if (matrizJogo3x3[x][y] != 0){
                     	printf("      ");
                     	gotoxy(posx,posy);
-                        printf("%i  ", matrizJogo[x][y]);
+                        printf("%i  ", matrizJogo3x3[x][y]);
                     } else {
                         printf("      ");
                     }
