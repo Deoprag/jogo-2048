@@ -392,22 +392,5 @@ valorAleatorio3x3(){
                 i = 0;
             }
         }while(i != 1);
-
-        posy = 23;
-        for (x = 0; x < TAM3; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
-            posx = 16;
-            for (y = 0; y < TAM3; y++){
-                gotoxy(posx,posy);                 // COLUNA / LINHA
-                    if (matrizJogo3x3[x][y] != 0){
-                    	printf("      ");
-                    	gotoxy(posx,posy);
-                        printf("%i  ", matrizJogo3x3[x][y]);
-                    } else {
-                        printf("      ");
-                    }
-                posx += 11;
-            }
-            posy += 5;
-        }
     }
 }

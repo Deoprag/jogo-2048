@@ -17,41 +17,52 @@
 #define TAM3 3
 
 // VARIAVEIS GLOBAIS
-int tijolo, inicial, opcao, tam, jogada, pontos = 0;
+int inicial, opcao, jogada, pontos = 0;
 int x, y, i = 0;
-int matrizJogo[4][4];
+int matrizJogo[5][5];
+int matrizJogoChecar[5][5];
 char apelido[20], senha[20], confSenha[20], celular[15];
 
-// DECLARACAO DE FUNCOES
+// DECLARACAO DE PROCEDIMENTOS
 void gotoxy();
-int inicio();
-int login();
-int cadastro();
-int cadastroSucesso();
-int cadastroFalhou();
-int configuracoes();
-int cores();
-int selecao();
-int tijolos();
-int logo();
-int dificuldadeFacil();
-int dificuldadeMedia();
-int dificuldadeDificil();
-int dificuldadeHardcore();
-int jogar3x3();
-int jogar4x4Media();
-int jogar4x4Dificil();
-int jogar5x5();
-int selecaoRanking();
-int rankingPontuacaoDif();
-int rankingPontuacao();
-int rankingVelDif();
-int rankingVel();
-int jogosSalvos();
-int valorAleatorio();
+void inicio();
+void login();
+void cadastro();
+void cadastroSucesso();
+void cadastroFalhou();
+void configuracoes();
+void cores();
+void selecao();
+void tijolos();
+void logo();
+void dificuldadeFacil();
+void dificuldadeMedia();
+void dificuldadeDificil();
+void dificuldadeHardcore();
+void jogar3x3();
+void jogar4x4Media();
+void jogar4x4Dificil();
+void jogar5x5();
+void selecaoRanking();
+void rankingPontuacaoDif();
+void rankingPontuacao();
+void rankingVelDif();
+void rankingVel();
+void jogosSalvos();
+void movDireita5x5();
+void movEsquerda5x5();
+void movBaixo5x5();
+void movCima5x5();
+void valorAleatorio();
 
+// DECLARACAO DE FUNCOES
+int checarMovimento();
+int checarVitoriaMedia();
+int checarVitoriaDificil();
+int checarVitoriaFacil();
+int checarVitoriaHardcore();
 
-//  PRINCIPAL
+// FUNCAO PRINCIPAL
 int main (){
     SetConsoleTitle("2048 :: Pedro Rocha");
 
@@ -101,8 +112,6 @@ int main (){
     system("cls");
     inicio();
 }
-
-//  SECUNDARIAS
 
 inicio(){                                                                                           // TELA INICIAL
 
@@ -206,7 +215,7 @@ login(){                                                                        
 
     tijolos();
 
-    tam = 0;
+    int tam = 0;
     gotoxy(30,24);
     fflush(stdin);
     do
@@ -308,7 +317,7 @@ cadastro(){                                                                     
 
     tijolos();
 
-    tam = 0;
+    int tam = 0;
     gotoxy(30,22);
     fflush(stdin);
     do
@@ -761,6 +770,7 @@ dificuldadeFacil(){
         }
     } while (opcao != 0);
 }
+
 dificuldadeMedia(){
 
     logo();
@@ -937,7 +947,21 @@ dificuldadeHardcore(){
 }
 
 jogar5x5(){
+    
+    int ver, x, y = 0;
+    int tam = TAM5;
+	pontos = jogada = 0;
 
+	for (x = 0; x < tam; x++){
+        for (y = 0; y < tam; y++){
+            matrizJogo[x][y] = 0;
+			matrizJogoChecar[x][y] = 0;
+        }
+    }
+    
+    valorAleatorio(TAM5);
+    system("cls");
+	
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -948,59 +972,103 @@ jogar5x5(){
     tijolos();
 
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c  1024   %c%c   512   %c%c         %c%c         %c%c         %c%c       PONTOS:       %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c      | 99999 |      %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c   PONTOS:  |      | %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c MOVIMENTOS:|      | %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
-    tijolos();
-
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c  UTILIZE AS SETAS   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c   256   %c%c   32    %c%c   16    %c%c         %c%c         %c%c   DO TECLADO PARA   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c    MOVIMENTAR O     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c      TABULEIRO      %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-
-    tijolos();
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c   64    %c%c   32    %c%c    4    %c%c         %c%c         %c%c [P] SALVAR JOGO     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    
-    tijolos();
-
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [P] SALVAR JOGO     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [R] REINICIAR JOGO  %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [O] RANKING         %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c        DICA:        %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   UTILIZE AS SETAS  %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c   DO TECLADO PARA   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c    MOVIMENTAR O     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c     TABULEIRO       %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
-    tijolos();
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c   16    %c%c    4    %c%c    2    %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c  UNIFACEAR - 2022   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     tijolos();
-    
+
+    valorAleatorio(TAM5);
+    imprimirValores(TAM5);
+
     do{
+
+        gotoxy(70,18);
+        printf("%i", pontos);                   // PRINTA OS PONTOS NA TELA
+        gotoxy(70,19);
+        printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
+        gotoxy(80,40);
+
         opcao = getch();
-        if (opcao == 27){
-            Beep(370, 200);
+
+        if ( (opcao == DIREITA) ) {               	// DIREITA
+
+            movDireita5x5();
+			imprimirValores(TAM5);
+            
+        } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
+
+            movEsquerda5x5();
+			imprimirValores(TAM5);
+
+            
+        } else if ( (opcao == BAIXO) ) {			// BAIXO
+
+            movBaixo5x5();
+			imprimirValores(TAM5);
+
+
+        } else if ( (opcao == CIMA) ) {				// CIMA
+
+            movCima5x5();
+			imprimirValores(TAM5);
+
+        } else if ( (opcao == ESC) ) {    				// ESC
             system("cls");
-            selecao();
+			selecao();
         }
-    } while (opcao != 27);
+
+        if(checarVitoriaFacil() == 0){
+            gotoxy(40,40);
+			printf("VITORIA");
+        }
+        
+    } while ( opcao != 27 );
 }
 
 jogar4x4Media(){
+    int ver, x, y = 0;
+    int tam = TAM4;
+    pontos = jogada = 0;
 
-    for (x = 0; x < 4; x++){
-        for (y = 0; y < 4; y++){
+    for (x = 0; x < tam; x++){
+        for (y = 0; y < tam; y++){
             matrizJogo[x][y] = 0;
+			matrizJogoChecar[x][y] = 0;
         }
-        matrizJogo[x][y] = 0;
     }
-    
+
+    valorAleatorio(TAM4);
+    system("cls");
+
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -1026,14 +1094,14 @@ jogar4x4Media(){
 
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
+    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c        DICA:       %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c  UTILIZE AS SETAS  %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c  DO TECLADO PARA   %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c    MOVIMENTAR O    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c     TABULEIRO      %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    MOVIMENTAR O    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
-    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c     TABULEIRO      %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
@@ -1043,10 +1111,8 @@ jogar4x4Media(){
 
     tijolos();
 
-    valorAleatorio();
-    valorAleatorio();                           // GERA 2 NUMEROS 2 EM LUGARES ALEATORIOS
-
-    pontos = jogada = 0;                        // DEFINE A PONTUACAO E AS JOGADAS PRA 0
+    valorAleatorio(TAM4);
+    imprimirValores(TAM4);
 
     do{
 
@@ -1055,108 +1121,57 @@ jogar4x4Media(){
         gotoxy(71,19);
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
+
         opcao = getch();
-        
-        if (opcao == 27){                       // ESC
-            Beep(370, 200);
+
+        if ( (opcao == DIREITA) ) {                 // DIREITA
+
+            movDireita4x4();
+            imprimirValores(TAM4);
+            
+        } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
+
+            movEsquerda4x4();
+            imprimirValores(TAM4);
+            
+        } else if ( (opcao == BAIXO) ) {			// BAIXO
+
+            movBaixo4x4();
+            imprimirValores(TAM4);
+
+        } else if ( (opcao == CIMA) ) {			    // CIMA
+
+            movCima4x4();
+            imprimirValores(TAM4);
+
+        } else if (opcao == ESC) {                   // ESC
             system("cls");
-            selecao();
-        } else if (opcao == 75){               // ESQUERDA
-            for (i = 0; i < 2; i++){                                                                                    // PERCORRE O TABULEIRO INTEIRO 3 VEZES
-                for(x = 3; x >= 0; x--) {
-                    for(y = 0; y < 4; y++) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y != 0) ) {       // VERIFICA SE O NUMERO DO LADO ESQUERDO É DIFERENTE DE 0 E IGUAL AO [x][y]
-                            matrizJogo[x][y - 1] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x][y - 1]
-                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                        if( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y] != 0) && (y != 0)) {                       // VERIFICA SE O NUMERO DO LADO DIREITO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [y] É DIFERENTE DE 0
-                            matrizJogo[x][y - 1] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA O LADO ESQUERDO
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                    }
-                }
-            }
-            jogada++;
-            valorAleatorio();
-        } else if (opcao == 77) {       // DIREITA                                                                      // PERCORRE O TABULEIRO INTEIRO 3 VEZES
-            for (i = 0; i < 2; i++){                                                                                    
-                for(x = 3; x >= 0; x--) {                                                                               
-                    for(y = 3; y >= 0; y--) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y != 3) ) {       // VERIFICA SE O NUMERO DO LADO DIREITO É DIFERENTE DE 0 E IGUAL AO [x][y]
-                            matrizJogo[x][y + 1] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x][y + 1]
-                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                        if( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y] != 0) && (y != 3)) {                       // VERIFICA SE O NUMERO DO LADO ESQUERDO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [y] É DIFERENTE DE 3
-                            matrizJogo[x][y + 1] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA O LADO DIREITO
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                    }
-                }
-            }
-            jogada++;
-            valorAleatorio();
-        } else if (opcao == 72) {       // CIMA                                                                         // PERCORRE O TABULEIRO INTEIRO 3 VEZES
-            for (i = 0; i < 2; i++){
-                for(y = 3; y >= 0; y--) {
-                    for(x = 0; x < 4; x++) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x != 0) ) {       // VERIFICA SE O NUMERO DE CIMA É DIFERENTE DE 0 E IGUAL AO [x][y]
-                            matrizJogo[x - 1][y] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x - 1][y]
-                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                        if( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 0)) {                       // VERIFICA SE O NUMERO DE BAIXO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [x] É DIFERENTE DE 0
-                            matrizJogo[x - 1][y] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA CIMA
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                    }
-                }
-            }
-            jogada++;
-            valorAleatorio();
-        } else if (opcao == 80) {       // BAIXO                                                                        // PERCORRE O TABULEIRO INTEIRO 3 VEZES
-            for (i = 0; i < 2; i++){
-                for(x = 3; x >= 0; x--) {   
-                    for(y = 3; y >= 0; y--) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x != 3) ) {       // VERIFICA SE O NUMERO DE CIMA É DIFERENTE DE 0 E IGUAL AO [x][y]
-                            matrizJogo[x + 1][y] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x + 1][y]
-                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                        if( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 3)) {                       // VERIFICA SE O NUMERO DE CIMA É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [x] É DIFERENTE DE 3
-                            matrizJogo[x + 1][y] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA BAIXO
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                    }
-                }
-            }
-            jogada++;
-            valorAleatorio();
-        } else if (opcao == 27){    // ESC
-            selecao();
+			selecao();
         }
 
-        for(x = 3; x >= 0; x--) {
-            for(y = 0; y < 4; y++) {
-                if (matrizJogo[x][y] == 2048){
-                    system("cls");
-                    printf("VOCE GANHOU!");
-                }
-            }
+        if(checarVitoriaMedia(ver) == 0){
+            gotoxy(40,40);
+			printf("VITORIA");
         }
-    } while (opcao != 27);
+        
+    } while ( opcao != 27 );
 }
 
 jogar4x4Dificil(){
+    int ver, x, y = 0;
+    int tam = TAM4;
+    pontos = jogada = 0;
 
-    for (x = 0; x < 4; x++){
-        for (y = 0; y < 4; y++){
+    for (x = 0; x < tam; x++){
+        for (y = 0; y < tam; y++){
             matrizJogo[x][y] = 0;
+			matrizJogoChecar[x][y] = 0;
         }
-        matrizJogo[x][y] = 0;
     }
-    
+
+    valorAleatorio(TAM4);
+    system("cls");
+
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -1182,14 +1197,14 @@ jogar4x4Dificil(){
 
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
+    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c        DICA:       %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c  UTILIZE AS SETAS  %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c  DO TECLADO PARA   %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c    MOVIMENTAR O    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c     TABULEIRO      %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c    MOVIMENTAR O    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
-    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c     TABULEIRO      %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
@@ -1199,10 +1214,8 @@ jogar4x4Dificil(){
 
     tijolos();
 
-    valorAleatorio();
-    valorAleatorio();                           // GERA 2 NUMEROS 2 EM LUGARES ALEATORIOS
-
-    pontos = jogada = 0;                        // DEFINE A PONTUACAO E AS JOGADAS PRA 0
+    valorAleatorio(TAM4);
+    imprimirValores(TAM4);
 
     do{
 
@@ -1211,171 +1224,43 @@ jogar4x4Dificil(){
         gotoxy(71,19);
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
+
         opcao = getch();
-        
-        if (opcao == 27){                       // ESC
-            Beep(370, 200);
+
+        if ( (opcao == DIREITA) ) {                 // DIREITA
+
+            movDireita4x4();
+            imprimirValores(TAM4);
+            
+        } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
+
+            movEsquerda4x4();
+            imprimirValores(TAM4);
+            
+        } else if ( (opcao == BAIXO) ) {			// BAIXO
+
+            movBaixo4x4();
+            imprimirValores(TAM4);
+
+        } else if ( (opcao == CIMA) ) {			    // CIMA
+
+            movCima4x4();
+            imprimirValores(TAM4);
+
+        } else if (opcao == ESC) {                   // ESC
             system("cls");
-            selecao();
-        } else if (opcao == 75){               // ESQUERDA
-            for (i = 0; i < 4; i++){                                                                                    // PERCORRE O TABULEIRO INTEIRO 3 VEZES
-                for(x = 3; x >= 0; x--) {
-                    for(y = 0; y < 4; y++) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y != 0) ) {       // VERIFICA SE O NUMERO DO LADO ESQUERDO É DIFERENTE DE 0 E IGUAL AO [x][y]
-                            matrizJogo[x][y - 1] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x][y - 1]
-                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                        if( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y] != 0) && (y != 0)) {                       // VERIFICA SE O NUMERO DO LADO DIREITO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [y] É DIFERENTE DE 0
-                            matrizJogo[x][y - 1] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA O LADO ESQUERDO
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                    }
-                }
-            }
-            jogada++;
-            valorAleatorio();
-        } else if (opcao == 77) {       // DIREITA                                                                      // PERCORRE O TABULEIRO INTEIRO 3 VEZES
-            for (i = 0; i < 4; i++){                                                                                    
-                for(x = 3; x >= 0; x--) {                                                                               
-                    for(y = 3; y >= 0; y--) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y != 3) ) {       // VERIFICA SE O NUMERO DO LADO DIREITO É DIFERENTE DE 0 E IGUAL AO [x][y]
-                            matrizJogo[x][y + 1] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x][y + 1]
-                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                        if( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y] != 0) && (y != 3)) {                       // VERIFICA SE O NUMERO DO LADO ESQUERDO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [y] É DIFERENTE DE 3
-                            matrizJogo[x][y + 1] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA O LADO DIREITO
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                    }
-                }
-            }
-            jogada++;
-            valorAleatorio();
-        } else if (opcao == 72) {       // CIMA                                                                         // PERCORRE O TABULEIRO INTEIRO 3 VEZES
-            for (i = 0; i < 4; i++){
-                for(y = 3; y >= 0; y--) {
-                    for(x = 0; x < 4; x++) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x != 0) ) {       // VERIFICA SE O NUMERO DE CIMA É DIFERENTE DE 0 E IGUAL AO [x][y]
-                            matrizJogo[x - 1][y] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x - 1][y]
-                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                        if( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 0)) {                       // VERIFICA SE O NUMERO DE BAIXO É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [x] É DIFERENTE DE 0
-                            matrizJogo[x - 1][y] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA CIMA
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                    }
-                }
-            }
-            jogada++;
-            valorAleatorio();
-        } else if (opcao == 80) {       // BAIXO                                                                        // PERCORRE O TABULEIRO INTEIRO 3 VEZES
-            for (i = 0; i < 4; i++){
-                for(x = 3; x >= 0; x--) {   
-                    for(y = 3; y >= 0; y--) {
-                        if( (matrizJogo[x][y] != 0) && (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x != 3) ) {       // VERIFICA SE O NUMERO DE CIMA É DIFERENTE DE 0 E IGUAL AO [x][y]
-                            matrizJogo[x + 1][y] = matrizJogo[x][y]*2;                                                  // SE FOR IGUAL ELE MULTIPLICA O [x][y] POR 2 E GUARDA NO [x + 1][y]
-                            pontos = pontos + (matrizJogo[x][y]*2);                                                     // ADICIONA OS PONTOS (CELULA + CELULA)
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                        if( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x][y] != 0) && (x != 3)) {                       // VERIFICA SE O NUMERO DE CIMA É IGUAL A 0, SE O [x][y] É DIFERENTE DE 0 E SE A VARIAVEL [x] É DIFERENTE DE 3
-                            matrizJogo[x + 1][y] = matrizJogo[x][y];                                                    // SE FOR TRUE ELE JOGA O [x][y] PARA BAIXO
-                            matrizJogo[x][y] = 0;                                                                       // matrizJogo[x][y] RECEBE 0
-                        }
-                    }
-                }
-            }
-            jogada++;
-            valorAleatorio();
-        } else if (opcao == 27){    // ESC
-            selecao();
+			selecao();
         }
 
-        for(x = 3; x >= 0; x--) {
-            for(y = 0; y < 4; y++) {
-                if (matrizJogo[x][y] == 4096){
-                    system("cls");
-                    printf("VOCE GANHOU!");
-                }
-            }
+        if(checarVitoriaDificil() == 0){
+            gotoxy(40,40);
+			printf("VITORIA");
         }
-    } while (opcao != 27);
+        
+    } while ( opcao != 27 );
 }
 
 jogar3x3(){
-
-    logo();
-
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                            DIFICULDADE: HARDCORE                           %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-
-    tijolos();
-
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c       PONTOS:       %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c      | 99999 |      %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-
-    tijolos();
-
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c  UTILIZE AS SETAS   %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c   32    %c%c   16    %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c   DO TECLADO PARA   %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c     MOVIMENTAR O    %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c      TABULEIRO      %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-
-    tijolos();
-
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c   32    %c%c    4    %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c [P] SALVAR JOGO     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    
-    tijolos();
-
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c [R] REINICIAR JOGO  %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c [O] RANKING         %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-
-    tijolos();
-
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  UNIFACEAR - 2022   %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-
-    tijolos();
-
-    gotoxy(2,21);
-    printf("%c%c%c%c%c%c%c%c%c", 176, 176, 176, 176, 176, 176, 176, 176, 176);
-    gotoxy(2,26);
-    printf("%c%c%c%c%c%c%c%c%c", 176, 176, 176, 176, 176, 176, 176, 176, 176);
-    gotoxy(2,31);
-    printf("%c%c%c%c%c%c%c%c%c", 176, 176, 176, 176, 176, 176, 176, 176, 176);
-    gotoxy(2,36);
-    printf("%c%c%c%c%c%c%c%c%c", 176, 176, 176, 176, 176, 176, 176, 176, 176);
-
-    gotoxy(46,21);
-    printf("%c%c%c%c%c%c%c%c%c", 176, 176, 176, 176, 176, 176, 176, 176, 176);
-    gotoxy(46,26);
-    printf("%c%c%c%c%c%c%c%c%c", 176, 176, 176, 176, 176, 176, 176, 176, 176);
-    gotoxy(46,31);
-    printf("%c%c%c%c%c%c%c%c%c", 176, 176, 176, 176, 176, 176, 176, 176, 176);
-    gotoxy(46,36);
-    printf("%c%c%c%c%c%c%c%c%c\n\n\n\n\n", 176, 176, 176, 176, 176, 176, 176, 176, 176);
-
-    do{
-        opcao = getch();
-        if (opcao == 27){
-            Beep(370, 200);
-            system("cls");
-            selecao();
-        }
-    } while (opcao != 27);
 }
 
 selecaoRanking(){
@@ -1635,7 +1520,6 @@ rankingVel(){
     
 }
 
-
 jogosSalvos(){
 
     logo();
@@ -1702,28 +1586,533 @@ logo(){
 }
 
 tijolos(){
+	int tijolo;
     for (tijolo = 0; tijolo != 80; tijolo ++){
         printf("%c", 219);
     }
     printf("\n");
 }
 
-void gotoxy(int x, int y)
-{
+movDireita5x5(){
+
+    for(y = 4; y >= 0; y--) {
+                    
+        for(x = 0; x < TAM5; x++) {
+            
+            matrizJogoChecar[x][y] = matrizJogo[x][y];
+        
+            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] == 0) && (y > 2) && (matrizJogo[x][y - 4] != 0) && (y > 3) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y - 4];
+                matrizJogo[x][y - 4] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] != 0) && (y > 2) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y - 3];
+                matrizJogo[x][y - 3] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] != 0) && (y > 1) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y - 2];
+                matrizJogo[x][y - 2] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] != 0) && (y > 0) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y - 1];
+                matrizJogo[x][y - 1] = 0;
+                
+            }
+
+            if ( (matrizJogo[x][y]) != 0 ) {
+
+                if ( (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y > 0) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y - 1] = 0;
+
+                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == matrizJogo[x][y]) && (y > 1) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y - 2] = 0;
+
+                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] == matrizJogo[x][y]) && (y > 2) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y - 3] = 0;
+
+                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] == 0) && (matrizJogo[x][y - 4] == matrizJogo[x][y]) && (y > 3) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y - 4] = 0;
+
+                }
+            }
+        }
+    }
+    if (checarMovimento(TAM5) == 0) {
+        jogada++;
+        valorAleatorio(TAM5);
+    }
+
+}
+
+movEsquerda5x5(){
+    for(y = 0; y < TAM5; y++) {
+            
+        for(x = 4; x >= 0; x--) {
+
+            matrizJogoChecar[x][y] = matrizJogo[x][y];
+
+            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] == 0) && (matrizJogo[x][y + 4] != 0) && (y < 1) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y + 4];
+                matrizJogo[x][y + 4] = 0;
+            
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] != 0) && (y < 2) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y + 3];
+                matrizJogo[x][y + 3] = 0;
+            
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] != 0) && (y < 3) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y + 2];
+                matrizJogo[x][y + 2] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] != 0) && (y < 4) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y + 1];
+                matrizJogo[x][y + 1] = 0;
+        
+            }
+            
+            if ( (matrizJogo[x][y]) != 0 ) {
+                
+                if ( (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y < 4) ) {
+
+                pontos = pontos + (matrizJogo[x][y]*2);
+                matrizJogo[x][y] = matrizJogo[x][y]*2;
+                matrizJogo[x][y + 1] = 0;
+
+                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == matrizJogo[x][y]) && (y < 3) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y + 2] = 0;
+
+                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] == matrizJogo[x][y]) && (y < 2) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y + 3] = 0;
+
+                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] == 0) && (matrizJogo[x][y + 4] == matrizJogo[x][y]) && (y < 1) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y + 4] = 0;
+
+                }
+            }
+        }
+    }
+    if (checarMovimento(TAM5) == 0) {
+        jogada++;
+        valorAleatorio(TAM5);
+    }
+}
+
+movBaixo5x5(){
+    for(x = 4; x >= 0; x--) {
+            
+        for(y = 0; y < TAM5; y++) {
+
+            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            
+            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] == 0) && (matrizJogo[x - 4][y] != 0) && (x > 3) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x - 4][y];
+                matrizJogo[x - 4][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] != 0) && (x > 2) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x - 3][y];
+                matrizJogo[x - 3][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] != 0) && (x > 1) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x - 2][y];
+                matrizJogo[x - 2][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] != 0) && (x > 0) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x - 1][y];
+                matrizJogo[x - 1][y] = 0;
+                
+            }
+            
+            if ( (matrizJogo[x][y]) != 0 ) {
+
+                if ( (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x > 0) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+
+                    matrizJogo[x - 1][y] = 0;
+
+                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == matrizJogo[x][y]) && (x > 1) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x - 2][y] = 0;
+
+                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] == matrizJogo[x][y]) && (x > 2) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x - 3][y] = 0;
+
+                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] == 0) && (matrizJogo[x - 4][y] == matrizJogo[x][y]) && (x > 3) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x - 4][y] = 0;
+
+                }
+            }
+        }
+    }
+    if (checarMovimento(TAM5) == 0) {
+        jogada++;
+        valorAleatorio(TAM5);
+    }
+}
+
+movCima5x5(){
+    for(x = 0; x < TAM5; x++) {   
+
+        for(y = 4; y >= 0; y--) {
+
+            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            
+            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] == 0) && (matrizJogo[x + 4][y] != 0) && (x < 1) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x + 4][y];
+                matrizJogo[x + 4][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] != 0) && (x < 2) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x + 3][y];
+                matrizJogo[x + 3][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] != 0) && (x < 3) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x + 2][y];
+                matrizJogo[x + 2][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] != 0) && (x < 4) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x + 1][y];
+                matrizJogo[x + 1][y] = 0;
+                
+            }
+            
+            if ( (matrizJogo[x][y]) != 0 ) {
+
+                if ( (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x < 4) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x + 1][y] = 0;
+
+                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == matrizJogo[x][y]) && (x < 3) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x + 2][y] = 0;
+
+                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] == matrizJogo[x][y]) && (x < 2) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x + 3][y] = 0;
+
+                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] == 0) && (matrizJogo[x + 4][y] == matrizJogo[x][y]) && (x < 1) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x + 4][y] = 0;
+
+                }
+            }
+        }
+    }
+    if (checarMovimento(TAM5) == 0) {
+        jogada++;
+        valorAleatorio(TAM5);
+    }
+}
+
+movDireita4x4(){
+    int x, y = 0;
+
+    for(y = 3; y >= 0; y--) {
+                    
+        for(x = 0; x < TAM4; x++) {
+            
+            matrizJogoChecar[x][y] = matrizJogo[x][y];
+        
+            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] != 0) && (y > 2) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y - 3];
+                matrizJogo[x][y - 3] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] != 0) && (y > 1) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y - 2];
+                matrizJogo[x][y - 2] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y - 1] != 0) && (y > 0) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y - 1];
+                matrizJogo[x][y - 1] = 0;
+                
+            }
+
+            if ( (matrizJogo[x][y]) != 0 ) {
+
+                if ( (matrizJogo[x][y - 1] == matrizJogo[x][y]) && (y > 0) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y - 1] = 0;
+
+                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == matrizJogo[x][y]) && (y > 1) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y - 2] = 0;
+
+                } else if ( (matrizJogo[x][y - 1] == 0) && (matrizJogo[x][y - 2] == 0) && (matrizJogo[x][y - 3] == matrizJogo[x][y]) && (y > 2) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y - 3] = 0;
+
+                }
+            }
+        }
+    }
+    if (checarMovimento(TAM4) == 0) {
+        jogada++;
+        valorAleatorio(TAM4);
+    }
+
+}
+
+movEsquerda4x4(){
+    int x, y = 0;
+
+    for(y = 0; y < TAM4; y++) {
+            
+        for(x = 3; x >= 0; x--) {
+
+            matrizJogoChecar[x][y] = matrizJogo[x][y];
+
+            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] != 0) && (y < 1) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y + 3];
+                matrizJogo[x][y + 3] = 0;
+            
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] != 0) && (y < 2) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y + 2];
+                matrizJogo[x][y + 2] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x][y + 1] != 0) && (y < 3) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x][y + 1];
+                matrizJogo[x][y + 1] = 0;
+        
+            }
+            
+            if ( (matrizJogo[x][y]) != 0 ) {
+                
+                if ( (matrizJogo[x][y + 1] == matrizJogo[x][y]) && (y < 3) ) {
+
+                pontos = pontos + (matrizJogo[x][y]*2);
+                matrizJogo[x][y] = matrizJogo[x][y]*2;
+                matrizJogo[x][y + 1] = 0;
+
+                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == matrizJogo[x][y]) && (y < 2) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y + 2] = 0;
+
+                } else if ( (matrizJogo[x][y + 1] == 0) && (matrizJogo[x][y + 2] == 0) && (matrizJogo[x][y + 3] == matrizJogo[x][y]) && (y < 1) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x][y + 3] = 0;
+
+                }
+            }
+        }
+    }
+    if (checarMovimento(TAM4) == 0) {
+        jogada++;
+        valorAleatorio(TAM4);
+    }
+}
+
+movBaixo4x4(){
+    int x, y = 0;
+
+    for(x = 3; x >= 0; x--) {
+            
+        for(y = 0; y < TAM4; y++) {
+
+            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            
+            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] != 0) && (x > 2) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x - 3][y];
+                matrizJogo[x - 3][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] != 0) && (x > 1) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x - 2][y];
+                matrizJogo[x - 2][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x - 1][y] != 0) && (x > 0) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x - 1][y];
+                matrizJogo[x - 1][y] = 0;
+                
+            }
+            
+            if ( (matrizJogo[x][y]) != 0 ) {
+
+                if ( (matrizJogo[x - 1][y] == matrizJogo[x][y]) && (x > 0) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+
+                    matrizJogo[x - 1][y] = 0;
+
+                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == matrizJogo[x][y]) && (x > 1) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x - 2][y] = 0;
+
+                } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == 0) && (matrizJogo[x - 3][y] == matrizJogo[x][y]) && (x > 2) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x - 3][y] = 0;
+
+                }
+            }
+        }
+    }
+    if (checarMovimento(TAM4) == 0) {
+        jogada++;
+        valorAleatorio(TAM4);
+    }
+}
+
+movCima4x4(){
+    int x, y = 0;
+    for(x = 0; x < TAM4; x++) {   
+
+        for(y = 3; y >= 0; y--) {
+
+            matrizJogoChecar[x][y] = matrizJogo[x][y];
+            
+            if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] != 0) && (x < 1) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x + 3][y];
+                matrizJogo[x + 3][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] != 0) && (x < 2) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x + 2][y];
+                matrizJogo[x + 2][y] = 0;
+                
+            } else if ( (matrizJogo[x][y] == 0) && (matrizJogo[x + 1][y] != 0) && (x < 3) ) {
+            
+                matrizJogo[x][y] = matrizJogo[x + 1][y];
+                matrizJogo[x + 1][y] = 0;
+                
+            }
+            
+            if ( (matrizJogo[x][y]) != 0 ) {
+
+                if ( (matrizJogo[x + 1][y] == matrizJogo[x][y]) && (x < 3) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x + 1][y] = 0;
+
+                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == matrizJogo[x][y]) && (x < 2) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x + 2][y] = 0;
+
+                } else if ( (matrizJogo[x + 1][y] == 0) && (matrizJogo[x + 2][y] == 0) && (matrizJogo[x + 3][y] == matrizJogo[x][y]) && (x < 1) ) {
+
+                    pontos = pontos + (matrizJogo[x][y]*2);
+                    matrizJogo[x][y] = matrizJogo[x][y]*2;
+                    matrizJogo[x + 3][y] = 0;
+
+                }
+            }
+        }
+    }
+    if (checarMovimento(TAM4) == 0) {
+        jogada++;
+        valorAleatorio(TAM4);
+    }
+}
+
+checarMovimento(int tam){
+    int x, y = 0;
+
+	if (jogada > 0){
+		for(x = 0; x < tam; x++){
+			for(y = 0; y < tam; y++){
+				if (matrizJogo[x][y] != matrizJogoChecar[x][y]){
+					return 0;
+					break;
+				}
+			}
+		}
+		return 1;
+	} else {
+		return 0;
+	}
+
+}
+
+gotoxy(int x, int y){
   COORD coord;
   coord.X = x;
   coord.Y = y;
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-valorAleatorio(){
-	int posx = 20;
-	int posy = 11;
-    srand(time(0));
+valorAleatorio(int tam){
+    srand(time(NULL));
 	
     do{
-        x = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO X
-        y = (rand() % 4);     // GERAR VALOR ALEATORIO PRA POSICAO Y
+        x = (rand() % tam);     // GERAR VALOR ALEATORIO PRA POSICAO X
+        y = (rand() % tam);     // GERAR VALOR ALEATORIO PRA POSICAO Y
 
         if (matrizJogo[x][y] == 0) {
             matrizJogo[x][y] = 2;
@@ -1732,18 +2121,114 @@ valorAleatorio(){
             i = 1;
         }
     }while(i != 0);
+	
+}
 
-    for (x = 0; x < 4; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
-        posy = 11;
-        for (y = 0; y < 4; y++){
-            gotoxy(posy,posx);                 // COLUNA / LINHA
-                if (matrizJogo[x][y] != 0){
-                    printf("%i  ", matrizJogo[x][y]);
-                } else {
-                    printf("     ");
-                }
-            posy += 11;
+imprimirValores(int tam){
+	
+	int posx, posy = 0;
+	
+	if (tam == 3){											// 3X3
+		posy = 23;
+        for (x = 0; x < TAM3; x++){                   		// PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
+            posx = 16;
+            for (y = 0; y < TAM3; y++){
+                gotoxy(posx,posy);                 			// COLUNA / LINHA
+                    if (matrizJogo[x][y] != 0){
+                    	printf("      ");
+                    	gotoxy(posx,posy);
+                        printf("%i  ", matrizJogo[x][y]);
+                    } else {
+                        printf("      ");
+                    }
+                posx += 11;
+            }
+            posy += 5;
         }
-        posx += 5;
-    }
+	} else if (tam == 4){									// 4X4
+		posy = 20;
+        for (x = 0; x < tam; x++){                   		// PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
+            posx = 11;
+            for (y = 0; y < tam; y++){
+                gotoxy(posx,posy);                 			// COLUNA / LINHA
+                    if (matrizJogo[x][y] != 0){
+                    	printf("      ");
+                    	gotoxy(posx,posy);
+                        printf("%i  ", matrizJogo[x][y]);
+                    } else {
+                        printf("      ");
+                    }
+                posx += 11;
+            }
+            posy += 5;
+    	}
+	} else if (tam == 5){									// 5X5
+		posy = 18;
+        for (x = 0; x < TAM5; x++){                   		// PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
+            posx = 5;
+            for (y = 0; y < TAM5; y++){
+                gotoxy(posx,posy);                 			// COLUNA / LINHA
+                    if (matrizJogo[x][y] != 0){
+                    	printf("      ");
+                    	gotoxy(posx,posy);
+                        printf("%i  ", matrizJogo[x][y]);
+                    } else {
+                        printf("      ");
+                    }
+                posx += 11;
+            }
+            posy += 5;
+        }
+	}
+}
+
+checarVitoriaFacil(){
+    int x, y = 0;
+	for ((x = 0); (x < TAM5); x++) {
+		for ((y = 0); (y < TAM5); y++) {
+			if (matrizJogo[x][y] == 2048) {
+				// TELA DE VITORIA COM A COR
+				// GETCH
+				// RETORNA COR ANTERIOR
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
+checarVitoriaMedia(){
+    int x, y = 0;
+	for ((x = 0); (x < TAM4); x++) {
+		for ((y = 0); (y < TAM4); y++) {
+			if (matrizJogo[x][y] == 2048) {
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
+checarVitoriaDificil(){
+    int x, y = 0;
+	for ((x = 0); (x < TAM4); x++) {
+		for ((y = 0); (y < TAM4); y++) {
+			if (matrizJogo[x][y] == 4096) {
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
+checarVitoriaHardcore(){
+    int x, y = 0;
+	for ((x = 0); (x < TAM3); x++) {
+		for ((y = 0); (y < TAM3); y++) {
+			if (matrizJogo[x][y] == 1024) {
+				return 0;
+			}
+		}
+	}
+	return 1;
 }

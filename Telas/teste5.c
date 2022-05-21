@@ -152,14 +152,14 @@ movDireita5x5(){
 
     for(y = 4; y >= 0; y--) {
                     
-        for(x = 0; x < TAM5; x++) {
+        for(x = 0; x <= TAM5; x++) {
             
             matrizJogoChecar5x5[x][y] = matrizJogo5x5[x][y];
         
-            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] == 0) && (matrizJogo5x5[x][y - 3] != 0) && (y > 2) && (matrizJogo5x5[x][y - 4] != 0) && (y > 3) ) {
+            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] == 0) && (matrizJogo5x5[x][y - 3] == 0) && (matrizJogo5x5[x][y - 4] != 0) && (y > 3) ) {
             
-                matrizJogo5x5[x][y] = matrizJogo5x5[x][y - 3];
-                matrizJogo5x5[x][y - 3] = 0;
+                matrizJogo5x5[x][y] = matrizJogo5x5[x][y - 4];
+                matrizJogo5x5[x][y - 4] = 0;
                 
             } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y - 1] == 0) && (matrizJogo5x5[x][y - 2] == 0) && (matrizJogo5x5[x][y - 3] != 0) && (y > 2) ) {
             
@@ -202,7 +202,7 @@ movDireita5x5(){
 
                     pontos = pontos + (matrizJogo5x5[x][y]*2);
                     matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
-                    matrizJogo5x5[x][y - 3] = 0;
+                    matrizJogo5x5[x][y - 4] = 0;
 
                 }
             }
@@ -222,10 +222,10 @@ movEsquerda5x5(){
 
             matrizJogoChecar5x5[x][y] = matrizJogo5x5[x][y];
 
-            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] == 0) && (matrizJogo5x5[x][y + 3] != 0) && (matrizJogo5x5[x][y + 4] != 0) && (y < 1) ) {
+            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] == 0) && (matrizJogo5x5[x][y + 3] == 0) && (matrizJogo5x5[x][y + 4] != 0) && (y < 1) ) {
             
                 matrizJogo5x5[x][y] = matrizJogo5x5[x][y + 3];
-                matrizJogo5x5[x][y + 3] = 0;
+                matrizJogo5x5[x][y + 4] = 0;
             
             } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x][y + 1] == 0) && (matrizJogo5x5[x][y + 2] == 0) && (matrizJogo5x5[x][y + 3] != 0) && (y < 2) ) {
             
@@ -268,7 +268,7 @@ movEsquerda5x5(){
 
                     pontos = pontos + (matrizJogo5x5[x][y]*2);
                     matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
-                    matrizJogo5x5[x][y + 3] = 0;
+                    matrizJogo5x5[x][y + 4] = 0;
 
                 }
             }
@@ -287,10 +287,10 @@ movBaixo5x5(){
 
             matrizJogoChecar5x5[x][y] = matrizJogo5x5[x][y];
             
-            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] == 0) && (matrizJogo5x5[x - 3][y] != 0) && (matrizJogo5x5[x - 4][y] != 0) && (x > 3) ) {
+            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] == 0) && (matrizJogo5x5[x - 3][y] == 0) && (matrizJogo5x5[x - 4][y] != 0) && (x > 3) ) {
             
                 matrizJogo5x5[x][y] = matrizJogo5x5[x - 3][y];
-                matrizJogo5x5[x - 3][y] = 0;
+                matrizJogo5x5[x - 4][y] = 0;
                 
             } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x - 1][y] == 0) && (matrizJogo5x5[x - 2][y] == 0) && (matrizJogo5x5[x - 3][y] != 0) && (x > 2) ) {
             
@@ -334,7 +334,7 @@ movBaixo5x5(){
 
                     pontos = pontos + (matrizJogo5x5[x][y]*2);
                     matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
-                    matrizJogo5x5[x - 3][y] = 0;
+                    matrizJogo5x5[x - 4][y] = 0;
 
                 }
             }
@@ -353,10 +353,10 @@ movCima5x5(){
 
             matrizJogoChecar5x5[x][y] = matrizJogo5x5[x][y];
             
-            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] == 0) && (matrizJogo5x5[x + 3][y] != 0) && (matrizJogo5x5[x + 4][y] != 0) && (x < 1) ) {
+            if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] == 0) && (matrizJogo5x5[x + 3][y] == 0) && (matrizJogo5x5[x + 4][y] != 0) && (x < 1) ) {
             
                 matrizJogo5x5[x][y] = matrizJogo5x5[x + 3][y];
-                matrizJogo5x5[x + 3][y] = 0;
+                matrizJogo5x5[x + 4][y] = 0;
                 
             } else if ( (matrizJogo5x5[x][y] == 0) && (matrizJogo5x5[x + 1][y] == 0) && (matrizJogo5x5[x + 2][y] == 0) && (matrizJogo5x5[x + 3][y] != 0) && (x < 2) ) {
             
@@ -399,7 +399,7 @@ movCima5x5(){
 
                     pontos = pontos + (matrizJogo5x5[x][y]*2);
                     matrizJogo5x5[x][y] = matrizJogo5x5[x][y]*2;
-                    matrizJogo5x5[x + 3][y] = 0;
+                    matrizJogo5x5[x + 4][y] = 0;
 
                 }
             }

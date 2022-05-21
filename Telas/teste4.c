@@ -8,37 +8,45 @@
 #define DIREITA 77
 #define ESC 27
 #define ENTER 13
+#define TAM3 3
 #define TAM4 4
+#define TAM5 5
 
-
-void gotoxy(int x, int y);
+// PROCEDIMENTOS
+void gotoxy();
 void movEsquerda4x4();
 void movDireita4x4();
 void movCima4x4();
 void movBaixo4x4();
-int logo();
-int tijolos();
-int jogar4x4Media();
-int checarMovimento4x4();
-int checarVazios4x4();
-int valorAleatorio4x4();
+void jogar4x4Media();
+void logo();
+void tijolos();
+
+// FUNÇÕES
+int checarMovimento();
+int checarVazios();
+int valorAleatorio();
 int checarVitoriaMedia();
 int checarVitoriaDificil();
 
-int x, y, opcao, jogada, pontos, mov, tijolo = 0;
-int matrizJogo[TAM4][TAM4];
-int matrizJogoChecar[TAM4][TAM4];
+// VARIAVEIS GLOBAIS
+int opcao, jogada, pontos, mov = 0;
+int **matrizJogo;
+int **matrizJogoChecar;
 
+// FUNÇÃO PRINCIPAL
 int main(){
     jogar4x4Media();
 }
 
 
 jogar4x4Media(){
-    
-    int ver = 0;
+    int ver, x, y = 0;
+    int tam = TAM4;
 
-    valorAleatorio();
+    pontos = jogada = 0;
+
+    valorAleatorio(TAM4);
     system("cls");
 
     logo();
@@ -83,7 +91,7 @@ jogar4x4Media(){
 
     tijolos();
 
-    valorAleatorio();
+    valorAleatorio(TAM4);
 
     do{
 
@@ -97,21 +105,21 @@ jogar4x4Media(){
 
         if ( (opcao == DIREITA) ) {                 // DIREITA
 
-            movDireita();    
+            movDireita4x4();
             
         } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
 
-            movEsquerda();
+            movEsquerda4x4();
             
         } else if ( (opcao == BAIXO) ) {			// BAIXO
 
-            movBaixo();
+            movBaixo4x4();
 
         } else if ( (opcao == CIMA) ) {			    // CIMA
 
-            movCima();
+            movCima4x4();
 
-        } else if (opcao == 27) {                   // ESC
+        } else if (opcao == ESC) {                   // ESC
             return 1;
         }
 
@@ -141,13 +149,15 @@ logo(){
 }
 
 tijolos(){
+    int tijolo = 0;
     for (tijolo = 0; tijolo != 80; tijolo ++){
         printf("%c", 219);
     }
     printf("\n");
 }
 
-movDireita(){
+movDireita4x4(){
+    int x, y = 0;
 
     for(y = 3; y >= 0; y--) {
                     
@@ -196,14 +206,16 @@ movDireita(){
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento(TAM4) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio(TAM4);
     }
 
 }
 
-movEsquerda(){
+movEsquerda4x4(){
+    int x, y = 0;
+
     for(y = 0; y < TAM4; y++) {
             
         for(x = 3; x >= 0; x--) {
@@ -251,13 +263,15 @@ movEsquerda(){
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento(TAM4) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio(TAM4);
     }
 }
 
-movBaixo(){
+movBaixo4x4(){
+    int x, y = 0;
+
     for(x = 3; x >= 0; x--) {
             
         for(y = 0; y < TAM4; y++) {
@@ -306,13 +320,14 @@ movBaixo(){
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento(TAM4) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio(TAM4);
     }
 }
 
-movCima(){
+movCima4x4(){
+    int x, y = 0;
     for(x = 0; x < TAM4; x++) {   
 
         for(y = 3; y >= 0; y--) {
@@ -360,25 +375,25 @@ movCima(){
             }
         }
     }
-    if (checarMovimento(mov) == 0) {
+    if (checarMovimento(TAM4) == 0) {
         jogada++;
-        valorAleatorio();
+        valorAleatorio(TAM4);
     }
 }
 
-gotoxy(int x, int y)
-{
+gotoxy(int x, int y){
   COORD coord;
   coord.X = x;
   coord.Y = y;
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-checarMovimento(){
-    
+checarMovimento(int tam){
+    int x, y = 0;
+
 	if (jogada > 0){
-		for(x = 0; x < TAM4; x++){
-			for(y = 0; y < TAM4; y++){
+		for(x = 0; x < tam; x++){
+			for(y = 0; y < tam; y++){
 				if (matrizJogo[x][y] != matrizJogoChecar[x][y]){
 					return 0;
 					break;
@@ -392,10 +407,11 @@ checarMovimento(){
 
 }
 
-checarVazios(){
-    int vazios = 16;
-    for (x = 0; x < TAM4; x++){
-        for (y = 0; y < TAM4; y++){
+checarVazios(int tam){
+    int x, y = 0;
+    int vazios = tam * tam;
+    for (x = 0; x < tam; x++){
+        for (y = 0; y < tam; y++){
             if (matrizJogo[x][y] != 0){
                 vazios--;
             }
@@ -409,6 +425,7 @@ checarVazios(){
 }
 
 checarVitoriaMedia(){
+    int x, y = 0;
 	for ((x = 0); (x < TAM4); x++) {
 		for ((y = 0); (y < TAM4); y++) {
 			if (matrizJogo[x][y] == 2048) {
@@ -420,6 +437,7 @@ checarVitoriaMedia(){
 }
 
 checarVitoriaDificil(){
+    int x, y = 0;
 	for ((x = 0); (x < TAM4); x++) {
 		for ((y = 0); (y < TAM4); y++) {
 			if (matrizJogo[x][y] == 4096) {
@@ -430,17 +448,17 @@ checarVitoriaDificil(){
 	return 1;
 }
 
-valorAleatorio(){
+valorAleatorio(int tam){
     
-    int ver, i, posx, posy = 0;
+    int i, posx, posy, x, y = 0;
 
-    if(checarVazios(ver) == 0){
+    if(checarVazios(tam) == 0){
 
         srand(time(NULL));
 
         do{
-            x = (rand() % TAM4);     // GERAR VALOR ALEATORIO PRA POSICAO HORIZONTAL
-            y = (rand() % TAM4);     // GERAR VALOR ALEATORIO PRA POSICAO VERTICAL
+            x = (rand() % tam);     // GERAR VALOR ALEATORIO PRA POSICAO HORIZONTAL
+            y = (rand() % tam);     // GERAR VALOR ALEATORIO PRA POSICAO VERTICAL
 
             if (matrizJogo[x][y] == 0) {
                 matrizJogo[x][y] = 2;
@@ -451,9 +469,9 @@ valorAleatorio(){
         }while(i != 1);
 
         posy = 20;
-        for (x = 0; x < 4; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
+        for (x = 0; x < tam; x++){                   // PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
             posx = 11;
-            for (y = 0; y < 4; y++){
+            for (y = 0; y < tam; y++){
                 gotoxy(posx,posy);                 // COLUNA / LINHA
                     if (matrizJogo[x][y] != 0){
                     	printf("      ");
