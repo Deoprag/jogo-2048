@@ -64,6 +64,7 @@ int checarVitoriaHardcore();
 
 // FUNCAO PRINCIPAL
 int main (){
+
     SetConsoleTitle("2048 :: Pedro Rocha");
 
     tijolos();
@@ -142,7 +143,11 @@ inicio(){                                                                       
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                             [ESC] SAIR DO JOGO                             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             ");
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+    printf("[ESC] SAIR DO JOGO");
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    printf("                             %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
@@ -155,7 +160,9 @@ inicio(){                                                                       
         if (opcao == 27){
             Beep(370, 200);
             gotoxy(2,34);
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
             printf("        APERTE [ESC] NOVAMENTE PARA SAIR OU OUTRA TECLA PARA CANCELAR\n\n\n\n\n\n\n\n\n\n");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
             opcao = getch();
             if (opcao == 27){
                 exit(0);
@@ -948,7 +955,7 @@ dificuldadeHardcore(){
 
 jogar5x5(){
     
-    int ver, x, y = 0;
+    int ver, x, y, continuar = 0;
     int tam = TAM5;
 	pontos = jogada = 0;
 
@@ -961,6 +968,9 @@ jogar5x5(){
     
     valorAleatorio(TAM5);
     system("cls");
+
+    matrizJogo[0][0] = 1024;
+    matrizJogo[0][1] = 1024;
 	
     logo();
 
@@ -1017,6 +1027,30 @@ jogar5x5(){
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
 
+        if(checarVitoriaFacil() == 0 && (continuar != 1)){
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            gotoxy(2,13);
+			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
+            gotoxy(2,14);
+            printf("             [J] JOGAR DIFICULDADE MEDIA [C] CONTINUAR JOGANDO              ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            do{
+                opcao = getch();
+                if ( (opcao == 74) || (opcao == 106) ){
+                    system("color 07");
+                    system("cls");
+                    jogar4x4Media();
+                    opcao = 1;
+                } else if ( (opcao == 67) || (opcao == 99) ){
+                    gotoxy(2,13);
+                    printf("                             DIFICULDADE: FACIL                             ");
+                    gotoxy(2,14);
+                    printf("                                [ESC] VOLTAR                                ");
+                    opcao = continuar = 1;
+                }
+            } while(opcao != 1);
+        }
+
         opcao = getch();
 
         if ( (opcao == DIREITA) ) {               	// DIREITA
@@ -1045,17 +1079,13 @@ jogar5x5(){
             system("cls");
 			selecao();
         }
-
-        if(checarVitoriaFacil() == 0){
-            gotoxy(40,40);
-			printf("VITORIA");
-        }
         
     } while ( opcao != 27 );
 }
 
 jogar4x4Media(){
-    int ver, x, y = 0;
+
+    int ver, x, y, continuar = 0;
     int tam = TAM4;
     pontos = jogada = 0;
 
@@ -1068,6 +1098,9 @@ jogar4x4Media(){
 
     valorAleatorio(TAM4);
     system("cls");
+
+    matrizJogo[0][0] = 1024;
+    matrizJogo[0][1] = 1024;
 
     logo();
 
@@ -1122,6 +1155,31 @@ jogar4x4Media(){
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
 
+        if(checarVitoriaMedia() == 0 && (continuar != 1)){
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            gotoxy(2,13);
+			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
+            gotoxy(2,14);
+            printf("            [R] JOGAR DIFICULDADE DIFICIL [C] CONTINUAR JOGANDO             ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            do{
+                opcao = getch();
+                if ( (opcao == 74) || (opcao == 106) ){
+                    system("color 07");
+                    system("cls");
+                    system("color 07");
+                    jogar4x4Dificil();
+                    opcao = 1;
+                } else if ( (opcao == 67) || (opcao == 99) ){
+                    gotoxy(2,13);
+                    printf("                             DIFICULDADE: MEDIA                             ");
+                    gotoxy(2,14);
+                    printf("                                [ESC] VOLTAR                                ");
+                    opcao = continuar = 1;
+                }
+            } while(opcao != 1);
+        }
+
         opcao = getch();
 
         if ( (opcao == DIREITA) ) {                 // DIREITA
@@ -1148,17 +1206,13 @@ jogar4x4Media(){
             system("cls");
 			selecao();
         }
-
-        if(checarVitoriaMedia(ver) == 0){
-            gotoxy(40,40);
-			printf("VITORIA");
-        }
         
     } while ( opcao != 27 );
 }
 
 jogar4x4Dificil(){
-    int ver, x, y = 0;
+
+    int ver, x, y, continuar = 0;
     int tam = TAM4;
     pontos = jogada = 0;
 
@@ -1171,6 +1225,9 @@ jogar4x4Dificil(){
 
     valorAleatorio(TAM4);
     system("cls");
+
+    matrizJogo[0][0] = 2048;
+    matrizJogo[0][1] = 2048;
 
     logo();
 
@@ -1225,6 +1282,33 @@ jogar4x4Dificil(){
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
 
+        if(checarVitoriaDificil() == 0 && (continuar != 1)){
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            gotoxy(2,13);
+			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
+            gotoxy(2,14);
+            printf("           [R] JOGAR DIFICULDADE HARDCORE [C] CONTINUAR JOGANDO             ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            do{
+                opcao = getch();
+                if ( (opcao == 74) || (opcao == 106) ){
+                    system("color 07");
+                    system("cls");
+                    jogar3x3();
+                    opcao = 1;
+                } else if ( (opcao == 67) || (opcao == 99) ){
+                    gotoxy(2,13);
+                    printf("                            DIFICULDADE: DIFICIL                            ");
+                    gotoxy(2,14);
+                    printf("                                [ESC] VOLTAR                                ");
+                    opcao = continuar = 1;
+                }
+            } while(opcao != 1);
+            
+        }
+
+        
+
         opcao = getch();
 
         if ( (opcao == DIREITA) ) {                 // DIREITA
@@ -1250,19 +1334,14 @@ jogar4x4Dificil(){
         } else if (opcao == ESC) {                   // ESC
             system("cls");
 			selecao();
-        }
-
-        if(checarVitoriaDificil() == 0){
-            gotoxy(40,40);
-			printf("VITORIA");
-        }
+        }   
         
     } while ( opcao != 27 );
 }
 
 jogar3x3(){
-    
-    int ver, x, y = 0;
+
+    int ver, x, y, continuar = 0;
     int tam = TAM3;
     pontos = jogada = 0;
 
@@ -1275,6 +1354,9 @@ jogar3x3(){
 
     valorAleatorio(TAM3);
     system("cls");
+
+    matrizJogo[0][0] = 512;
+    matrizJogo[0][1] = 512;
 
     logo();
 
@@ -1327,6 +1409,30 @@ jogar3x3(){
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
 
+        if(checarVitoriaHardcore() == 0 && (continuar != 1)){
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            gotoxy(2,13);
+			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
+            gotoxy(2,14);
+            printf("                  [R] REINICIAR JOGO [C] CONTINUAR JOGANDO                  ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            do{
+                opcao = getch();
+                if ( (opcao == 82) || (opcao == 114) ){
+                    system("color 07");
+                    system("cls");
+                    jogar3x3();
+                    opcao = 1;
+                } else if ( (opcao == 67) || (opcao == 99) ){
+                    gotoxy(2,13);
+                    printf("                            DIFICULDADE: HARDCORE                           ");
+                    gotoxy(2,14);
+                    printf("                                [ESC] VOLTAR                                ");
+                    opcao = continuar = 1;
+                }
+            } while(opcao != 1);
+        }
+
         opcao = getch();
 
         if ( (opcao == DIREITA) ) {               // DIREITA
@@ -1349,17 +1455,11 @@ jogar3x3(){
             movCima3x3();
             imprimirValores(TAM3);
 
-        } else if (opcao == 27) {    // ESC
+        } else if ( (opcao == 27) ) {    // ESC
             return 1;
-        }
-
-        if(checarVitoriaHardcore() == 0){
-            gotoxy(40,40);
-			printf("VITORIA");
         }
         
     } while ( opcao != 27 );
-
 }
 
 selecaoRanking(){
@@ -1668,6 +1768,7 @@ jogosSalvos(){
 }
 
 logo(){
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
     tijolos();
     
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
@@ -1682,6 +1783,8 @@ logo(){
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
 
     tijolos();
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+
 }
 
 tijolos(){
