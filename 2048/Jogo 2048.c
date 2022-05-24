@@ -54,6 +54,7 @@ void movEsquerda5x5();
 void movBaixo5x5();
 void movCima5x5();
 void valorAleatorio();
+void cor();
 
 // DECLARACAO DE FUNCOES
 int checarMovimento();
@@ -143,11 +144,11 @@ inicio(){                                                                       
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                             ");
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+    printf("%c%c                             ", 219, 219);
+    cor(4);
     printf("[ESC] SAIR DO JOGO");
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-    printf("                             %c%c\n", 219, 219, 219, 219);
+    cor(7);
+    printf("                             %c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
@@ -160,9 +161,9 @@ inicio(){                                                                       
         if (opcao == 27){
             Beep(370, 200);
             gotoxy(2,34);
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-            printf("        APERTE [ESC] NOVAMENTE PARA SAIR OU OUTRA TECLA PARA CANCELAR\n\n\n\n\n\n\n\n\n\n");
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            cor(4);
+            printf("        APERTE [ESC] NOVAMENTE PARA SAIR OU OUTRA TECLA PARA CANCELAR\n\n\n\n\n\n");
+            cor(7);
             opcao = getch();
             if (opcao == 27){
                 exit(0);
@@ -243,7 +244,9 @@ login(){                                                                        
     } while(tam < 16);
 
     gotoxy(51,24);
+    cor(10);
     printf("OK");
+    cor(7);
 
     tam = 0;
     gotoxy(30,30);
@@ -265,7 +268,9 @@ login(){                                                                        
     } while(tam < 16);
 
     gotoxy(51,30);
+    cor(10);
     printf("OK");
+    cor(7);
 
     gotoxy(2,35);
     printf("");
@@ -345,7 +350,9 @@ cadastro(){                                                                     
     } while(tam < 16);
 
     gotoxy(51,22);
+    cor(10);
     printf("OK");
+    cor(7);
 
     tam = 0;
     gotoxy(30,26);
@@ -367,7 +374,9 @@ cadastro(){                                                                     
     } while(tam < 16);
 
     gotoxy(51,26);
+    cor(10);
     printf("OK");
+    cor(7);
 
     tam = 0;
     gotoxy(30,30);
@@ -390,7 +399,9 @@ cadastro(){                                                                     
     } while(tam < 16);
 
     gotoxy(51,30);
+    cor(10);
     printf("OK");
+    cor(7);
 
     tam = 0;
     gotoxy(30,34);
@@ -413,7 +424,9 @@ cadastro(){                                                                     
     } while(tam < 11);
 
     gotoxy(51,34);
+    cor(10);
     printf("OK");
+    cor(7);
 
     gotoxy(2,38);
     printf("");
@@ -477,26 +490,22 @@ cadastroSucesso(){
     Beep(987, 250);
     Beep(1046, 250);
 
-    do                              // COLOCA O GETCH EM LOOP PRA FICAR LENDO AS TECLAS ATÉ QUE UMA DAS TECLAS ESPECIFICADAS ABAIXO SEJA DIGITADA
+    do                              
     {
-        opcao = getch();            // SERVE PRA LER A TECLA QUE O USUARIO DIGITOU E GUARDA O CODIGO ASCII DA TECLA NA VARIAVEL OPCAO
-        if (opcao == 27){           // SE A OPCAO FOR IGUAL A 27 (CODIGO ASCII DA TECLA ESC)
+        opcao = getch();            
+        if (opcao == 27){           
             Beep(370, 200);
-            system("cls");          // LIMPA A TELA
-            inicio();               // TE LEVA PARA A TELA DE INICIO
-            opcao = 0;              // OPCAO RECEBE O VALOR 0 PARA TERMINAR O LOOP
-        } else if (opcao == 13){    // SE A OPCAO FOR IGUAL A 13 (CODIGO ASCII DA TECLA ENTER)
+            system("cls");        
+            inicio();             
+            opcao = 0;              
+        } else if (opcao == 13){   
             Beep(370, 200);
-            system("cls");          // LIMPA A TELA
-            login();                // TE LEVA PARA A TELA DE LOGIN
-            opcao = 0;              // OPCAO RECEBE O VALOR 0 PARA TERMINAR O LOOP
+            system("cls");         
+            login();                
+            opcao = 0;            
         }
 
-    } while (opcao != 0);           // DEIXA ISSO EM LOOP ATÉ QUE A OPCAO SEJA IGUAL A 0
-}
-
-cadastroFalhou(){
-
+    } while (opcao != 0);
 }
 
 configuracoes(){                                                                                    // CONFIGURAÇÕES
@@ -568,10 +577,17 @@ cores(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                  OPCOES:                                   %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       [1] AMARELO         [6] CINZA                        %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       ", 219, 219);
+    printf("[1] AMARELO");
+    printf("         [6] CINZA                        ");           
+    printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       [2] AZUL            [7] LILAS                        %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       ", 219, 219);
+    printf("[2] AZUL");
+    printf("            [7] LILAS                        ");
+    printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    
     printf("%c%c                       [3] AZUL CLARO      [8] SALMAO                       %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       [4] BRANCO          [9] VERDE                        %c%c\n", 219, 219, 219, 219);
@@ -675,7 +691,11 @@ selecao(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                           [ESC] ENCERRAR SESSAO                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           ", 219, 219);
+    cor(4);
+    printf("[ESC] ENCERRAR SESSAO");
+    cor(7);
+    printf("                            %c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
@@ -706,7 +726,9 @@ selecao(){
         } else if (opcao == 27){
             Beep(370, 200);
             gotoxy(2,34);
+            cor(4);
             printf("  APERTE [ESC] NOVAMENTE PARA ENCERRAR SESSAO OU OUTRA TECLA PARA CANCELAR\n\n\n\n\n\n");
+            cor(7);
             opcao = getch();
             if (opcao == 27){
                 Beep(370, 200);
@@ -968,9 +990,6 @@ jogar5x5(){
     
     valorAleatorio(TAM5);
     system("cls");
-
-    matrizJogo[0][0] = 1024;
-    matrizJogo[0][1] = 1024;
 	
     logo();
 
@@ -1011,7 +1030,11 @@ jogar5x5(){
 
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c  UNIFACEAR - 2022   %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    cor(2);
+    printf("  UNIFACEAR - 2022   ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     tijolos();
@@ -1021,19 +1044,21 @@ jogar5x5(){
 
     do{
 
+        cor(11);
         gotoxy(70,18);
         printf("%i", pontos);                   // PRINTA OS PONTOS NA TELA
         gotoxy(70,19);
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
-        gotoxy(80,40);
+        cor(7);
+        gotoxy(80,39);
 
         if(checarVitoriaFacil() == 0 && (continuar != 1)){
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
             gotoxy(2,14);
             printf("             [J] JOGAR DIFICULDADE MEDIA [C] CONTINUAR JOGANDO              ");
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            cor(7);
             do{
                 opcao = getch();
                 if ( (opcao == 74) || (opcao == 106) ){
@@ -1150,9 +1175,11 @@ jogar4x4Media(){
     do{
 
         gotoxy(71,18);
+        cor(11);
         printf("%i", pontos);                   // PRINTA OS PONTOS NA TELA
         gotoxy(71,19);
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
+        cor(7);
         gotoxy(80,40);
 
         if(checarVitoriaMedia() == 0 && (continuar != 1)){
@@ -1160,7 +1187,7 @@ jogar4x4Media(){
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
             gotoxy(2,14);
-            printf("            [R] JOGAR DIFICULDADE DIFICIL [C] CONTINUAR JOGANDO             ");
+            printf("            [J] JOGAR DIFICULDADE DIFICIL [C] CONTINUAR JOGANDO             ");
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
             do{
                 opcao = getch();
@@ -1276,18 +1303,20 @@ jogar4x4Dificil(){
 
     do{
 
+        cor(11);
         gotoxy(71,18);
         printf("%i", pontos);                   // PRINTA OS PONTOS NA TELA
         gotoxy(71,19);
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
+        cor(7);
 
         if(checarVitoriaDificil() == 0 && (continuar != 1)){
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
             gotoxy(2,14);
-            printf("           [R] JOGAR DIFICULDADE HARDCORE [C] CONTINUAR JOGANDO             ");
+            printf("           [J] JOGAR DIFICULDADE HARDCORE [C] CONTINUAR JOGANDO             ");
             SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
             do{
                 opcao = getch();
@@ -1403,23 +1432,24 @@ jogar3x3(){
 
     do{
 
+        cor(11);
         gotoxy(71,18);
         printf("%i", pontos);                   // PRINTA OS PONTOS NA TELA
         gotoxy(71,19);
         printf("%i", jogada);                   // PRINTA A QUANTIDADE DE MOVIMENTOS NA TELA
         gotoxy(80,40);
+        cor(7);
 
         if(checarVitoriaHardcore() == 0 && (continuar != 1)){
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
             gotoxy(2,14);
             printf("                  [R] REINICIAR JOGO [C] CONTINUAR JOGANDO                  ");
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            cor(7);
             do{
                 opcao = getch();
                 if ( (opcao == 82) || (opcao == 114) ){
-                    system("color 07");
                     system("cls");
                     jogar3x3();
                     opcao = 1;
@@ -1456,7 +1486,8 @@ jogar3x3(){
             imprimirValores(TAM3);
 
         } else if ( (opcao == 27) ) {    // ESC
-            return 1;
+                        system("cls");
+			selecao();
         }
         
     } while ( opcao != 27 );
@@ -1768,7 +1799,6 @@ jogosSalvos(){
 }
 
 logo(){
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
     tijolos();
     
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
@@ -1783,8 +1813,6 @@ logo(){
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
 
     tijolos();
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-
 }
 
 tijolos(){
@@ -2608,4 +2636,8 @@ checarVitoriaHardcore(){
 		}
 	}
 	return 1;
+}
+
+cor(int cor){
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), cor);
 }
