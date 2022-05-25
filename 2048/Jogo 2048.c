@@ -43,6 +43,7 @@ void jogar3x3();
 void jogar4x4Media();
 void jogar4x4Dificil();
 void jogar5x5();
+void tutorial();
 void selecaoRanking();
 void rankingPontuacaoDif();
 void rankingPontuacao();
@@ -62,6 +63,13 @@ int checarVitoriaMedia();
 int checarVitoriaDificil();
 int checarVitoriaFacil();
 int checarVitoriaHardcore();
+
+// STRUCTURES:
+struct Cadastro {
+	char apelido[16];
+	char senha[16];
+	char celular[16];
+};
 
 // FUNCAO PRINCIPAL
 int main (){
@@ -226,6 +234,7 @@ login(){                                                                        
     int tam = 0;
     gotoxy(30,24);
     fflush(stdin);
+    
     do
     {   
         apelido[tam] = getch();          
@@ -266,7 +275,7 @@ login(){                                                                        
             tam++;
         }
     } while(tam < 16);
-
+    
     gotoxy(51,30);
     cor(10);
     printf("OK");
@@ -292,10 +301,16 @@ login(){                                                                        
         }
 
     } while (opcao != 0);
+    
 }
 
 cadastro(){                                                                                         // CADASTRO
-
+	
+	FILE *arq;
+	char *result;
+	
+	struct Cadastro Cadastro1;
+	
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -332,8 +347,8 @@ cadastro(){                                                                     
     int tam = 0;
     gotoxy(30,22);
     fflush(stdin);
-    do
-    {   
+	
+    do{   
         apelido[tam] = getch();                     // APELIDO
         if (apelido[tam] == 8 && tam > 0){          // APAGAR
             printf("\b \b"); 
@@ -348,7 +363,18 @@ cadastro(){                                                                     
         }
 
     } while(tam < 16);
-
+    
+    arq = fopen("Teste01.txt", "w");
+    
+    strcpy( Cadastro1.apelido, apelido );
+    
+    result = fputs(Cadastro1.apelido, arq);
+        
+    if (result == EOF){
+    	printf("Erro na Gravacao\n");
+	}
+	fclose(arq);
+    
     gotoxy(51,22);
     cor(10);
     printf("OK");
@@ -427,6 +453,8 @@ cadastro(){                                                                     
     cor(10);
     printf("OK");
     cor(7);
+    
+    fclose(arq);
 
     gotoxy(2,38);
     printf("");
@@ -995,7 +1023,11 @@ jogar5x5(){
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                             DIFICULDADE: FACIL                             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c", 219, 219);
+    cor(4);
+    printf("                                [ESC] VOLTAR                                ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
@@ -1008,9 +1040,9 @@ jogar5x5(){
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [P] SALVAR JOGO     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [S] SALVAR JOGO     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [R] REINICIAR JOGO  %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [O] RANKING         %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
+    printf("%c%c         %c%c         %c%c         %c%c         %c%c         %c%c [C] COMO JOGAR      %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
@@ -1062,11 +1094,13 @@ jogar5x5(){
             do{
                 opcao = getch();
                 if ( (opcao == 74) || (opcao == 106) ){
+                    Beep(370, 200);
                     system("color 07");
                     system("cls");
                     jogar4x4Media();
                     opcao = 1;
                 } else if ( (opcao == 67) || (opcao == 99) ){
+                    Beep(370, 200);
                     gotoxy(2,13);
                     printf("                             DIFICULDADE: FACIL                             ");
                     gotoxy(2,14);
@@ -1078,31 +1112,52 @@ jogar5x5(){
 
         opcao = getch();
 
-        if ( (opcao == DIREITA) ) {               	// DIREITA
+        if ( (opcao == DIREITA) ) {               	        // DIREITA
 
             movDireita5x5();
 			imprimirValores(TAM5);
             
-        } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
+        } else if ( (opcao == ESQUERDA) ) {			        // ESQUERDA
 
             movEsquerda5x5();
 			imprimirValores(TAM5);
 
             
-        } else if ( (opcao == BAIXO) ) {			// BAIXO
+        } else if ( (opcao == BAIXO) ) {			        // BAIXO
 
             movBaixo5x5();
 			imprimirValores(TAM5);
 
 
-        } else if ( (opcao == CIMA) ) {				// CIMA
+        } else if ( (opcao == CIMA) ) {				        // CIMA
 
             movCima5x5();
 			imprimirValores(TAM5);
 
-        } else if ( (opcao == ESC) ) {    				// ESC
+        } else if ( (opcao == ESC) ) {    				    // ESC
+
+            Beep(370, 200);
             system("cls");
 			selecao();
+
+        } else if ( (opcao == 83) || (opcao == 115) ) {     // S
+
+            Beep(370, 200);
+            system("cls");
+            jogosSalvos();
+
+        } else if ( (opcao == 82) || (opcao == 114) ) {     // R
+
+            Beep(370, 200);
+            system("cls");
+            jogar5x5();
+
+        } else if ( (opcao == 67 ) || (opcao == 99) ) {     // C
+            
+            Beep(370, 200);
+            system("cls");
+            tutorial(1);
+
         }
         
     } while ( opcao != 27 );
@@ -1124,14 +1179,15 @@ jogar4x4Media(){
     valorAleatorio(TAM4);
     system("cls");
 
-    matrizJogo[0][0] = 1024;
-    matrizJogo[0][1] = 1024;
-
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                             DIFICULDADE: MEDIA                             %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c", 219, 219);
+    cor(4);
+    printf("                                [ESC] VOLTAR                                ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
@@ -1143,10 +1199,10 @@ jogar4x4Media(){
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c [P] SALVAR JOGO    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c [S] SALVAR JOGO    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c [R] REINICIAR JOGO %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c [O] RANKING        %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c [C] COMO JOGAR     %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
@@ -1164,7 +1220,11 @@ jogar4x4Media(){
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  UNIFACEAR - 2022  %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219);
+    cor(2);
+    printf("  UNIFACEAR - 2022  ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
 
     tijolos();
@@ -1183,21 +1243,23 @@ jogar4x4Media(){
         gotoxy(80,40);
 
         if(checarVitoriaMedia() == 0 && (continuar != 1)){
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
             gotoxy(2,14);
             printf("            [J] JOGAR DIFICULDADE DIFICIL [C] CONTINUAR JOGANDO             ");
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            cor(7);
             do{
                 opcao = getch();
                 if ( (opcao == 74) || (opcao == 106) ){
+                    Beep(370, 200);
                     system("color 07");
                     system("cls");
                     system("color 07");
                     jogar4x4Dificil();
                     opcao = 1;
                 } else if ( (opcao == 67) || (opcao == 99) ){
+                    Beep(370, 200);
                     gotoxy(2,13);
                     printf("                             DIFICULDADE: MEDIA                             ");
                     gotoxy(2,14);
@@ -1230,8 +1292,28 @@ jogar4x4Media(){
             imprimirValores(TAM4);
 
         } else if (opcao == ESC) {                   // ESC
+            
+            Beep(370, 200);            
             system("cls");
 			selecao();
+
+        } else if ( (opcao == 83) || (opcao == 115) ) {     // S
+            
+            Beep(370, 200);
+            system("cls");
+            jogosSalvos();
+
+        } else if ( (opcao == 82) || (opcao == 114) ) {     // R
+
+            Beep(370, 200);
+            system("cls");
+            jogar4x4Media();
+
+        } else if ( (opcao == 67 ) || (opcao == 99) ) {     // C
+
+            Beep(370, 200);
+            system("cls");
+            tutorial(2);
         }
         
     } while ( opcao != 27 );
@@ -1253,14 +1335,15 @@ jogar4x4Dificil(){
     valorAleatorio(TAM4);
     system("cls");
 
-    matrizJogo[0][0] = 2048;
-    matrizJogo[0][1] = 2048;
-
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                            DIFICULDADE: DIFICIL                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c", 219, 219);
+    cor(4);
+    printf("                                [ESC] VOLTAR                                ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
@@ -1272,10 +1355,10 @@ jogar4x4Dificil(){
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c [P] SALVAR JOGO    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c [S] SALVAR JOGO    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c [R] REINICIAR JOGO %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c [O] RANKING        %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c [C] COMO JOGAR     %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
@@ -1293,7 +1376,11 @@ jogar4x4Dificil(){
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
 
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  UNIFACEAR - 2022  %c%c\n", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 219, 219, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 219, 219);
+    cor(2);
+    printf("  UNIFACEAR - 2022  ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                    %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
 
     tijolos();
@@ -1312,20 +1399,22 @@ jogar4x4Dificil(){
         cor(7);
 
         if(checarVitoriaDificil() == 0 && (continuar != 1)){
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
+            cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
             gotoxy(2,14);
             printf("           [J] JOGAR DIFICULDADE HARDCORE [C] CONTINUAR JOGANDO             ");
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+            cor(7);
             do{
                 opcao = getch();
                 if ( (opcao == 74) || (opcao == 106) ){
+                    Beep(370, 200);
                     system("color 07");
                     system("cls");
                     jogar3x3();
                     opcao = 1;
                 } else if ( (opcao == 67) || (opcao == 99) ){
+                    Beep(370, 200);
                     gotoxy(2,13);
                     printf("                            DIFICULDADE: DIFICIL                            ");
                     gotoxy(2,14);
@@ -1361,9 +1450,29 @@ jogar4x4Dificil(){
             imprimirValores(TAM4);
 
         } else if (opcao == ESC) {                   // ESC
+
+            Beep(370, 200);
             system("cls");
 			selecao();
-        }   
+
+        } else if ( (opcao == 83) || (opcao == 115) ) {     // S
+
+            Beep(370, 200);
+            system("cls");
+            jogosSalvos();
+
+        } else if ( (opcao == 82) || (opcao == 114) ) {     // R
+
+            Beep(370, 200);
+            system("cls");
+            jogar4x4Dificil();
+
+        } else if ( (opcao == 67 ) || (opcao == 99) ) {     // C
+            
+            Beep(370, 200);
+            system("cls");
+            tutorial(3);
+        }
         
     } while ( opcao != 27 );
 }
@@ -1384,14 +1493,15 @@ jogar3x3(){
     valorAleatorio(TAM3);
     system("cls");
 
-    matrizJogo[0][0] = 512;
-    matrizJogo[0][1] = 512;
-
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                            DIFICULDADE: HARDCORE                           %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c", 219, 219);
+    cor(4);
+    printf("                                [ESC] VOLTAR                                ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
@@ -1403,9 +1513,9 @@ jogar3x3(){
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
 
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c [P] SALVAR JOGO     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c [S] SALVAR JOGO     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c [R] REINICIAR JOGO  %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c [O] RANKING         %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c [C] COMO JOGAR      %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
     
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219);
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c         %c%c         %c%c         %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
@@ -1422,7 +1532,11 @@ jogar3x3(){
 
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c  UNIFACEAR - 2022   %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219);
+    cor(2);
+    printf("  UNIFACEAR - 2022   ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                     %c%c\n", 219, 219, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 176, 219, 219, 219, 219);
 
     tijolos();
@@ -1450,10 +1564,12 @@ jogar3x3(){
             do{
                 opcao = getch();
                 if ( (opcao == 82) || (opcao == 114) ){
+                    Beep(370, 200);
                     system("cls");
                     jogar3x3();
                     opcao = 1;
                 } else if ( (opcao == 67) || (opcao == 99) ){
+                    Beep(370, 200);
                     gotoxy(2,13);
                     printf("                            DIFICULDADE: HARDCORE                           ");
                     gotoxy(2,14);
@@ -1465,32 +1581,110 @@ jogar3x3(){
 
         opcao = getch();
 
-        if ( (opcao == DIREITA) ) {               // DIREITA
+        if ( (opcao == DIREITA) ) {                         // DIREITA
 
             movDireita3x3();
             imprimirValores(TAM3);
             
-        } else if ( (opcao == ESQUERDA) ) {			// ESQUERDA
+        } else if ( (opcao == ESQUERDA) ) {			        // ESQUERDA
 
             movEsquerda3x3();\
             imprimirValores(TAM3);
             
-        } else if ( (opcao == BAIXO) ) {			// BAIXO
+        } else if ( (opcao == BAIXO) ) {			        // BAIXO
 
             movBaixo3x3();
             imprimirValores(TAM3);
 
-        } else if ( (opcao == CIMA) ) {			// CIMA
+        } else if ( (opcao == CIMA) ) {			            // CIMA
 
             movCima3x3();
             imprimirValores(TAM3);
 
-        } else if ( (opcao == 27) ) {    // ESC
-                        system("cls");
+        } else if ( (opcao == 27) ) {                       // ESC
+
+            Beep(370, 200);
+            system("cls");
 			selecao();
+
+        } else if ( (opcao == 83) || (opcao == 115) ) {     // S
+
+            Beep(370, 200);
+            system("cls");
+            jogosSalvos();
+
+        } else if ( (opcao == 82) || (opcao == 114) ) {     // R
+
+            Beep(370, 200);
+            system("cls");
+            jogar3x3();
+
+        } else if ( (opcao == 67 ) || (opcao == 99) ) {     // C
+
+            Beep(370, 200);
+            system("cls");
+            tutorial(4);
         }
         
     } while ( opcao != 27 );
+}
+
+tutorial(int dificuldade){
+
+    logo();
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c     C O M O   J O G A R     %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     > O OBJETIVO PRINCIPAL DO JOGO E ALCANCAR A CELULA DE VALOR MAIS ALTO  %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     (PODENDO VARIAR ENTRE 1024, 2048 E 4096, DEPENDENDO DA DIFICULDADE);   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     > VOCE CONSEGUE AS CELULAS DE MAIOR VALOR ATRAVES DE 2 CELULAS IGUAIS  %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     DE MENOR VALOR, POR EXEMPLO, SE JUNTARMOS 2 CELULAS DE 2, OBTEREMOS    %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     UMA CELULA DE VALOR 4 (4 + 4 = 8 / 8 + 8 = 16 /... E ASSIM POR DIANTE);%c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     > VOCE PODE SE MOVIMENTAR ATRAVES DO TABULEIRO UTILIZANDO AS SETAS     %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     DO TECLADO. AS CELULAS IGUAIS IRAO SE MESCLAR DE ACORDO COM O LADO     %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     QUE O JOGADOR DECIDIU SE MOVIMENTAR;                                   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     > CASO CONSIGA CHEGAR NA RESPECTIVA CELULA DE VITORIA DO MODO EM QUE   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     ESTA JOGANDO, VOCE PODERA ESCOLHER CONTINUAR JOGANDO PARA OBTER UMA    %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     COLOCACAO MAIS ALTA NO RANKING OU JOGAR UMA DIFICULDADE MAIS DIFICIL   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     (EXCETO NO MODO HARDCORE).                                             %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                ", 219, 219);
+    cor(4);
+    printf("[ESC] VOLTAR");
+    cor(7);
+    printf("                                %c%c\n", 219, 219);    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+
+    tijolos();
+
+    do
+    {
+        opcao = getch();
+        if (opcao == 27){
+            Beep(370, 200);
+            system("cls");
+            if (dificuldade == 1) {
+            	jogar5x5();
+			} else if (dificuldade == 2) {
+				jogar4x4Media();
+			} else if (dificuldade == 3) {
+				jogar4x4Dificil();
+			} else if (dificuldade == 4) {
+				jogar3x3();
+			}    
+        }
+
+    } while (opcao != 27);
 }
 
 selecaoRanking(){
