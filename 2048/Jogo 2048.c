@@ -15,6 +15,7 @@
 #define TAM5 5
 #define TAM4 4
 #define TAM3 3
+#define MAX_CADASTROS 30
 
 // VARIAVEIS GLOBAIS
 int inicial, opcao, jogada, pontos = 0;
@@ -64,13 +65,14 @@ int checarVitoriaDificil();
 int checarVitoriaFacil();
 int checarVitoriaHardcore();
 
-// STRUCTURES:
-struct Cadastro {
-	char apelido[16];
-	char senha[16];
-	char celular[16];
-};
-
+// STRUCTS:
+typedef struct{
+    char apelido[20];
+    char senha[20];
+    int celular[15];
+    int ativo;
+} Cadastro;
+Cadastro cadastros[MAX_CADASTROS];
 // FUNCAO PRINCIPAL
 int main (){
 
@@ -306,11 +308,10 @@ login(){                                                                        
 
 cadastro(){                                                                                         // CADASTRO
 	
-	FILE *arq;
-	char *result;
-	
-	struct Cadastro Cadastro1;
-	
+    char apelido[20];
+    char senha[20];
+    int celular[15];
+
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -331,12 +332,12 @@ cadastro(){                                                                     
     printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
-    printf("%c%c           CONFIRMA SENHA: %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
     printf("%c%c                  CELULAR: %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -344,117 +345,44 @@ cadastro(){                                                                     
 
     tijolos();
 
-    int tam = 0;
     gotoxy(30,22);
     fflush(stdin);
 	
-    do{   
-        apelido[tam] = getch();                     // APELIDO
-        if (apelido[tam] == 8 && tam > 0){          // APAGAR
-            printf("\b \b"); 
-            apelido[tam] = 0x00;
-            tam--;
-        } else if (apelido[tam] == 13){             // ENTER
-            apelido[tam] = 0x00;
-            break;
-        } else if (apelido[tam] != 8){
-            putchar(apelido[tam]);
-            tam++;              
-        }
+    fgets(apelido, sizeof(apelido), stdin);
 
-    } while(tam < 16);
-    
-    arq = fopen("Teste01.txt", "w");
-    
-    strcpy( Cadastro1.apelido, apelido );
-    
-    result = fputs(Cadastro1.apelido, arq);
-        
-    if (result == EOF){
-    	printf("Erro na Gravacao\n");
-	}
-	fclose(arq);
-    
     gotoxy(51,22);
     cor(10);
     printf("OK");
     cor(7);
 
-    tam = 0;
     gotoxy(30,26);
     fflush(stdin);
-    do
-    {   
-        senha[tam] = getch();                       // SENHA   
-        if(senha[tam] == 0x08 && tam > 0){          // APAGAR
-            printf("\b \b"); 
-            senha[tam] = 0x00;
-            tam--;
-        } else if (senha[tam] == 13){               // ENTER
-            senha[tam] = 0x00;
-            break;
-        } else if (senha[tam] != 8){
-            putchar('*');
-            tam++;
-        }
-    } while(tam < 16);
 
+    fgets(senha, sizeof(senha), stdin);
+    
     gotoxy(51,26);
     cor(10);
     printf("OK");
     cor(7);
 
-    tam = 0;
     gotoxy(30,30);
     fflush(stdin);
-    do
-    {   
-        confSenha[tam] = getch();                   // CONFIRMACAO DE SENHA
-        if(confSenha[tam] == 8 && tam > 0){         // APAGAR
-            printf("\b \b"); 
-            confSenha[tam] = 0x00;
-            tam--;
 
-        } else if (confSenha[tam] == 13){           // ENTER
-            confSenha[tam] = 0x00;
-            break;
-        } else if (confSenha[tam] != 8){
-            putchar('*');
-            tam++;
-        }
-    } while(tam < 16);
+    fgets(celular, sizeof(celular), stdin);
 
     gotoxy(51,30);
     cor(10);
     printf("OK");
     cor(7);
-
-    tam = 0;
-    gotoxy(30,34);
-    fflush(stdin);
-    do
-    {   
-        celular[tam] = getch();                     // CELULAR
-        if (celular[tam] == 0x08 && tam > 0){       // APAGAR
-            printf("\b \b"); 
-            celular[tam] = 0x00;
-            tam--;
-        } else if (celular[tam] == 13){              // ENTER
-            celular[tam] = 0x00;
-            break;
-        } else if (celular[tam] != 8){
-            putchar(celular[tam]);
-            tam++;
-        }
-
-    } while(tam < 11);
-
-    gotoxy(51,34);
-    cor(10);
-    printf("OK");
-    cor(7);
     
-    fclose(arq);
+    for (int i = 0; i < MAX_CADASTROS; i++){
+        if ( cadastros[i].ativo == 0 ) {
+            strcpy(cadastros[i].apelido, apelido);
+            strcpy(cadastros[i].senha, senha);
+            strcpy(cadastros[i].celular, celular);
+            break;
+        }
+    }
 
     gotoxy(2,38);
     printf("");
