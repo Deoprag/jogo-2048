@@ -45,11 +45,8 @@ void jogar4x4Media();
 void jogar4x4Dificil();
 void jogar5x5();
 void tutorial();
-void selecaoRanking();
 void rankingPontuacaoDif();
 void rankingPontuacao();
-void rankingVelDif();
-void rankingVel();
 void jogosSalvos();
 void movDireita5x5();
 void movEsquerda5x5();
@@ -79,43 +76,69 @@ int main (){
 
     SetConsoleTitle("2048 :: Pedro Rocha");
 
+    cor(247);
+
     tijolos();
+    cor(7);
     Sleep(300);
     Beep(370, 200);
 
+    cor(247);
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
     Sleep(150);
     Beep(370, 200);
-    printf("%c%c****_****%c      .d8888b.    .d8888b.       d8888    .d8888b.      %c****_****%c%c\n", 219, 219, 219, 219, 219, 219);
-    Sleep(150);
-    Beep(370, 200);
-    printf("%c%c***/ \\***%c     d88P  Y88b  d88P  Y88b     d8P888   d88P  Y88b     %c***/ \\***%c%c\n", 219, 219, 219, 219, 219, 219);
-    Sleep(150);
-    Beep(370, 200);
-    printf("%c%c**( 2 )**%c            888  888    888    d8P 888   Y88b. d88P     %c**( 4 )**%c%c\n", 219, 219, 219, 219, 219, 219);
-    Sleep(150);
-    Beep(370, 200);
-    printf("%c%c***\\_/***%c          .d88P  888    888   d8P  888    'Y88888'      %c***\\_/***%c%c\n", 219, 219, 219, 219, 219, 219);
-    Sleep(150);
-    Beep(370, 200);
-    printf("%c%c****_****%c      .od888P'   888    888  d88   888   .d8P''Y8b.     %c****_****%c%c\n", 219, 219, 219, 219, 219, 219);
-    Sleep(150);
-    Beep(370, 200);
-    printf("%c%c***/ \\***%c     d88P'       888    888  8888888888  888    888     %c***/ \\***%c%c\n", 219, 219, 219, 219, 219, 219);
-    Sleep(150);
-    Beep(370, 200);
-    printf("%c%c**( 0 )**%c     888'        Y88b  d88P        888   Y88b  d88P     %c**( 8 )**%c%c\n", 219, 219, 219, 219, 219, 219);
-    Sleep(150);
-    Beep(370, 200);
-    printf("%c%c***\\_/***%c     888888888    'Y8888P'         888    'Y8888P'      %c***\\_/***%c%c\n", 219, 219, 219, 219, 219, 219);
-    Sleep(150);
-    Beep(370, 200);
+    cor(247);
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+    Sleep(150);
+    Beep(370, 200);
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+    Sleep(150);
+    Beep(370, 200);
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+    Sleep(150);
+    Beep(370, 200);
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+    Sleep(150);
+    Beep(370, 200);
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+    Sleep(150);
+    Beep(370, 200);
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+    Sleep(150);
+    Beep(370, 200);
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+    Sleep(150);
+    Beep(370, 200);
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+    Sleep(150);
+    Beep(370, 200);
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
     Sleep(150);
     Beep(370, 150);
 
+    cor(247);
     tijolos();
-    
+
+    cor(7);
+
     Beep(370, 150);
     Beep(400, 150);
     Beep(440, 150);
@@ -207,7 +230,7 @@ login(){                                                                        
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
     printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c I N I C I A R   S E S S A O %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c       INICIAR SESSAO        %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -285,9 +308,13 @@ login(){                                                                        
     cor(7);
 
     gotoxy(2,35);
-    printf("");
-    printf("                     [ESC] VOLTAR     [ENTER] CONFIRMAR\n\n\n\n\n\n");
-    
+    printf("                     ");
+    cor(4);
+    printf("[ESC] VOLTAR");
+    cor(9);
+    printf("     [ENTER] CONFIRMAR\n\n\n\n\n\n");
+    cor(7);
+
     do
     {
         opcao = getch();
@@ -386,8 +413,12 @@ cadastro(){                                                                     
     }
 
     gotoxy(2,38);
-    printf("");
-    printf("                     [ESC] VOLTAR     [ENTER] CONFIRMAR\n\n\n");    
+    printf("                     ");
+    cor(4);
+    printf("[ESC] VOLTAR");
+    cor(9);
+    printf("     [ENTER] CONFIRMAR\n\n\n");
+    cor(7);    
     do
     {
         opcao = getch();
@@ -465,160 +496,6 @@ cadastroSucesso(){
     } while (opcao != 0);
 }
 
-configuracoes(){                                                                                    // CONFIGURAÇÕES
-
-    logo();
-
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
-    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c  C O N F I G U R A C O E S  %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                              [1] COR DA TELA                               %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-
-    tijolos();
-
-    do{
-        opcao = getch();
-        if (opcao == 27){
-            Beep(370, 200);
-            system("cls");
-            selecao();
-            opcao = 0;
-        } else if (opcao == 49){
-            Beep(370, 200);
-            system("cls");
-            cores();
-            opcao = 0;
-        }
-    } while (opcao != 0);
-    
-}
-
-cores(){
-
-    logo();
-
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
-    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c     ALTERAR COR DA TELA     %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                  OPCOES:                                   %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       ", 219, 219);
-    printf("[1] AMARELO");
-    printf("         [6] CINZA                        ");           
-    printf("%c%c\n", 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       ", 219, 219);
-    printf("[2] AZUL");
-    printf("            [7] LILAS                        ");
-    printf("%c%c\n", 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    
-    printf("%c%c                       [3] AZUL CLARO      [8] SALMAO                       %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       [4] BRANCO          [9] VERDE                        %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       [5] CIANO           [0] VERMELHO                     %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-
-    tijolos();
-
-    do{
-        opcao = getch();
-        if (opcao == 27){
-            Beep(370, 200);
-            system("cls");
-            configuracoes();
-        } else if (opcao == 49){
-            system("color 06");     // 1- AMARELO
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        } else if (opcao == 50){
-            system("color 01");     // 2- AZUL
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        }  else if (opcao == 51){
-            system("color 09");     // 3- AZUL CLARO
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        } else if (opcao == 52){
-            system("color 0F");     // 4- BRANCO
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        } else if (opcao == 53){
-            system("color 0B");     // 5- CIANO
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        } else if (opcao == 54){
-            system("color 07");     // 6- CINZA (PADRAO)
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        } else if (opcao == 55){
-            system("color 0D");     // 7- LILAS
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        } else if (opcao == 56){
-            system("color 0C");     // 8- SALMAO
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        } else if (opcao == 57){
-            system("color 0A");     // 9- VERDE
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        } else if (opcao == 48){
-            system("color 04");     // 0- VERMELHO
-            Beep(470, 200);
-            Beep(470, 200);
-            Beep(570, 400);
-        }
-    } while (opcao != 27);
-}
-
 selecao(){
                                                                       
     logo();
@@ -642,7 +519,7 @@ selecao(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                    [3] JOGOS SALVOS   [4] CONFIGURACOES                    %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                              [3] JOGOS SALVOS                              %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -668,17 +545,12 @@ selecao(){
         } else if (opcao == 50){
             Beep(370, 200);
             system("cls");
-            selecaoRanking();
+            rankingPontuacaoDif();
             opcao = 0;
         } else if (opcao == 51){
             Beep(370, 200);
             system("cls");
             jogosSalvos();
-            opcao = 0;
-        } else if (opcao == 52){
-            Beep(370, 200);
-            system("cls");
-            configuracoes();
             opcao = 0;
         } else if (opcao == 27){
             Beep(370, 200);
@@ -1703,63 +1575,6 @@ tutorial(int dificuldade){
     } while (opcao != 27);
 }
 
-selecaoRanking(){
-
-    logo();
-
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
-    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c        R A N K I N G        %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [1] PONTOS  [2] VELOCIDADE                         %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-
-    tijolos();
-
-    do
-    {
-        opcao = getch();
-        if (opcao == 27){
-            Beep(370, 200);
-            system("cls");
-            selecao();
-            opcao = 0;
-        } else if ((opcao == 49)){
-            Beep(370, 200);
-            system("cls");
-            rankingPontuacaoDif();
-            opcao = 0;
-        } else if ((opcao == 50)){
-            Beep(370, 200);
-            system("cls");
-            rankingVelDif();
-            opcao = 0;
-        }
-    } while (opcao != 0);
-}
-
 rankingPontuacaoDif(){
 
     logo();
@@ -1769,7 +1584,7 @@ rankingPontuacaoDif(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
     printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c      RANKING DE PONTOS      %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        R A N K I N G        %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -1789,7 +1604,11 @@ rankingPontuacaoDif(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c", 219, 219);
+    cor(4);
+    printf("                                [ESC] VOLTAR                                ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
@@ -1801,18 +1620,33 @@ rankingPontuacaoDif(){
         if (opcao == 27){
             Beep(370, 200);
             system("cls");
-            selecaoRanking();
+            selecao();
             opcao = 0;
-        } else if ((opcao > 48) && (opcao < 53)){
+        } else if ( (opcao == 49) ) {
             Beep(370, 200);
             system("cls");
-            rankingPontuacao();
+            rankingPontuacao(1);
+            opcao = 0;
+        } else if ( (opcao == 50) ) {
+            Beep(370, 200);
+            system("cls");
+            rankingPontuacao(2);
+            opcao = 0;
+        } else if ( (opcao == 51) ) {
+            Beep(370, 200);
+            system("cls");
+            rankingPontuacao(3);
+            opcao = 0;
+        } else if ( (opcao == 52) ) {
+            Beep(370, 200);
+            system("cls");
+            rankingPontuacao(4);
             opcao = 0;
         }
     } while (opcao != 0);
 }
 
-rankingPontuacao(){
+rankingPontuacao(int dificuldade){
 
     logo();
 
@@ -1820,8 +1654,12 @@ rankingPontuacao(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
     printf("%c%c                       %c      RANKING DE PONTOS      %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c    DIFICULDADE: XXXXXXXX    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c        [ESC] VOLTAR         %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c    DIFICULDADE:             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        ", 219, 219, 179);
+    cor(4);
+    printf("[ESC] VOLTAR");
+    cor(7);
+    printf("         %c                      %c%c\n", 179, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -1849,112 +1687,32 @@ rankingPontuacao(){
 
     tijolos();
 
+    gotoxy(43,16);
+    if (dificuldade == 1) {
+        cor(3);
+        printf("FACIL");
+        cor(7);
+    } else if (dificuldade == 2) {
+        cor(6);
+        printf("MEDIA");
+        cor(7);
+    } else if (dificuldade == 3) {
+        cor(12);
+        printf("DIFICIL");
+        cor(7);
+    } else if (dificuldade == 4) {
+        cor(13);
+        printf("HARDCORE");
+        cor(7);
+    }
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
     do{
         opcao = getch();
         Beep(370, 200);
         if (opcao == 27){
             system("cls");
             rankingPontuacaoDif();
-        }
-    } while (opcao != 27);
-    
-}
-
-rankingVelDif(){
-
-    logo();
-
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
-    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c    RANKING DE VELOCIDADE    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [1] FACIL     [2] MEDIA                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [3] DIFICIL   [4] HARDCORE                         %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-
-    tijolos();
-
-    do
-    {
-        opcao = getch();
-        if (opcao == 27){
-            Beep(370, 200);
-            system("cls");
-            selecaoRanking();
-            opcao = 0;
-        } else if ((opcao > 48) && (opcao < 53)){
-            Beep(370, 200);
-            system("cls");
-            rankingVel();
-            opcao = 0;
-        }
-    } while (opcao != 0);
-}
-
-rankingVel(){
-
-    logo();
-
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
-    printf("%c%c                       %c    RANKING DE VELOCIDADE    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c    DIFICULDADE: XXXXXXXX    %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c        [ESC] VOLTAR         %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-
-    tijolos();
-
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c      COLOCACAO      %c%c         JOGADOR        %c%c         VELOCIDADE        %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     1%c  LUGAR       %c%c        Exemplo01       %c%c     [ 50 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     2%c  LUGAR       %c%c        Exemplo02       %c%c     [ 58 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     3%c  LUGAR       %c%c      TerceiroLugar     %c%c     [ 63 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     4%c  LUGAR       %c%c       QuartoLugar      %c%c     [ 71 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     5%c  LUGAR       %c%c       QuintoLugar      %c%c     [ 73 MOVIMENTOS ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     24%c LUGAR       %c%c     VigesimoQuarto     %c%c     [ 109 MOVIMENTOS ]    %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    
-    tijolos();
-
-    do{
-        opcao = getch();
-        if (opcao == 27){
-            Beep(370, 200);
-            system("cls");
-            rankingVelDif();
         }
     } while (opcao != 27);
     
@@ -1989,7 +1747,11 @@ jogosSalvos(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                         [5] **********************                         %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                [ESC] VOLTAR                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c", 219, 219);
+    cor(4);
+    printf("                                [ESC] VOLTAR                                ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
@@ -2009,25 +1771,153 @@ jogosSalvos(){
 }
 
 logo(){
+    cor(247);
     tijolos();
-    
-    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c****_****%c      .d8888b.    .d8888b.       d8888    .d8888b.      %c****_****%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c***/ \\***%c     d88P  Y88b  d88P  Y88b     d8P888   d88P  Y88b     %c***/ \\***%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c**( 2 )**%c            888  888    888    d8P 888   Y88b. d88P     %c**( 4 )**%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c***\\_/***%c          .d88P  888    888   d8P  888    'Y88888'      %c***\\_/***%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c****_****%c      .od888P'   888    888  d88   888   .d8P''Y8b.     %c****_****%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c***/ \\***%c     d88P'       888    888  8888888888  888    888     %c***/ \\***%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c**( 0 )**%c     888'        Y88b  d88P        888   Y88b  d88P     %c**( 8 )**%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c***\\_/***%c     888888888    'Y8888P'         888    'Y8888P'      %c***\\_/***%c%c\n", 219, 219, 219, 219, 219, 219);
-    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
 
+    cor(247);    
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c****", 219, 219);
+    cor(240);
+    printf("_");
+    cor(247);
+    printf("****%c", 219);
+    cor(240);
+    printf("      .d8888b.    .d8888b.       d8888    .d8888b.      ");
+    cor(247);
+    printf("%c****", 219);
+    cor(240);
+    printf("_");
+    cor(247);
+    printf("****%c%c\n", 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c***", 219,219);
+    cor(240);
+    printf("/ \\");
+    cor(247);
+    printf("***%c", 219);
+    cor(240);
+    printf("     d88P  Y88b  d88P  Y88b     d8P888   d88P  Y88b     ");
+    cor(247);
+    printf("%c***", 219);
+    cor(240);
+    printf("/ \\");
+    cor(247);
+    printf("***%c%c\n", 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c**", 219, 219);
+    cor(240);
+    printf("( 2 )");
+    cor(247);
+    printf("**%c", 219);
+    cor(240);
+    printf("            888  888    888    d8P 888   Y88b. d88P     ");
+    cor(247);
+    printf("%c**", 219);
+    cor(240);
+    printf("( 4 )");
+    cor(247);
+    printf("**%c%c\n", 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c***", 219, 219);
+    cor(240);
+    printf("\\_/");
+    cor(247);
+    printf("***%c", 219);
+    cor(240);
+    printf("          .d88P  888    888   d8P  888    'Y88888'      ");
+    cor(247);
+    printf("%c***", 219);
+    cor(240);
+    printf("\\_/");
+    cor(247);
+    printf("***%c%c\n", 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c****", 219, 219);
+    cor(240);
+    printf("_");
+    cor(247);
+    printf("****%c", 219);
+    cor(240);
+    printf("      .od888P'   888    888  d88   888   .d8P''Y8b.     ");
+    cor(247);
+    printf("%c****", 219);
+    cor(240);
+    printf("_");
+    cor(247);
+    printf("****%c%c\n", 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c***", 219, 219);
+    cor(240);
+    printf("/ \\");
+    cor(247);
+    printf("***%c", 219);
+    cor(240);
+    printf("     d88P'       888    888  8888888888  888    888     ");
+    cor(247);
+    printf("%c***", 219);
+    cor(240);
+    printf("/ \\");
+    cor(247);
+    printf("***%c%c\n", 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c**", 219, 219);
+    cor(240);
+    printf("( 0 )");
+    cor(247);
+    printf("**%c", 219);
+    cor(240);
+    printf("     888'        Y88b  d88P        888   Y88b  d88P     ");
+    cor(247);
+    printf("%c**", 219);
+    cor(240);
+    printf("( 8 )");
+    cor(247);
+    printf("**%c%c\n", 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c***"), 219, 219;
+    cor(240);
+    printf("\\_/");
+    cor(247);
+    printf("***%c", 219);
+    cor(240);
+    printf("     888888888    'Y8888P'         888    'Y8888P'      ");
+    cor(247);
+    printf("%c***", 219);
+    cor(240);
+    printf("\\_/");
+    cor(247);
+    printf("***%c%c\n", 219, 219);
+    cor(7);
+
+    cor(247);
+    printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
+    cor(7);
+
+    cor(247);
     tijolos();
+    cor(7);
 }
 
 tijolos(){
-	int tijolo;
-    for (tijolo = 0; tijolo != 80; tijolo ++){
+    for (int tijolo = 0; tijolo != 80; tijolo++){
         printf("%c", 219);
     }
     printf("\n");
@@ -2854,14 +2744,14 @@ perdeu(int tam){
             }
         }
     }
-    if ( vazios != 0){
+    if ( vazios != 0 ) {
         return 0;
-    } else if (vazios == 0){
-        for(int x = 0; x < tam; x++){
-            for (int y = 0; y < tam; y++){
-                if (matrizJogo[x][y] == matrizJogo[x][y - 1] || matrizJogo[x][y] == matrizJogo[x][y + 1]){
+    } else if (vazios == 0) {
+        for(int x = 0; x < tam; x++) {
+            for (int y = 0; y < tam; y++) {
+                if (matrizJogo[x][y] == matrizJogo[x][y - 1] || matrizJogo[x][y] == matrizJogo[x][y + 1]) {
                     return 0;
-                } else if (matrizJogo[x][y] == matrizJogo[x - 1][y] || matrizJogo[x][y] == matrizJogo[x + 1][y]){
+                } else if (matrizJogo[x][y] == matrizJogo[x - 1][y] || matrizJogo[x][y] == matrizJogo[x + 1][y]) {
                     return 0;
                 }
             }
