@@ -64,6 +64,7 @@ int checarVitoriaMedia();
 int checarVitoriaDificil();
 int checarVitoriaFacil();
 int checarVitoriaHardcore();
+int perdeu();
 
 // STRUCTS:
 typedef struct{
@@ -937,8 +938,8 @@ jogar5x5(){
     int tam = TAM5;
 	pontos = jogada = 0;
 
-	for (x = 0; x < tam; x++){
-        for (y = 0; y < tam; y++){
+	for (x = 0; x < TAM5; x++){
+        for (y = 0; y < TAM5; y++){
             matrizJogo[x][y] = 0;
 			matrizJogoChecar[x][y] = 0;
         }
@@ -1037,6 +1038,28 @@ jogar5x5(){
                 }
             } while(opcao != 1);
         }
+        if (perdeu(TAM5) == 1) {
+            cor(4);
+            gotoxy(2,13);
+			printf("                                VOCE PERDEU!                                ");
+            gotoxy(2,14);
+            printf("                  [R] REINICIAR JOGO  [ESC] MENU PRINCIPAL                  ");
+            cor(7);
+            do{
+                opcao = getch();
+                if ( (opcao == 82) || (opcao == 114) ){
+                    Beep(370, 200);
+                    system("cls");
+                    jogar5x5();
+                    opcao = 1;
+                } else if ( (opcao == ESC) ){
+                    Beep(370, 200);
+                    system("cls");
+                    selecao();
+                    opcao = 1;
+                }
+            } while (opcao != 1);
+        }
 
         opcao = getch();
 
@@ -1097,8 +1120,8 @@ jogar4x4Media(){
     int tam = TAM4;
     pontos = jogada = 0;
 
-    for (x = 0; x < tam; x++){
-        for (y = 0; y < tam; y++){
+    for (x = 0; x < TAM5; x++){
+        for (y = 0; y < TAM5; y++){
             matrizJogo[x][y] = 0;
 			matrizJogoChecar[x][y] = 0;
         }
@@ -1196,6 +1219,28 @@ jogar4x4Media(){
                 }
             } while(opcao != 1);
         }
+        if (perdeu(TAM4) == 1) {
+            cor(4);
+            gotoxy(2,13);
+			printf("                                VOCE PERDEU!                                ");
+            gotoxy(2,14);
+            printf("                  [R] REINICIAR JOGO  [ESC] MENU PRINCIPAL                  ");
+            cor(7);
+            do{
+                opcao = getch();
+                if ( (opcao == 82) || (opcao == 114) ){
+                    Beep(370, 200);
+                    system("cls");
+                    jogar4x4Media();
+                    opcao = 1;
+                } else if ( (opcao == ESC) ){
+                    Beep(370, 200);
+                    system("cls");
+                    selecao();
+                    opcao = 1;
+                }
+            } while (opcao != 1);
+        }
 
         opcao = getch();
 
@@ -1253,8 +1298,8 @@ jogar4x4Dificil(){
     int tam = TAM4;
     pontos = jogada = 0;
 
-    for (x = 0; x < tam; x++){
-        for (y = 0; y < tam; y++){
+    for (x = 0; x < TAM5; x++){
+        for (y = 0; y < TAM5; y++){
             matrizJogo[x][y] = 0;
 			matrizJogoChecar[x][y] = 0;
         }
@@ -1352,8 +1397,28 @@ jogar4x4Dificil(){
             } while(opcao != 1);
             
         }
-
-        
+        if (perdeu(TAM4) == 1) {
+            cor(4);
+            gotoxy(2,13);
+			printf("                                VOCE PERDEU!                                ");
+            gotoxy(2,14);
+            printf("                  [R] REINICIAR JOGO  [ESC] MENU PRINCIPAL                  ");
+            cor(7);
+            do{
+                opcao = getch();
+                if ( (opcao == 82) || (opcao == 114) ){
+                    Beep(370, 200);
+                    system("cls");
+                    jogar4x4Dificil();
+                    opcao = 1;
+                } else if ( (opcao == ESC) ){
+                    Beep(370, 200);
+                    system("cls");
+                    selecao();
+                    opcao = 1;
+                }
+            } while (opcao != 1);
+        }
 
         opcao = getch();
 
@@ -1411,8 +1476,8 @@ jogar3x3(){
     int tam = TAM3;
     pontos = jogada = 0;
 
-    for (x = 0; x < tam; x++){
-        for (y = 0; y < tam; y++){
+    for (x = 0; x < TAM5; x++){
+        for (y = 0; y < TAM5; y++){
             matrizJogo[x][y] = 0;
 			matrizJogoChecar[x][y] = 0;
         }
@@ -1505,6 +1570,29 @@ jogar3x3(){
                     opcao = continuar = 1;
                 }
             } while(opcao != 1);
+
+        }
+		if (perdeu(TAM3) == 1) {
+            cor(4);
+            gotoxy(2,13);
+			printf("                                VOCE PERDEU!                                ");
+            gotoxy(2,14);
+            printf("                  [R] REINICIAR JOGO  [ESC] MENU PRINCIPAL                  ");
+            cor(7);
+            do{
+                opcao = getch();
+                if ( (opcao == 82) || (opcao == 114) ){
+                    Beep(370, 200);
+                    system("cls");
+                    jogar3x3();
+                    opcao = 1;
+                } else if ( (opcao == ESC) ){
+                    Beep(370, 200);
+                    system("cls");
+                    selecao();
+                    opcao = 1;
+                }
+            } while (opcao != 1);
         }
 
         opcao = getch();
@@ -2353,7 +2441,6 @@ movBaixo4x4(){
 
                     pontos = pontos + (matrizJogo[x][y]*2);
                     matrizJogo[x][y] = matrizJogo[x][y]*2;
-
                     matrizJogo[x - 1][y] = 0;
 
                 } else if ( (matrizJogo[x - 1][y] == 0) && (matrizJogo[x - 2][y] == matrizJogo[x][y]) && (x > 1) ) {
@@ -2714,9 +2801,6 @@ checarVitoriaFacil(){
 	for ((x = 0); (x < TAM5); x++) {
 		for ((y = 0); (y < TAM5); y++) {
 			if (matrizJogo[x][y] == 2048) {
-				// TELA DE VITORIA COM A COR
-				// GETCH
-				// RETORNA COR ANTERIOR
 				return 0;
 			}
 		}
@@ -2758,6 +2842,32 @@ checarVitoriaHardcore(){
 		}
 	}
 	return 1;
+}
+
+perdeu(int tam){
+    int vazios = 0;
+    vazios = tam * tam;
+    for(int x = 0; x < tam; x++){
+        for (int y = 0; y < tam; y++){
+            if (matrizJogo[x][y] != 0){
+                vazios--;
+            }
+        }
+    }
+    if ( vazios != 0){
+        return 0;
+    } else if (vazios == 0){
+        for(int x = 0; x < tam; x++){
+            for (int y = 0; y < tam; y++){
+                if (matrizJogo[x][y] == matrizJogo[x][y - 1] || matrizJogo[x][y] == matrizJogo[x][y + 1]){
+                    return 0;
+                } else if (matrizJogo[x][y] == matrizJogo[x - 1][y] || matrizJogo[x][y] == matrizJogo[x + 1][y]){
+                    return 0;
+                }
+            }
+        }
+        return 1;
+    }
 }
 
 cor(int cor){

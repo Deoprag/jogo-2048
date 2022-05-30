@@ -16,6 +16,7 @@ typedef struct{
     char apelido[20];
     char senha[20];
     char celular[15];
+    int numCadastro;
     int ativo;
 } Cadastro;
 Cadastro usuario[MAX_CADASTROS];
@@ -82,14 +83,14 @@ cadastrar(){
     char celular[12];
     char c;
 
-    FILE *arq;
+    FILE *cadastros;
 
     printf("-----------------------------------------\n");
     printf("--------------- CADASTRAR ---------------\n");
     printf("-----------------------------------------\n");
 
-    arq = fopen("Cadastros.txt", "ab");
-    if (arq == NULL){
+    cadastros = fopen("Cadastros.txt", "ab");
+    if (cadastros == NULL){
         printf("Nao foi possivel abrir o arquivo.");
     } else {
         do{
@@ -114,6 +115,7 @@ cadastrar(){
                 }
             } while (c != 13);
             apelido[i] = '\0';
+            // VERIFICAR SE JA EXISTE
             // ------------------------------------------------------------ SENHA
             printf("\nDigite sua senha: ");
             i = 0;
@@ -178,7 +180,7 @@ cadastrar(){
                     usuario[cads].ativo = 1;
                 }
             }
-            fwrite(&usuario[cads], sizeof(Cadastro), 1, arq);
+            fwrite(&usuario[cads], sizeof(Cadastro), 1, cadastros);
             cads++;
 
             printf("\n1 - Continuar | 0 - Sair\n");
@@ -186,7 +188,7 @@ cadastrar(){
             op = getch();
 
         } while (op == 49);
-        fclose(arq);
+        fclose(cadastros);
     }   
     
     system("cls");
@@ -199,16 +201,22 @@ listar(){
     printf("----------- DADOS CADASTRAIS ------------\n");
     printf("-----------------------------------------\n");
 
-    for (int cads = 0; cads < MAX_CADASTROS; cads++){
-        if (usuario[cads].ativo == 1){
-            printf("\n---------- CADASTRO Num %i (%i) -----------\n", cads + 1, cads);
-            printf("\tApelido:  %s\n", usuario[cads].apelido);
-            printf("\tSenha:    %s\n", usuario[cads].senha);
-            printf("\tCelular:  %s\n", usuario[cads].celular);
+    FILE *cadastros;
+    Cadastro usuario;
+
+    cadastros = fopen("Cadastros.TXT", "rb");
+    if (cadastros == NULL){
+        printf("|  Não foi possivel listar os usuarios  |\n");
+    } else {
+        printf("-----------------------------------------\n");
+        while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
+            printf("Apelido: %s\n", usuario.apelido);
+            printf("Senha:   %s\n", usuario.senha);
+            printf("Celular: %s", usuario.celular);
+            printf("-----------------------------------------\n");
         }
     }
-    printf("-----------------------------------------\n");
-
+    fclose(cadastros);
     getch();
     system("cls");
     main();
