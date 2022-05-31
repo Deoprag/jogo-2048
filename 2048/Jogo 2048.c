@@ -48,6 +48,7 @@ void tutorial();
 void rankingPontuacaoDif();
 void rankingPontuacao();
 void jogosSalvos();
+void salvarJogo();
 void movDireita5x5();
 void movEsquerda5x5();
 void movBaixo5x5();
@@ -76,68 +77,51 @@ int main (){
 
     SetConsoleTitle("2048 :: Pedro Rocha");
 
-    cor(247);
-
     tijolos();
-    cor(7);
     Sleep(300);
     Beep(370, 200);
 
-    cor(247);
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 200);
-    cor(247);
+
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
     Sleep(150);
     Beep(370, 150);
 
-    cor(247);
     tijolos();
-
-    cor(7);
 
     Beep(370, 150);
     Beep(400, 150);
@@ -967,7 +951,7 @@ jogar5x5(){
 
             Beep(370, 200);
             system("cls");
-            jogosSalvos();
+            salvarJogo(1);
 
         } else if ( (opcao == 82) || (opcao == 114) ) {     // R
 
@@ -1146,8 +1130,7 @@ jogar4x4Media(){
             
             Beep(370, 200);
             system("cls");
-            jogosSalvos();
-
+            salvarJogo(2);
         } else if ( (opcao == 82) || (opcao == 114) ) {     // R
 
             Beep(370, 200);
@@ -1324,7 +1307,7 @@ jogar4x4Dificil(){
 
             Beep(370, 200);
             system("cls");
-            jogosSalvos();
+            salvarJogo(3);
 
         } else if ( (opcao == 82) || (opcao == 114) ) {     // R
 
@@ -1499,7 +1482,7 @@ jogar3x3(){
 
             Beep(370, 200);
             system("cls");
-            jogosSalvos();
+            salvarJogo(4);
 
         } else if ( (opcao == 82) || (opcao == 114) ) {     // R
 
@@ -1737,15 +1720,15 @@ jogosSalvos(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [1] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [1]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [2] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [2]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [3] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [3]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [4] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [4]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [5] **********************                         %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [5]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c", 219, 219);
     cor(4);
@@ -1770,150 +1753,194 @@ jogosSalvos(){
 
 }
 
+salvarJogo(int dificuldade){
+
+logo();
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c         SALVAR JOGO         %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                   ESCOLHA UMA POSICAO PARA SALVAR O JOGO:                  %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [1]                                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [2]                                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [3]                                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [4]                                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         [5]                                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c", 219, 219);
+    cor(4);
+    printf("                                [ESC] VOLTAR                                ");
+    cor(7);
+    printf("%c%c\n", 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+
+    tijolos();
+
+    do
+    {
+        opcao = getch();
+        if (opcao == 27){
+            if (dificuldade == 1) {
+                Beep(370, 200);
+                system("cls");
+                jogar5x5();
+                opcao = 0;
+            } else if (dificuldade == 2) {
+                Beep(370, 200);
+                system("cls");
+                jogar4x4Media();
+                opcao = 0;
+            } else if (dificuldade == 3) {
+                Beep(370, 200);
+                system("cls");
+                jogar4x4Dificil();
+                opcao = 0;
+            } else if (dificuldade == 3) {
+                Beep(370, 200);
+                system("cls");
+                jogar3x3();
+                opcao = 0;
+            }
+
+        }
+    } while (opcao != 0);
+
+}
+
 logo(){
-    cor(247);
+    cor(7); 
     tijolos();
-    cor(7);
-
-    cor(247);    
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
-
-    cor(247);
     printf("%c%c****", 219, 219);
-    cor(240);
+    cor(14);
     printf("_");
-    cor(247);
+    cor(7);
     printf("****%c", 219);
-    cor(240);
+    cor(11);
     printf("      .d8888b.    .d8888b.       d8888    .d8888b.      ");
-    cor(247);
-    printf("%c****", 219);
-    cor(240);
-    printf("_");
-    cor(247);
-    printf("****%c%c\n", 219, 219);
     cor(7);
+    printf("%c****", 219);
+    cor(14);
+    printf("_");
+    cor(7);
+    printf("****%c%c\n", 219, 219);
 
-    cor(247);
     printf("%c%c***", 219,219);
-    cor(240);
+    cor(14);
     printf("/ \\");
-    cor(247);
+    cor(7);
     printf("***%c", 219);
-    cor(240);
+    cor(11);
     printf("     d88P  Y88b  d88P  Y88b     d8P888   d88P  Y88b     ");
-    cor(247);
-    printf("%c***", 219);
-    cor(240);
-    printf("/ \\");
-    cor(247);
-    printf("***%c%c\n", 219, 219);
     cor(7);
+    printf("%c***", 219);
+    cor(14);
+    printf("/ \\");
+    cor(7);
+    printf("***%c%c\n", 219, 219);
 
-    cor(247);
     printf("%c%c**", 219, 219);
-    cor(240);
+    cor(14);
     printf("( 2 )");
-    cor(247);
+    cor(7);
     printf("**%c", 219);
-    cor(240);
+    cor(11);
     printf("            888  888    888    d8P 888   Y88b. d88P     ");
-    cor(247);
+    cor(7);
     printf("%c**", 219);
-    cor(240);
+    cor(14);
     printf("( 4 )");
-    cor(247);
-    printf("**%c%c\n", 219, 219);
     cor(7);
+    printf("**%c%c\n", 219, 219);
 
-    cor(247);
     printf("%c%c***", 219, 219);
-    cor(240);
+    cor(14);
     printf("\\_/");
-    cor(247);
+    cor(7);
     printf("***%c", 219);
-    cor(240);
+    cor(11);
     printf("          .d88P  888    888   d8P  888    'Y88888'      ");
-    cor(247);
-    printf("%c***", 219);
-    cor(240);
-    printf("\\_/");
-    cor(247);
-    printf("***%c%c\n", 219, 219);
     cor(7);
+    printf("%c***", 219);
+    cor(14);
+    printf("\\_/");
+    cor(7);
+    printf("***%c%c\n", 219, 219);
 
-    cor(247);
     printf("%c%c****", 219, 219);
-    cor(240);
+    cor(14);
     printf("_");
-    cor(247);
+    cor(7);
     printf("****%c", 219);
-    cor(240);
+    cor(11);
     printf("      .od888P'   888    888  d88   888   .d8P''Y8b.     ");
-    cor(247);
+    cor(7);
     printf("%c****", 219);
-    cor(240);
+    cor(14);
     printf("_");
-    cor(247);
+    cor(7);
     printf("****%c%c\n", 219, 219);
-    cor(7);
 
-    cor(247);
     printf("%c%c***", 219, 219);
-    cor(240);
+    cor(14);
     printf("/ \\");
-    cor(247);
+    cor(7);
     printf("***%c", 219);
-    cor(240);
+    cor(11);
     printf("     d88P'       888    888  8888888888  888    888     ");
-    cor(247);
+    cor(7);
     printf("%c***", 219);
-    cor(240);
+    cor(14);
     printf("/ \\");
-    cor(247);
-    printf("***%c%c\n", 219, 219);
     cor(7);
+    printf("***%c%c\n", 219, 219);
 
-    cor(247);
     printf("%c%c**", 219, 219);
-    cor(240);
+    cor(14);
     printf("( 0 )");
-    cor(247);
+    cor(7);
     printf("**%c", 219);
-    cor(240);
+    cor(11);
     printf("     888'        Y88b  d88P        888   Y88b  d88P     ");
-    cor(247);
+    cor(7);
     printf("%c**", 219);
-    cor(240);
+    cor(14);
     printf("( 8 )");
-    cor(247);
+    cor(7);
     printf("**%c%c\n", 219, 219);
-    cor(7);
 
-    cor(247);
-    printf("%c%c***"), 219, 219;
-    cor(240);
+    printf("%c%c***", 219, 219);
+    cor(14);
     printf("\\_/");
-    cor(247);
+    cor(7);
     printf("***%c", 219);
-    cor(240);
+    cor(11);
     printf("     888888888    'Y8888P'         888    'Y8888P'      ");
-    cor(247);
+    cor(7);
     printf("%c***", 219);
-    cor(240);
+    cor(14);
     printf("\\_/");
-    cor(247);
+    cor(7);
     printf("***%c%c\n", 219, 219);
-    cor(7);
 
-    cor(247);
     printf("%c%c*********%c                                                        %c*********%c%c\n", 219, 219, 219, 219, 219, 219);
-    cor(7);
-
-    cor(247);
     tijolos();
-    cor(7);
 }
 
 tijolos(){
