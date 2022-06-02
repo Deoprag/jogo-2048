@@ -225,8 +225,6 @@ cadastrar(){
                 }
             }
         } while (c != 13);
-        celular[i] = '\n';
-        i++;
         celular[i] = '\0';
 
         strcpy(usuario.apelido, apelido);
@@ -239,7 +237,7 @@ cadastrar(){
         printf("\n\n          Cadastro realizado com sucesso!\n        Aperte qualquer tecla para voltar\n");
         getch();
     fclose(cadastros);
-    }   
+    }
     system("cls");
     menu();
 }
@@ -261,7 +259,7 @@ listar(){
         while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
             printf("Apelido: %s\n", usuario.apelido);
             printf("Senha:   %s\n", usuario.senha);
-            printf("Celular: %s", usuario.celular);
+            printf("Celular: %s\n", usuario.celular);
             printf("-----------------------------------------\n");
         }
     }
@@ -389,14 +387,9 @@ remover(){
 
         remove("Cadastros.TXT");
         rename("Temp.TXT", "Cadastros.TXT");
-
-        printf("\nDeseja pesquisar outro usuario?\n[1] Sim\t[0] Nao\n");
 	} while (op == 49);
 
     getch();
     system("cls");
     menu();
 }
-
-
-

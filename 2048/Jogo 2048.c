@@ -297,6 +297,8 @@ login(){                                                                        
             cor(12);
             printf("USUARIO NAO ENCONTRADO!");
             cor(7);
+            Beep(1400, 200);
+            Beep(1600, 200);
         }
 
     } while (verificador != 1);
@@ -348,6 +350,8 @@ login(){                                                                        
             cor(12);
             printf("SENHA INCORRETA");
             cor(7);
+            Beep(1400, 200);
+            Beep(1600, 200);
         }
     } while (verificador != 1);
 
@@ -380,7 +384,14 @@ login(){                                                                        
 
 cadastro(){                                                                                         // CADASTRO
 	
-    char apelido[20], senha[20], celular[15];
+    char c, apelido[17], senha[17], celular[12];
+    int op, i, continuar = 0;
+
+    FILE *cadastros;
+    FILE *leitura;
+    Cadastro usuario;
+
+
 
     logo();
 
@@ -414,37 +425,179 @@ cadastro(){                                                                     
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
-
-    gotoxy(30,22);
-    fflush(stdin);
 	
-    //
+    //---------------------------------------------------------------------------------- APELIDO
+    do {
+        i = continuar = 0;
+        gotoxy(30,22);
+        printf("                  ");
+        gotoxy(30,22);
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 16){
 
+                    apelido[i] = c;
+                    i++;
+                    putch(c);
+                }
+            } else if (c == 8 && i){
+
+                apelido[i] = '\0';
+                i--;
+                printf("\b \b");
+            } else if (c == ESC) {
+                system("cls");
+                inicio();
+            }
+        } while (c != 13);
+        apelido[i] = '\0';
+        
+        leitura = fopen("Cadastros.txt", "rb");
+        while ( fread(&usuario, sizeof(Cadastro), 1, leitura) == 1 ){
+            if (strcmp(apelido, usuario.apelido) == 0){
+                gotoxy(20,24);
+                printf("                                                  ");
+                gotoxy(20,24);
+                cor(12);
+                printf("ESSE APELIDO JA FOI ESCOLHIDO POR OUTRO JOGADOR");
+                cor(7);
+                Beep(1400, 200);
+                Beep(1600, 200);
+                continuar = 1;
+            }
+        }
+        fclose(leitura);
+
+        if (i < 5){
+            gotoxy(20,24);
+            printf("                                                  ");
+            gotoxy(20,24);
+            cor(12);
+            printf("SEU APELIDO PRECISA TER NO MINIMO 5 CARACTERES");
+            cor(7);
+            Beep(1400, 200);
+            Beep(1600, 200);
+            continuar = 1;
+        }
+
+    } while (continuar == 1);
+
+    gotoxy(20,24);
+    printf("                                                  ");
     gotoxy(51,22);
     cor(10);
     printf("OK");
     cor(7);
+    //---------------------------------------------------------------------------------- SENHA
+    do{
+        i = continuar = 0;
+        gotoxy(30,26);
+        printf("                  ");
+        gotoxy(30,26);
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 16){
+                    senha[i] = c;
+                    i++;
+                    putch('*');
+                }
+            } else if (c == 8 && i){
+                senha[i] = '\0';
+                i--;
+                printf("\b \b");
+            } else if (c == ESC) {
+                system("cls");
+                inicio();
+            }
+        } while (c != 13);
+        senha[i] = '\0';
 
-    gotoxy(30,26);
-    fflush(stdin);
+        if (i < 8){
+            gotoxy(20,28);
+            cor(12);
+            printf("SUA SENHA PRECISA TER NO MINIMO 8 CARACTERES");
+            cor(7);
+            Beep(1400, 200);
+            Beep(1600, 200);
+            continuar = 1;
+        }
+    } while (continuar == 1);
 
-    //
-    
+    gotoxy(20,28);
+    printf("                                                  ");
     gotoxy(51,26);
     cor(10);
     printf("OK");
     cor(7);
+    //---------------------------------------------------------------------------------- CELULAR
+        do{
+            i = continuar = 0;
+            gotoxy(30,30);
+            printf("                  ");
+            gotoxy(30,30);
+            fflush(stdin);
+            do{
+                c = getch();
+                if( isdigit(c) != 0 ){
+                    if (i < 11){
+                        if (i == 0){
+                            printf("(");
+                        } else if (i == 2){
+                            printf(")");
+                        } else if (i == 7){
+                            printf("-");
+                        }
+                        celular[i] = c;
+                        i++;
+                        putch(c);
+                        
+                    }
+                } else if (c == 8 && i){
+                    if ( i == 1 || i == 2 || i == 7){
+                        printf("\b \b");
+                        celular[i] = '\0';
+                        i--;
+                        printf("\b \b");
+                    } else {
+                        celular[i] = '\0';
+                        i--;
+                        printf("\b \b");
+                    }
+                }
+            }while(c != 13);
+            celular[i] = '\0';
 
-    gotoxy(30,30);
-    fflush(stdin);
-
-    //
-
+            if (i < 10){
+                gotoxy(4,32);
+                cor(12);
+                printf("NUMERO DE CELULAR PRECISAR TER NO MINIMO 10 CARACTERES. [(xx)xxxxx-xxxx]");
+                cor(7);
+                Beep(1400, 200);
+                Beep(1600, 200);
+                continuar = 1;
+            }   
+        } while (continuar == 1);
+    gotoxy(4,32);
+    printf("                                                                          ");
     gotoxy(51,30);
     cor(10);
     printf("OK");
     cor(7);
-    
+    //---------------------------------------------------------------------------------- FIM INPUTS
+    cadastros = fopen("Cadastros.txt", "ab");
+
+    strcpy(usuario.apelido, apelido);
+    strcpy(usuario.senha, senha);
+    strcpy(usuario.celular, celular);
+    usuario.ativo = 1;
+
+    fwrite(&usuario, sizeof(Cadastro), 1, cadastros);
+
+    fclose(cadastros);
 
     gotoxy(2,38);
     printf("                     ");
