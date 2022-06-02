@@ -22,7 +22,6 @@ int inicial, opcao, jogada, pontos = 0;
 int x, y, i = 0;
 int matrizJogo[5][5];
 int matrizJogoChecar[5][5];
-char apelido[20], senha[20], confSenha[20], celular[15];
 
 // DECLARACAO DE PROCEDIMENTOS
 void gotoxy();
@@ -68,10 +67,11 @@ int perdeu();
 typedef struct{
     char apelido[20];
     char senha[20];
-    int celular[15];
+    char celular[15];
+    int numCadastro;
     int ativo;
 } Cadastro;
-Cadastro cadastros[MAX_CADASTROS];
+Cadastro usuario[10];
 // FUNCAO PRINCIPAL
 int main (){
 
@@ -207,6 +207,14 @@ inicio(){                                                                       
 
 login(){                                                                                            // LOGIN
 
+    char c, apelido[17], senha[17], celular[12];
+    int verificador = 0;
+    int i = 0;
+
+    FILE *leitura, *login;
+
+    Cadastro usuario;
+
     logo();
 
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -238,58 +246,110 @@ login(){                                                                        
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
-
     tijolos();
 
-    int tam = 0;
-    gotoxy(30,24);
-    fflush(stdin);
-    
-    do
-    {   
-        apelido[tam] = getch();          
-        if (apelido[tam] == 8 && tam > 0){       // APAGAR
-            printf("\b \b"); 
-            apelido[tam] = 0x00;
-            tam--;
-        } else if (apelido[tam] == 13){             // ENTER
-            apelido[tam] = 0x00;
-            break;
-        } else if (apelido[tam] != 8){
-            putchar(apelido[tam]);
-            tam++;              
+    do{
+        i = verificador = 0;
+
+        gotoxy(30,24);
+        printf("                  ");
+        gotoxy(30,24);
+
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ) {
+                if (i < 16){
+
+                    apelido[i] = c;
+                    i++;
+                    putch(c);
+                }
+            } else if (c == 8 && i) {
+
+                apelido[i] = '\0';
+                i--;
+                printf("\b \b");
+            } else if (c == ESC) {
+                system("cls");
+                inicio();
+                verificador = 1;
+            }
+        } while (c != 13);
+        apelido[i] = '\0';
+
+        leitura = fopen("Cadastros.TXT", "rb");
+        while (fread(&usuario, sizeof(Cadastro), 1, leitura) == 1 ){
+            if (strcmp(apelido, usuario.apelido) == 0){
+                gotoxy(51,24);
+                printf("                        ");
+                gotoxy(51,24);
+                cor(10);
+                printf("OK");
+                cor(7);
+                verificador = 1;
+            }
+        }
+        fclose(leitura);
+
+        if (verificador != 1){
+            gotoxy(51,24);
+            cor(12);
+            printf("USUARIO NAO ENCONTRADO!");
+            cor(7);
         }
 
-    } while(tam < 16);
+    } while (verificador != 1);
 
-    gotoxy(51,24);
-    cor(10);
-    printf("OK");
-    cor(7);
+    do{
+        i = verificador = 0;
 
-    tam = 0;
-    gotoxy(30,30);
-    fflush(stdin);
-    do
-    {   
-        senha[tam] = getch();          
-        if(senha[tam] == 8 && tam > 0){          // APAGAR
-            printf("\b \b"); 
-            senha[tam] = 0x00;
-            tam--;
-        } else if (senha[tam] == 13){               // ENTER
-            senha[tam] = 0x00;
-            break;
-        } else if (senha[tam] != 8){
-            putchar('*');
-            tam++;
+        gotoxy(30,30);
+        printf("                  ");
+        gotoxy(30,30);
+
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 16){
+                    senha[i] = c;
+                    i++;
+                    putch('*');
+                }
+            } else if (c == 8 && i){
+                senha[i] = '\0';
+                i--;
+                printf("\b \b");
+            } else if (c == ESC) {
+                system("cls");
+                inicio();
+                verificador = 1;
+            }
+        } while (c != 13);
+        senha[i] = '\0';
+
+        leitura = fopen("Cadastros.TXT", "rb");
+        while (fread(&usuario, sizeof(Cadastro), 1, leitura) == 1 ){
+            if ( (strcmp(apelido, usuario.apelido) == 0) && (strcmp(senha, usuario.senha) == 0) ){
+                gotoxy(51,30);
+                printf("                        ");
+                gotoxy(51,30);
+                cor(10);
+                printf("OK");
+                cor(7);
+                verificador = 1;
+            }
         }
-    } while(tam < 16);
-    
-    gotoxy(51,30);
-    cor(10);
-    printf("OK");
-    cor(7);
+        fclose(leitura);
+
+        if (verificador != 1){
+            gotoxy(51,30);
+            cor(12);
+            printf("SENHA INCORRETA");
+            cor(7);
+        }
+    } while (verificador != 1);
 
     gotoxy(2,35);
     printf("                     ");
@@ -320,9 +380,7 @@ login(){                                                                        
 
 cadastro(){                                                                                         // CADASTRO
 	
-    char apelido[20];
-    char senha[20];
-    int celular[15];
+    char apelido[20], senha[20], celular[15];
 
     logo();
 
@@ -360,7 +418,7 @@ cadastro(){                                                                     
     gotoxy(30,22);
     fflush(stdin);
 	
-    fgets(apelido, sizeof(apelido), stdin);
+    //
 
     gotoxy(51,22);
     cor(10);
@@ -370,7 +428,7 @@ cadastro(){                                                                     
     gotoxy(30,26);
     fflush(stdin);
 
-    fgets(senha, sizeof(senha), stdin);
+    //
     
     gotoxy(51,26);
     cor(10);
@@ -380,21 +438,13 @@ cadastro(){                                                                     
     gotoxy(30,30);
     fflush(stdin);
 
-    fgets(celular, sizeof(celular), stdin);
+    //
 
     gotoxy(51,30);
     cor(10);
     printf("OK");
     cor(7);
     
-    for (int i = 0; i < MAX_CADASTROS; i++){
-        if ( cadastros[i].ativo == 0 ) {
-            strcpy(cadastros[i].apelido, apelido);
-            strcpy(cadastros[i].senha, senha);
-            strcpy(cadastros[i].celular, celular);
-            break;
-        }
-    }
 
     gotoxy(2,38);
     printf("                     ");

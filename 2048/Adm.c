@@ -11,6 +11,8 @@ void cadastrar();
 void listar();
 void remover();
 void consultar();
+void menu();
+int senha();
 
 typedef struct{
     char apelido[20];
@@ -21,9 +23,17 @@ typedef struct{
 } Cadastro;
 Cadastro usuario[MAX_CADASTROS];
 
+int cads = 0;
+    
 int main(){
     SetConsoleTitle("ADMINISTRACAO DE CADASTROS");
+    if (senha() == 0){
+    	menu();
+    }
+}
 
+menu(){
+	system("cls");
     int opcao = 0;
 
     printf("-----------------------------------------\n");
@@ -36,7 +46,7 @@ int main(){
     printf("|                                       |\n");
     printf("|          2- Listar Cadastros          |\n");
     printf("|                                       |\n");
-    printf("|          3- Consultar Cadastro        |\n");
+    printf("|          3- Pesquisar Cadastro        |\n");
     printf("|                                       |\n");
     printf("|          4- Excluir Cadastro          |\n");
     printf("|                                       |\n");
@@ -65,7 +75,7 @@ int main(){
         case 52:
             system("cls");
             remover();
-            break;\
+            break;
         case 29:
             exit(1);
             break;
@@ -73,17 +83,53 @@ int main(){
 
             break;
     }
+}
 
+senha(){
+    int i, acesso = 0;
+    char c;
+    char chave[15] = "senhacadastros";
+    char senha[15];
+    do{
+	    printf("Digite a senha de acesso: ");
+	    i = 0;
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 14){
+                    senha[i] = c;
+                    i++;
+                    putch('*');
+                }
+            } else if (c == 8 && i){
+                senha[i] = '\0';
+                i--;
+                printf("\b \b");
+            }
+        } while (c != 13);
+
+        if (strcmp(senha, chave) == 0){
+            acesso = 1;
+            return 0;
+        } else {
+            printf("\n[ENTER] Senha incorreta. Tente novamente!");
+            getch();
+        }
+        system("cls");
+    } while(acesso != 1);
 }
 
 cadastrar(){
-    int op, i, cads = 0;
-    char apelido[17];
-    char senha[17];
-    char celular[12];
+    int op, i, continua = 0;
+    char apelido[16];
+    char senha[16];
+    char celular[11];
     char c;
 
     FILE *cadastros;
+    FILE *leitura;
+    Cadastro usuario;
 
     printf("-----------------------------------------\n");
     printf("--------------- CADASTRAR ---------------\n");
@@ -93,12 +139,13 @@ cadastrar(){
     if (cadastros == NULL){
         printf("Nao foi possivel abrir o arquivo.");
     } else {
-        do{
-                // ------------------------------------------------------------ APELIDO
-            printf("\nDigite seu apelido: ");
-            i = 0;
+        // ------------------------------------------------------------ APELIDO	
+        do {
+        	continua = 0;
+        	printf("\nDigite seu apelido: ");
+        	i = 0;
             fflush(stdin);
-            do{
+	        do{
                 c = getch();
                 if( isalnum(c) != 0 ){
                     if (i < 16){
@@ -115,84 +162,86 @@ cadastrar(){
                 }
             } while (c != 13);
             apelido[i] = '\0';
-            // VERIFICAR SE JA EXISTE
-            // ------------------------------------------------------------ SENHA
-            printf("\nDigite sua senha: ");
-            i = 0;
-            fflush(stdin);
-            do{
-                c = getch();
-                if( isalnum(c) != 0 ){
-                    if (i < 16){
-                        senha[i] = c;
-                        i++;
-                        putch('*');
+        	
+        	leitura = fopen("Cadastros.txt", "rb");
+            while ( fread(&usuario, sizeof(Cadastro), 1, leitura) == 1 ){
+	            if (strcmp(apelido, usuario.apelido) == 0){
+	            	printf("\nAlguem ja escolheu esse apelido. Escolha outro e tente novamente!");
+	            	continua = 1;
+				}
+	        }
+	        fclose(leitura);
+        } while (continua == 1);
+        // VERIFICAR SE JA EXISTE
+        // ------------------------------------------------------------ SENHA
+        printf("\nDigite sua senha: ");
+        i = 0;
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 16){
+                    senha[i] = c;
+                    i++;
+                    putch('*');
+                }
+            } else if (c == 8 && i){
+                senha[i] = '\0';
+                i--;
+                printf("\b \b");
+            }
+        } while (c != 13);
+        senha[i] = '\0';
+        // ------------------------------------------------------------ CELULAR
+        printf("\nDigite seu numero de celular \n(XX)XXXXX-XXXX: ");
+        i = 0;
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isdigit(c) != 0 ){
+                if (i < 11){
+                    if (i == 0){
+                        printf("(");
+                    } else if (i == 2){
+                        printf(")");
+                    } else if (i == 7){
+                        printf("-");
                     }
-                } else if (c == 8 && i){
-                    senha[i] = '\0';
+                    celular[i] = c;
+                    i++;
+                    putch(c);
+                    
+                }
+            } else if (c == 8 && i){
+                if ( i == 1 || i == 2 || i == 7){
+                    printf("\b \b");
+                    celular[i] = '\0';
+                    i--;
+                    printf("\b \b");
+                } else {
+                    celular[i] = '\0';
                     i--;
                     printf("\b \b");
                 }
-            } while (c != 13);
-            senha[i] = '\0';
-            // ------------------------------------------------------------ CELULAR
-            printf("\nDigite seu numero de celular \n(XX)XXXXX-XXXX: ");
-            i = 0;
-            fflush(stdin);
-            do{
-                c = getch();
-                if( isdigit(c) != 0 ){
-                    if (i < 11){
-                        if (i == 0){
-                            printf("(");
-                        } else if (i == 2){
-                            printf(")");
-                        } else if (i == 7){
-                            printf("-");
-                        }
-                        celular[i] = c;
-                        i++;
-                        putch(c);
-                        
-                    }
-                } else if (c == 8 && i){
-                    if ( i == 1 || i == 2 || i == 7){
-                        printf("\b \b");
-                        celular[i] = '\0';
-                        i--;
-                        printf("\b \b");
-                    } else {
-                        celular[i] = '\0';
-                        i--;
-                        printf("\b \b");
-                    }
-                }
-            } while (c != 13);
-            celular[i] = '\n';
-            i++;
-            celular[i] = '\0';
-
-            if(cads < MAX_CADASTROS){
-                if ( usuario[cads].ativo == 0 ) {
-                    strcpy(usuario[cads].apelido, apelido);
-                    strcpy(usuario[cads].senha, senha);
-                    strcpy(usuario[cads].celular, celular);
-                    usuario[cads].ativo = 1;
-                }
             }
-            fwrite(&usuario[cads], sizeof(Cadastro), 1, cadastros);
-            cads++;
+        } while (c != 13);
+        celular[i] = '\n';
+        i++;
+        celular[i] = '\0';
 
-            printf("\n1 - Continuar | 0 - Sair\n");
-            fflush(stdin);
-            op = getch();
+        strcpy(usuario.apelido, apelido);
+        strcpy(usuario.senha, senha);
+        strcpy(usuario.celular, celular);
+        usuario.ativo = 1;
 
-        } while (op == 49);
-        fclose(cadastros);
+        fwrite(&usuario, sizeof(Cadastro), 1, cadastros);
+
+        printf("\n\n          Cadastro realizado com sucesso!\n        Aperte qualquer tecla para voltar\n");
+        getch();
+    fclose(cadastros);
     }   
-    
     system("cls");
-    main();
+    menu();
 }
 
 listar(){
@@ -219,74 +268,30 @@ listar(){
     fclose(cadastros);
     getch();
     system("cls");
-    main();
-}
-
-remover(){
-    int i;
-    char remover[20];
-    int op = 0;
-
-    system("cls");
-    printf("-----------------------------------------\n");
-    printf("------------ EXCLUIR CADASTRO -----------\n");
-    printf("-----------------------------------------\n");
-
-    do{
-        int encontrado = 0;
-        printf("\nDigite o apelido do usuario a ser excluido: ");
-        scanf("%s", remover);
-        for (i = 0; i < MAX_CADASTROS; i++){
-            if(usuario[i].ativo == 1){
-                if( (strcmp(usuario[i].apelido, remover) == 0) ){
-                    printf("\n---------- USUARIO ENCONTRADO -----------\n");
-                    printf("\tApelido:  %s\n", usuario[i].apelido);
-                    printf("\tSenha:    %s\n", usuario[i].senha);
-                    printf("\tCelular:  %s\n", usuario[i].celular);
-                    printf("-----------------------------------------\n");
-                    printf("\n1 - Excluir Cadastro | 0 - Cancelar\n");
-
-                    op = getch();
-                    encontrado = 1;
-                    if (op == 49){
-                        usuario[i].ativo = 0;
-                        printf("\nUsuario com o apelido [%s] foi excluido com sucesso!", remover);
-                        break;
-                    } else if (op ==48) {
-                        printf("Usuario nao excluido!");
-                    } else {
-                        printf("Opcao invalida!");
-                    }
-                }
-            }
-        }
-        if (encontrado != 1){
-            printf("Usuario nao encontrado.\n");
-        }
-        printf("\n1 - Tentar Novamente | 0 - Sair\n");
-        op = getch();
-    } while(op == 49);
-
-    system("cls");
-    main();
+    menu();
 }
 
 consultar(){
-    int i;
-    char consulta[20];
-    int op = 0;
+	char consulta[16];
+    int op, i, encontrado = 0;
     char c;
+    
+    FILE *cadastros;
+    Cadastro usuario;
 
     system("cls");
     printf("-----------------------------------------\n");
     printf("----------- CONSULTAR CADASTRO ----------\n");
     printf("-----------------------------------------\n");
 
-    do{
-        int encontrado = 0;
-        printf("Escolha o metodo de pesquisa.\n[1] Apelido [2] Celular: ");
-        op = getch();
-        if (op == 49){
+	do{
+		cadastros = fopen("Cadastros.TXT", "rb");
+    	if (cadastros == NULL){
+        	printf("|  Não foi possivel listar os usuarios  |\n");
+		} else {
+    
+    		consulta[0] = '\0';
+			i = encontrado = 0;
             printf("\nDigite o apelido do usuario a ser consultado: ");
             i = 0;
             fflush(stdin);
@@ -294,7 +299,6 @@ consultar(){
                 c = getch();
                 if( isalnum(c) != 0 ){
                     if (i < 16){
-
                         consulta[i] = c;
                         i++;
                         putch(c);
@@ -306,74 +310,93 @@ consultar(){
                     printf("\b \b");
                 }
             } while (c != 13);
-            consulta[i] = '\0';
-            for (i = 0; i < MAX_CADASTROS; i++){
-                if(usuario[i].ativo == 1){
-                    if( (strcmp(usuario[i].apelido, consulta) == 0) ){
-                        printf("\n---------- USUARIO ENCONTRADO -----------\n");
-                        printf("\tApelido:  %s\n", usuario[i].apelido);
-                        printf("\tSenha:    %s\n", usuario[i].senha);
-                        printf("\tCelular:  %s\n", usuario[i].celular);
-                        printf("-----------------------------------------\n");
-                        encontrado = 1;
-                    }
+            consulta[i] = '\0';	        
+        	while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
+            	if (strcmp(consulta, usuario.apelido) == 0){
+            		printf("\n---------- USUARIO ENCONTRADO -----------\n");
+                    printf("\tApelido:  %s\n", usuario.apelido);
+                    printf("\tSenha:    %s\n", usuario.senha);
+                    printf("\tCelular:  %s", usuario.celular);
+                    printf("-----------------------------------------\n");
+                    encontrado = 1;
+				}
+        	}
+	        if (encontrado != 1){
+	            printf("\nUsuario nao encontrado.\n");
+	        }
+	        printf("\n[1] Consultar novamente\t[0] Sair\n");
+	        op = getch();
+		}
+		fclose(cadastros);
+	} while (op == 49);
+    system("cls");
+    menu();
+}
+
+remover(){
+    char remover[16];
+    int op, i, encontrado = 0;
+    char c;
+
+    FILE *cadastros, *temp;
+    Cadastro usuario;
+
+    system("cls");
+    printf("-----------------------------------------\n");
+    printf("------------ EXCLUIR CADASTRO -----------\n");
+    printf("-----------------------------------------\n");
+
+    do{
+        cadastros = fopen("Cadastros.TXT", "r+b");
+        temp = fopen("Temp.TXT", "wb");
+
+        remover[0] = '\0';
+        i = op = encontrado = 0;
+        printf("\nDigite o apelido do usuario a ser excluido: ");
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 16){
+                    remover[i] = c;
+                    i++;
+                    putch(c);
                 }
+            } else if (c == 8 && i){
+
+                remover[i] = '\0';
+                i--;
+                printf("\b \b");
             }
-        } else if (op == 50){
-            printf("\nDigite o celular do usuario a ser consultado: ");
-            i = 0;
-            fflush(stdin);
-            do{
-                c = getch();
-                if( isdigit(c) != 0 ){
-                    if (i < 11){
-                        if (i == 0){
-                            printf("(");
-                        } else if (i == 2){
-                            printf(")");
-                        } else if (i == 7){
-                            printf("-");
-                        }
-                        consulta[i] = c;
-                        i++;
-                        putch(c);
-                        
-                    }
-                } else if (c == 8 && i){
-                    if ( i == 1 || i == 2 || i == 7){
-                        printf("\b \b");
-                        consulta[i] = '\0';
-                        i--;
-                        printf("\b \b");
-                    } else {
-                        consulta[i] = '\0';
-                        i--;
-                        printf("\b \b");
-                    }
-                }
-            } while (c != 13);
-            consulta[i] = '\0';
-            for (i = 0; i < MAX_CADASTROS; i++){
-                if(usuario[i].ativo == 1){
-                    if( (strcmp(usuario[i].celular, consulta) == 0) ){
-                        printf("\n---------- USUARIO ENCONTRADO -----------\n");
-                        printf("\tApelido:  %s\n", usuario[i].apelido);
-                        printf("\tSenha:    %s\n", usuario[i].senha);
-                        printf("\tCelular:  %s\n", usuario[i].celular);
-                        printf("-----------------------------------------\n");
-                        encontrado = 1;
-                    }
-                }
+        } while (c != 13);
+
+        remover[i] = '\0';
+
+        while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
+            if (strcmp(remover, usuario.apelido) == 0){
+            	printf("\nUsuario encontrado e excluido com sucesso");
+                encontrado = 1;
+            } else if (strcmp(remover, usuario.apelido) != 0){
+                fwrite(&usuario, sizeof(Cadastro), 1, temp);
             }
         }
         if (encontrado != 1){
             printf("\nUsuario nao encontrado.\n");
         }
-        printf("\n1 - Consultar novamente | 0 - Sair\n");
-        op = getch();
-    } while (op == 49);
 
+        fclose(cadastros);
+        fclose(temp);
+
+        remove("Cadastros.TXT");
+        rename("Temp.TXT", "Cadastros.TXT");
+
+        printf("\nDeseja pesquisar outro usuario?\n[1] Sim\t[0] Nao\n");
+	} while (op == 49);
+
+    getch();
     system("cls");
-    main();
+    menu();
 }
+
+
 
