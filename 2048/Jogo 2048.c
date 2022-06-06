@@ -1104,6 +1104,8 @@ jogar5x5(){
             gotoxy(2,14);
             printf("                  [R] REINICIAR JOGO  [ESC] MENU PRINCIPAL                  ");
             cor(7);
+            Beep(1400, 200);
+            Beep(1600, 200);
             do{
                 opcao = getch();
                 if ( (opcao == 82) || (opcao == 114) ){
@@ -1188,6 +1190,10 @@ jogar4x4Media(){
 
     valorAleatorio(TAM4);
     system("cls");
+
+    matrizJogo[0][1] = 1024;
+    matrizJogo[1][0] = 512;
+    matrizJogo[1][1] = 512;
 
     logo();
 
@@ -1285,6 +1291,8 @@ jogar4x4Media(){
             gotoxy(2,14);
             printf("                  [R] REINICIAR JOGO  [ESC] MENU PRINCIPAL                  ");
             cor(7);
+            Beep(1400, 200);
+            Beep(1600, 200);
             do{
                 opcao = getch();
                 if ( (opcao == 82) || (opcao == 114) ){
@@ -1462,6 +1470,8 @@ jogar4x4Dificil(){
             gotoxy(2,14);
             printf("                  [R] REINICIAR JOGO  [ESC] MENU PRINCIPAL                  ");
             cor(7);
+            Beep(1400, 200);
+            Beep(1600, 200);
             do{
                 opcao = getch();
                 if ( (opcao == 82) || (opcao == 114) ){
@@ -1637,6 +1647,8 @@ jogar3x3(){
             gotoxy(2,14);
             printf("                  [R] REINICIAR JOGO  [ESC] MENU PRINCIPAL                  ");
             cor(7);
+            Beep(1400, 200);
+            Beep(1600, 200);
             do{
                 opcao = getch();
                 if ( (opcao == 82) || (opcao == 114) ){
@@ -1839,7 +1851,7 @@ rankingPontuacao(int dificuldade){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
-    printf("%c%c                       %c      RANKING DE PONTOS      %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        R A N K I N G        %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c    DIFICULDADE:             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c        ", 219, 219, 179);
     cor(4);
@@ -2863,51 +2875,455 @@ imprimirValores(int tam){
 	int posx, posy = 0;
 	
 	if (tam == 3){											// 3X3
-		posy = 23;
+		posy = 22;
         for (x = 0; x < TAM3; x++){                   		// PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
-            posx = 16;
+            posx = 13;
             for (y = 0; y < TAM3; y++){
                 gotoxy(posx,posy);                 			// COLUNA / LINHA
-                    if (matrizJogo[x][y] != 0){
-                    	printf("      ");
-                    	gotoxy(posx,posy);
-                        printf("%i  ", matrizJogo[x][y]);
-                    } else {
-                        printf("      ");
+                    switch(matrizJogo[x][y]){
+                        case 2:
+                            cor(240);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    2    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 4:
+                            cor(128);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    4    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 8:
+                            cor(16);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    8    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 16:
+                            cor(48);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   16    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 32:
+                            cor(160);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   32    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 64:
+                            cor(32);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   64    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 128:
+                            cor(224);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   128   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 256:
+                            cor(96);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   256   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 512:
+                            cor(192);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   512   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 1024:
+                            cor(64);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("  1024   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        default:
+                            cor(15);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("         ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
                     }
                 posx += 11;
             }
             posy += 5;
         }
 	} else if (tam == 4){									// 4X4
-		posy = 20;
+		posy = 19;
         for (x = 0; x < tam; x++){                   		// PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
-            posx = 11;
+            posx = 8;
             for (y = 0; y < tam; y++){
                 gotoxy(posx,posy);                 			// COLUNA / LINHA
-                    if (matrizJogo[x][y] != 0){
-                    	printf("      ");
-                    	gotoxy(posx,posy);
-                        printf("%i  ", matrizJogo[x][y]);
-                    } else {
-                        printf("      ");
+                    gotoxy(posx,posy);                 			// COLUNA / LINHA
+                    switch(matrizJogo[x][y]){
+                        case 2:
+                            cor(240);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    2    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 4:
+                            cor(128);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    4    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 8:
+                            cor(16);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    8    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 16:
+                            cor(48);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   16    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 32:
+                            cor(160);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   32    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 64:
+                            cor(32);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   64    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 128:
+                            cor(224);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   128   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 256:
+                            cor(96);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   256   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 512:
+                            cor(192);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   512   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 1024:
+                            cor(64);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("  1024   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 2048:
+                            cor(208);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("  2048   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 4096:
+                            cor(80);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("  4096   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        default:
+                            cor(15);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("         ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
                     }
                 posx += 11;
             }
             posy += 5;
     	}
 	} else if (tam == 5){									// 5X5
-		posy = 18;
+		posy = 17;
         for (x = 0; x < TAM5; x++){                   		// PRINTA OS VALORES DA MATRIZ NAS POSICOES CORRESPONDENTES
-            posx = 5;
+            posx = 2;
             for (y = 0; y < TAM5; y++){
                 gotoxy(posx,posy);                 			// COLUNA / LINHA
-                    if (matrizJogo[x][y] != 0){
-                    	printf("      ");
-                    	gotoxy(posx,posy);
-                        printf("%i  ", matrizJogo[x][y]);
-                    } else {
-                        printf("      ");
+                    switch(matrizJogo[x][y]){
+                        case 2:
+                            cor(240);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    2    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 4:
+                            cor(128);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    4    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 8:
+                            cor(16);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("    8    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 16:
+                            cor(48);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   16    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 32:
+                            cor(160);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   32    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 64:
+                            cor(32);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   64    ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 128:
+                            cor(224);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   128   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 256:
+                            cor(96);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   256   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 512:
+                            cor(192);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("   512   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 1024:
+                            cor(64);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("  1024   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 2048:
+                            cor(208);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("  2048   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 4096:
+                            cor(80);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("  4096   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        case 8192:
+                            cor(80);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("  8192   ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
+                        default:
+                            cor(15);
+                            printf("         ");
+                            gotoxy(posx, posy + 1);
+                            printf("         ");
+                            gotoxy(posx, posy + 2);
+                            printf("         ");
+                            gotoxy(posx, posy + 3);
+                            printf("         ");
+                            cor(7);
+                            break;
                     }
                 posx += 11;
             }
