@@ -1014,7 +1014,6 @@ jogar5x5(int volta){
     
     int x, y, continuar, opcao = 0;
     int tam = TAM5;
-	pontos = jogada = 0;
 
     if (volta != 1){
         for (x = 0; x < TAM5; x++){
@@ -1025,6 +1024,7 @@ jogar5x5(int volta){
         }
         valorAleatorio(TAM5);
         valorAleatorio(TAM5);
+        pontos = jogada = 0;
     }
     
     logo();
@@ -1198,7 +1198,6 @@ jogar4x4Media(int volta){
 
     int x, y, continuar, opcao = 0;
     int tam = TAM4;
-    pontos = jogada = 0;
 
     if (volta != 1){
         for (x = 0; x < TAM5; x++){
@@ -1208,8 +1207,8 @@ jogar4x4Media(int volta){
             }
         }
         valorAleatorio(TAM4);
-        system("cls");
         valorAleatorio(TAM4);
+        pontos = jogada = 0;
     }
     
 
@@ -1383,7 +1382,6 @@ jogar4x4Dificil(int volta){
 
     int x, y, continuar, opcao = 0;
     int tam = TAM4;
-    pontos = jogada = 0;
 
     if (volta != 1){
         for (x = 0; x < TAM5; x++){
@@ -1394,6 +1392,7 @@ jogar4x4Dificil(int volta){
         }
         valorAleatorio(TAM4);
         valorAleatorio(TAM4);
+        pontos = jogada = 0;
     }
 
     
@@ -1565,7 +1564,6 @@ jogar3x3(int volta){
 
     int ver, x, y, continuar, opcao = 0;
     int tam = TAM3;
-    pontos = jogada = 0;
 
     if (volta != 1){
         for (x = 0; x < TAM5; x++){
@@ -1576,6 +1574,7 @@ jogar3x3(int volta){
         }
         valorAleatorio(TAM3);
         valorAleatorio(TAM3);
+        pontos = jogada = 0;
     }
 
     logo();
@@ -2045,22 +2044,22 @@ salvarJogo(int dificuldade){
             if (dificuldade == 1) {
                 Beep(370, 200);
                 system("cls");
-                jogar5x5();
+                jogar5x5(1);
                 opcao = 0;
             } else if (dificuldade == 2) {
                 Beep(370, 200);
                 system("cls");
-                jogar4x4Media();
+                jogar4x4Media(1);
                 opcao = 0;
             } else if (dificuldade == 3) {
                 Beep(370, 200);
                 system("cls");
-                jogar4x4Dificil();
+                jogar4x4Dificil(1);
                 opcao = 0;
             } else if (dificuldade == 4) {
                 Beep(370, 200);
                 system("cls");
-                jogar3x3();
+                jogar3x3(1);
                 opcao = 0;
             }
         } else if (opcao == 49) {

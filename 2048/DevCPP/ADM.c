@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>    // SetConsoleCursorPosition
-#include <string.h>     // funÃ§oes str
+#include <string.h>     // funçoes str
 #include <conio.h>      // getch()
 #include <ctype.h>      // isdigit, isalpha, etc.
 
@@ -254,7 +254,7 @@ listar(){
 
     cadastros = fopen("Cadastros.TXT", "rb");
     if (cadastros == NULL){
-        printf("|  NÃ£o foi possivel listar os usuarios  |\n");
+        printf("|  Não foi possivel listar os usuarios  |\n");
     } else {
         printf("-----------------------------------------\n");
         while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
@@ -286,7 +286,7 @@ consultar(){
 	do{
 		cadastros = fopen("Cadastros.TXT", "rb");
     	if (cadastros == NULL){
-        	printf("|  NÃ£o foi possivel listar os usuarios  |\n");
+        	printf("|  Não foi possivel listar os usuarios  |\n");
 		} else {
     
     		consulta[0] = '\0';
@@ -400,3 +400,4 @@ remover(){
 cor(int cor){
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), cor);
 }
+
