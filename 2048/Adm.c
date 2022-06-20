@@ -33,7 +33,7 @@ int main(){
     }
 }
 
-menu(){
+void menu(){
 	system("cls");
     int opcao = 0;
 
@@ -121,7 +121,7 @@ senha(){
     } while(acesso != 1);
 }
 
-cadastrar(){
+void cadastrar(){
     int op, i, continua = 0;
     char apelido[16];
     char senha[16];
@@ -165,7 +165,7 @@ cadastrar(){
             apelido[i] = '\0';
         	
         	leitura = fopen("Cadastros.txt", "rb");
-            while ( fread(&usuario, sizeof(Cadastro), 1, leitura) == 1 ){
+            while ( fread(&usuario, sizeof(Cadastro), 1, leitura) == 1 ){   // VERIFICAR SE JA EXISTE
 	            if (strcmp(apelido, usuario.apelido) == 0){
 	            	printf("\nAlguem ja escolheu esse apelido. Escolha outro e tente novamente!");
 	            	continua = 1;
@@ -173,7 +173,6 @@ cadastrar(){
 	        }
 	        fclose(leitura);
         } while (continua == 1);
-        // VERIFICAR SE JA EXISTE
         // ------------------------------------------------------------ SENHA
         printf("\nDigite sua senha: ");
         i = 0;
@@ -237,13 +236,13 @@ cadastrar(){
 
         printf("\n\n          Cadastro realizado com sucesso!\n        Aperte qualquer tecla para voltar\n");
         getch();
-    fclose(cadastros);
+        fclose(cadastros);
     }
     system("cls");
     menu();
 }
 
-listar(){
+void listar(){
     system("cls");
     printf("-----------------------------------------\n");
     printf("----------- DADOS CADASTRAIS ------------\n");
@@ -270,7 +269,7 @@ listar(){
     menu();
 }
 
-consultar(){
+void consultar(){
 	char consulta[16];
     int op, i, encontrado = 0;
     char c;
@@ -332,7 +331,7 @@ consultar(){
     menu();
 }
 
-remover(){
+void remover(){
     char remover[16];
     int op, i, encontrado = 0;
     char c;
@@ -397,6 +396,6 @@ remover(){
     menu();
 }
 
-cor(int cor){
+void cor(int cor){
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), cor);
 }

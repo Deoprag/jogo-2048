@@ -21,6 +21,7 @@ int jogada, pontos = 0;
 int x, y, i = 0;
 int matrizJogo[5][5];
 int matrizJogoChecar[5][5];
+char apelido[17];
 
 // DECLARACAO DE PROCEDIMENTOS
 void gotoxy();
@@ -28,8 +29,6 @@ void inicio();
 void login();
 void cadastro();
 void cadastroSucesso();
-void cadastroFalhou();
-void configuracoes();
 void cores();
 void selecao();
 void tijolos();
@@ -51,8 +50,17 @@ void movDireita5x5();
 void movEsquerda5x5();
 void movBaixo5x5();
 void movCima5x5();
+void movDireita4x4();
+void movEsquerda4x4();
+void movBaixo4x4();
+void movCima4x4();
+void movDireita3x3();
+void movEsquerda3x3();
+void movBaixo3x3();
+void movCima3x3();
 void valorAleatorio();
 void cor();
+void guardarPontuacao();
 
 // DECLARACAO DE FUNCOES
 int checarMovimento();
@@ -80,9 +88,11 @@ typedef struct{
 } Pontuacoes;
 
 typedef struct{
+    char nomeSalvo[17];
 	int matrizSalva[5][5];
 	int dificuldade;
-	int posicao;
+    int pontos;
+    int jogada;
 } JogosSalvos;
 
 // FUNCAO PRINCIPAL
@@ -220,7 +230,7 @@ inicio(){                                                                       
 
 login(){                                                                                            // LOGIN
 
-    char c, apelido[17], senha[17];
+    char c, senha[17];
     int verificador, opcao = 0;
     int i = 0;
 
@@ -1014,9 +1024,9 @@ jogar5x5(int volta){
     
     int x, y, continuar, opcao = 0;
     int tam = TAM5;
-	pontos = jogada = 0;
 
     if (volta != 1){
+        pontos = jogada = 0;
         for (x = 0; x < TAM5; x++){
             for (y = 0; y < TAM5; y++){
                 matrizJogo[x][y] = 0;
@@ -1092,17 +1102,18 @@ jogar5x5(int volta){
         gotoxy(80,39);
 
         if(checarVitoriaFacil() == 0 && (continuar != 1)){
+
             cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
             gotoxy(2,14);
             printf("             [J] JOGAR DIFICULDADE MEDIA [C] CONTINUAR JOGANDO              ");
             cor(7);
+
             do{
                 opcao = getch();
                 if ( (opcao == 74) || (opcao == 106) ){
                     Beep(370, 200);
-                    system("color 07");
                     system("cls");
                     jogar4x4Media();
                     opcao = 1;
@@ -1117,6 +1128,7 @@ jogar5x5(int volta){
             } while(opcao != 1);
         }
         if (perdeu(TAM5) == 1) {
+
             cor(4);
             gotoxy(2,13);
 			printf("                                VOCE PERDEU!                                ");
@@ -1125,8 +1137,8 @@ jogar5x5(int volta){
             cor(7);
             Beep(1400, 200);
             Beep(1600, 200);
+            
             do{
-                opcao = getch();
                 if ( (opcao == 82) || (opcao == 114) ){
                     Beep(370, 200);
                     system("cls");
@@ -1138,6 +1150,7 @@ jogar5x5(int volta){
                     selecao();
                     opcao = 1;
                 }
+
             } while (opcao != 1);
         }
 
@@ -1176,31 +1189,34 @@ jogar5x5(int volta){
             Beep(370, 200);
             system("cls");
             salvarJogo(1);
+            opcao = ESC;
 
         } else if ( (opcao == 82) || (opcao == 114) ) {     // R
 
             Beep(370, 200);
             system("cls");
             jogar5x5();
+            opcao = ESC;
 
         } else if ( (opcao == 67 ) || (opcao == 99) ) {     // C
             
             Beep(370, 200);
             system("cls");
             tutorial(1);
+            opcao = ESC;
 
         }
         
-    } while ( opcao != 27 );
+    } while ( opcao != ESC );
 }
 
 jogar4x4Media(int volta){
 
     int x, y, continuar, opcao = 0;
     int tam = TAM4;
-    pontos = jogada = 0;
 
     if (volta != 1){
+        pontos = jogada = 0;
         for (x = 0; x < TAM5; x++){
             for (y = 0; y < TAM5; y++){
                 matrizJogo[x][y] = 0;
@@ -1357,35 +1373,41 @@ jogar4x4Media(int volta){
             Beep(370, 200);            
             system("cls");
 			selecao();
+            
 
         } else if ( (opcao == 83) || (opcao == 115) ) {     // S
             
             Beep(370, 200);
             system("cls");
             salvarJogo(2);
+            opcao = ESC;
+
         } else if ( (opcao == 82) || (opcao == 114) ) {     // R
 
             Beep(370, 200);
             system("cls");
             jogar4x4Media();
+            opcao = ESC;
 
         } else if ( (opcao == 67 ) || (opcao == 99) ) {     // C
 
             Beep(370, 200);
             system("cls");
             tutorial(2);
+            opcao = ESC;
+
         }
         
-    } while ( opcao != 27 );
+    } while ( opcao != ESC);
 }
 
 jogar4x4Dificil(int volta){
 
     int x, y, continuar, opcao = 0;
     int tam = TAM4;
-    pontos = jogada = 0;
 
     if (volta != 1){
+        pontos = jogada = 0;
         for (x = 0; x < TAM5; x++){
             for (y = 0; y < TAM5; y++){
                 matrizJogo[x][y] = 0;
@@ -1565,9 +1587,9 @@ jogar3x3(int volta){
 
     int ver, x, y, continuar, opcao = 0;
     int tam = TAM3;
-    pontos = jogada = 0;
 
     if (volta != 1){
+        pontos = jogada = 0;
         for (x = 0; x < TAM5; x++){
             for (y = 0; y < TAM5; y++){
                 matrizJogo[x][y] = 0;
@@ -1736,6 +1758,20 @@ jogar3x3(int volta){
         }
         
     } while ( opcao != 27 );
+}
+
+guardarPontuacao(int pontos){
+    FILE *add_ranking;
+    Pontuacoes ranking;
+
+    add_ranking = fopen("Ranking.txt", "ab");
+
+    strcpy(ranking.apelido, apelido);
+    ranking.pontuacaoFacil = pontos;
+
+    fwrite(&ranking, sizeof(Pontuacoes), 1, add_ranking);
+
+    fclose(add_ranking);        
 }
 
 tutorial(int dificuldade){
@@ -1996,10 +2032,11 @@ jogosSalvos(){
 }
 
 salvarJogo(int dificuldade){
-	/*FILE *salvos;
+	FILE *salvos;
+    FILE *leituraSalvar;
 	JogosSalvos salvar;
-    */
-    int opcao, x, y, i, posx, posy = 0;
+    char c, salvaJogo[17];
+    int opcao, x, y, i, continuar = 0;
 
     logo();
 
@@ -2014,19 +2051,18 @@ salvarJogo(int dificuldade){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                   ESCOLHA UMA POSICAO PARA SALVAR O JOGO:                  %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                      DIGITE UM NOME PARA SEU JOGO SALVO                    %c%c\n", 219, 219, 219, 219);
+    printf("%c%c     (VOCE PRECISARA DESSE NOME PARA RESTAURAR SEU JOGO POSTERIORMENTE)     %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [1]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [2]                                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                           %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [3]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [4]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [5]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c", 219, 219);
     cor(4);
@@ -2035,48 +2071,153 @@ salvarJogo(int dificuldade){
     printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
-	
-    do
-    {
-        opcao = getch();
-        if (opcao == 27){
+
+    do{
+        i = continuar = 0;
+        gotoxy(30,30);
+        printf("                  ");
+        gotoxy(30,30);
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 16){
+                    salvaJogo[i] = c;
+                    i++;
+                    putch(c);
+                }
+            } else if (c == 8 && i){
+                salvaJogo[i] = '\0';
+                i--;
+                printf("\b \b");
+            } else if (c == ESC) {
+                if (dificuldade == 1) {
+                    Beep(370, 200);
+                    system("cls");
+                    jogar5x5(1);
+                } else if (dificuldade == 2) {
+                    Beep(370, 200);
+                    system("cls");
+                    jogar4x4Media(1);
+                } else if (dificuldade == 3) {
+                    Beep(370, 200);
+                    system("cls");
+                    jogar4x4Dificil(1);
+                } else if (dificuldade == 4) {
+                    Beep(370, 200);
+                    system("cls");
+                    jogar3x3(1);
+                }
+            }
+        } while (c != 13);
+        if (i < 5){
+                gotoxy(2,33);
+                cor(4);
+                printf("             O nome do jogo deve conter no minimo 4 caracteres.             ");
+                cor(7);
+                continuar = 1;
+            }
+        salvaJogo[i] = '\0';
+
+    } while (continuar == 1);
+        gotoxy(2,33);
+        printf("                                                                            ");
+        gotoxy(2,34);
+        printf("                                                                            ");
+
+    leituraSalvar = fopen("JogosSalvos.txt", "rb");
+    while ( fread(&salvar, sizeof(JogosSalvos), 1, leituraSalvar) == 1 ){
+        if (strcmp(salvaJogo, salvar.nomeSalvo) == 0){
+            gotoxy(2,33);
+            cor(4);
+            printf("                  Ja existe um jogo salvo com esse nome.                    ");
+            gotoxy(2,34);
+            printf("                   Voce quer salvar mesmo assim? (s/n)                      ");
+            cor(7);
+            do{
+                opcao = getch();
+                if (opcao == 83 || opcao == 115) {              // SIM
+                    continuar = 1;
+                    gotoxy(2,33);
+                    cor(2);
+                    printf("                           Jogo salvo com sucesso!                          ");
+                    gotoxy(2,34);
+                    printf("                                                                            ");
+                    cor(7);
+                } else if (opcao == 78 || opcao == 110) {       // NAO
+                    continuar = 2;
+                    gotoxy(2,33);
+                    cor(4);
+                    printf("                           Seu jogo nao foi salvo!                          ");
+                    gotoxy(2,34);
+                    printf("                                                                            ");
+                    cor(7);
+                } else {                                        // RESPOSTA PADRAO
+                    continuar = 3;
+                    gotoxy(2,33);
+                    cor(4);
+                    printf("                          Opcao Invalida! Use (s/n)                         ");
+                    gotoxy(2,34);
+                    printf("                                                                            ");
+                    cor(7);
+                }
+            
+            } while (continuar == 3);
+        }
+    }
+    fclose(leituraSalvar);
+
+    if(continuar != 1 && continuar != 2){
+        salvos = fopen("JogosSalvos.txt", "ab");
+
+        strcpy(salvar.nomeSalvo, salvaJogo);
+        for (x = 0; x < TAM5; x++){
+            for (y = 0; y < TAM5; y++){
+                salvar.matrizSalva[x][y] = matrizJogo[x][y];
+            }
+        }
+        salvar.dificuldade = dificuldade;
+        salvar.pontos = pontos;
+        salvar.jogada = jogada;
+
+        fwrite(&salvar, sizeof(JogosSalvos), 1, salvos);
+        cor(2);
+        gotoxy(29,34);
+        printf("Jogo salvo com sucesso");
+        cor(7);
+
+        fclose(salvos);
+    }
+        
+    do{
+        if (getch() == ESC) {
             if (dificuldade == 1) {
                 Beep(370, 200);
                 system("cls");
-                jogar5x5();
-                opcao = 0;
+                jogar5x5(1);
+                opcao = 1;
             } else if (dificuldade == 2) {
                 Beep(370, 200);
                 system("cls");
-                jogar4x4Media();
-                opcao = 0;
+                jogar4x4Media(1);
+                opcao = 1;
             } else if (dificuldade == 3) {
                 Beep(370, 200);
                 system("cls");
-                jogar4x4Dificil();
-                opcao = 0;
+                jogar4x4Dificil(1);
+                opcao = 1;
             } else if (dificuldade == 4) {
                 Beep(370, 200);
                 system("cls");
-                jogar3x3();
-                opcao = 0;
+                jogar3x3(1);
+                opcao = 1;
             }
-        } else if (opcao == 49) {
-            
-		} else if (opcao == 50) {
-			
-		} else if (opcao == 51) {
-			
-		} else if (opcao == 52) {
-			
-		} else if (opcao == 53) {
-			
-		}
-	
-    } while (opcao != 0);
-
+        }
+    } while (opcao != 1);
+    
 }
 
 logo(){
