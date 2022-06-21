@@ -731,7 +731,7 @@ selecao(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                              [3] JOGOS SALVOS                              %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                          [3] RECUPERAR JOGO SALVO                          %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -1979,7 +1979,11 @@ rankingPontuacao(int dificuldade){
 }
 
 jogosSalvos(){
-    int opcao = 0;
+    char c, recuperarJogo[17];
+    int opcao, x, y, i, continuar = 0;
+
+    JogosSalvos salvar;
+    FILE *recJogo;
     
     logo();
 
@@ -1988,25 +1992,24 @@ jogosSalvos(){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
     printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
-    printf("%c%c                       %c        JOGOS SALVOS         %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        RECUPERAR JOGO       %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                     SEUS JOGOS SALVOS APARECERAO AQUI:                     %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                         DIGITE O NOME SEU JOGO SALVO                       %c%c\n", 219, 219, 219, 219);
+    printf("%c%c          (VOCE PRECISA DO NOME DO SEU JOGO SALVO PARA RECUPERA-LO)         %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [1]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [2]                                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                           %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [3]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [4]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                         [5]                                                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c", 219, 219);
     cor(4);
@@ -2015,25 +2018,85 @@ jogosSalvos(){
     printf("%c%c\n", 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
 
     tijolos();
+    do {
+        do{
+        i = continuar = 0;
+        gotoxy(30,30);
+        printf("                  ");
+        gotoxy(30,30);
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 16){
+                    recuperarJogo[i] = c;
+                    i++;
+                    putch(c);
+                }
+            } else if (c == 8 && i){
+                recuperarJogo[i] = '\0';
+                i--;
+                printf("\b \b");
+            } else if (c == ESC) {
+                Beep(370, 200);
+                system("cls");
+                selecao();
+            }
+        } while (c != 13);
+        if (i < 4){
+                gotoxy(2,33);
+                cor(4);
+                printf("          O nome do seu jogo salvo contem no minimo 4 caracteres.           ");
+                cor(7);
+                continuar = 1;
+            }
+        recuperarJogo[i] = '\0';
 
-    do
-    {
-        opcao = getch();
-        if (opcao == 27){
-            Beep(370, 200);
-            system("cls");
-            selecao();
-            opcao = 0;
+        } while (continuar == 1);
+
+        recJogo = fopen("JogosSalvos.txt", "rb");
+        while ( fread(&salvar, sizeof(JogosSalvos), 1, recJogo) == 1 ){
+            if (strcmp(recuperarJogo, salvar.nomeSalvo) == 0){
+                for (x = 0; x < TAM5; x++){
+                    for (y = 0; y < TAM5; y++){
+                        matrizJogo[x][y] = salvar.matrizSalva[x][y];
+                    }
+                }
+                pontos = salvar.pontos;
+                jogada = salvar.jogada;
+                continuar = 1;
+                if (salvar.dificuldade == 1) {
+                    system("cls");
+                    jogar5x5(1);
+                } else if (salvar.dificuldade == 2) {
+                    system("cls");
+                    jogar4x4Media(1);
+                }  else if (salvar.dificuldade == 3) {
+                    system("cls");
+                    jogar4x4Dificil(1);
+                }  else if (salvar.dificuldade == 4) {
+                    system("cls");
+                    jogar3x3(1);
+                }
+            }
         }
-    } while (opcao != 0);
-
+        fclose(recJogo);
+        if (continuar != 1){
+            gotoxy(2,33);
+            cor(4);
+            printf("            O nome digitado nao foi encontrado. Tente novamente!            ");
+            cor(7);
+            continuar = 2;
+        }
+    } while (continuar == 2);
 }
 
 salvarJogo(int dificuldade){
-	FILE *salvos;
-    FILE *leituraSalvar;
+	FILE *salvos, *leituraSalvar, *temp;
+
 	JogosSalvos salvar;
     char c, salvaJogo[17];
     int opcao, x, y, i, continuar = 0;
@@ -2113,7 +2176,7 @@ salvarJogo(int dificuldade){
                 }
             }
         } while (c != 13);
-        if (i < 5){
+        if (i < 4){
                 gotoxy(2,33);
                 cor(4);
                 printf("             O nome do jogo deve conter no minimo 4 caracteres.             ");
@@ -2123,10 +2186,10 @@ salvarJogo(int dificuldade){
         salvaJogo[i] = '\0';
 
     } while (continuar == 1);
-        gotoxy(2,33);
-        printf("                                                                            ");
-        gotoxy(2,34);
-        printf("                                                                            ");
+    gotoxy(2,33);
+    printf("                                                                            ");
+    gotoxy(2,34);
+    printf("                                                                            ");
 
     leituraSalvar = fopen("JogosSalvos.txt", "rb");
     while ( fread(&salvar, sizeof(JogosSalvos), 1, leituraSalvar) == 1 ){
@@ -2140,15 +2203,9 @@ salvarJogo(int dificuldade){
             do{
                 opcao = getch();
                 if (opcao == 83 || opcao == 115) {              // SIM
-                    continuar = 1;
-                    gotoxy(2,33);
-                    cor(2);
-                    printf("                           Jogo salvo com sucesso!                          ");
-                    gotoxy(2,34);
-                    printf("                                                                            ");
-                    cor(7);
-                } else if (opcao == 78 || opcao == 110) {       // NAO
                     continuar = 2;
+                } else if (opcao == 78 || opcao == 110) {       // NAO
+                    continuar = 3;
                     gotoxy(2,33);
                     cor(4);
                     printf("                           Seu jogo nao foi salvo!                          ");
@@ -2156,7 +2213,7 @@ salvarJogo(int dificuldade){
                     printf("                                                                            ");
                     cor(7);
                 } else {                                        // RESPOSTA PADRAO
-                    continuar = 3;
+                    continuar = 4;
                     gotoxy(2,33);
                     cor(4);
                     printf("                          Opcao Invalida! Use (s/n)                         ");
@@ -2165,32 +2222,50 @@ salvarJogo(int dificuldade){
                     cor(7);
                 }
             
-            } while (continuar == 3);
+            } while (continuar == 4);
         }
     }
+    gotoxy(2,33);
+            cor(4);
+            printf("                                                                            ");
+            gotoxy(2,34);
+            printf("                                                                            ");
+            cor(7);
     fclose(leituraSalvar);
 
-    if(continuar != 1 && continuar != 2){
-        salvos = fopen("JogosSalvos.txt", "ab");
+    salvos = fopen("JogosSalvos.txt", "rb");
+    temp = fopen("Temp.txt", "wb");
 
-        strcpy(salvar.nomeSalvo, salvaJogo);
-        for (x = 0; x < TAM5; x++){
-            for (y = 0; y < TAM5; y++){
-                salvar.matrizSalva[x][y] = matrizJogo[x][y];
-            }
+    while ( fread(&salvar, sizeof(JogosSalvos), 1, salvos) == 1 ){
+        if (strcmp(salvaJogo, salvar.nomeSalvo) != 0){
+            fwrite(&salvar, sizeof(JogosSalvos), 1, temp);
         }
-        salvar.dificuldade = dificuldade;
-        salvar.pontos = pontos;
-        salvar.jogada = jogada;
-
-        fwrite(&salvar, sizeof(JogosSalvos), 1, salvos);
-        cor(2);
-        gotoxy(29,34);
-        printf("Jogo salvo com sucesso");
-        cor(7);
-
-        fclose(salvos);
     }
+    fclose(temp);
+    fclose(salvos);
+
+    remove("JogosSalvos.txt");
+    rename("Temp.txt", "JogosSalvos.txt");
+
+    salvos = fopen("JogosSalvos.txt", "a+b");
+
+    strcpy(salvar.nomeSalvo, salvaJogo);
+    for (x = 0; x < TAM5; x++){
+        for (y = 0; y < TAM5; y++){
+            salvar.matrizSalva[x][y] = matrizJogo[x][y];
+        }
+    }
+    salvar.dificuldade = dificuldade;
+    salvar.pontos = pontos;
+    salvar.jogada = jogada;
+
+    fwrite(&salvar, sizeof(JogosSalvos), 1, salvos);
+    cor(2);
+    gotoxy(29,34);
+    printf("Jogo salvo com sucesso");
+    cor(7);
+
+    fclose(salvos);
         
     do{
         if (getch() == ESC) {
