@@ -301,7 +301,7 @@ login(){                                                                        
         } while (c != 13);
         apelido[i] = '\0';
 
-        leitura = fopen("Cadastros.TXT", "rb");
+        leitura = fopen("Cadastros.txt", "rb");
         while (fread(&usuario, sizeof(Cadastro), 1, leitura) == 1 ){
             if (strcmp(apelido, usuario.apelido) == 0){
                 gotoxy(51,24);
@@ -354,7 +354,7 @@ login(){                                                                        
         } while (c != 13);
         senha[i] = '\0';
 
-        leitura = fopen("Cadastros.TXT", "rb");
+        leitura = fopen("Cadastros.txt", "rb");
         while (fread(&usuario, sizeof(Cadastro), 1, leitura) == 1 ){
             if ( (strcmp(apelido, usuario.apelido) == 0) && (strcmp(senha, usuario.senha) == 0) ){
                 gotoxy(51,30);
@@ -1980,7 +1980,7 @@ rankingPontuacao(int dificuldade){
 
 jogosSalvos(){
     char c, recuperarJogo[17];
-    int opcao, x, y, i, continuar = 0;
+    int opcao, x, y, i, continuar, dificuldade = 0;
 
     JogosSalvos salvar;
     FILE *recJogo;
@@ -2022,42 +2022,41 @@ jogosSalvos(){
 
     tijolos();
     do {
-        do{
+        recJogo = fopen("JogosSalvos.txt", "rb");
         i = continuar = 0;
-        gotoxy(30,30);
-        printf("                  ");
-        gotoxy(30,30);
-        fflush(stdin);
         do{
-            c = getch();
-            if( isalnum(c) != 0 ){
-                if (i < 16){
-                    recuperarJogo[i] = c;
-                    i++;
-                    putch(c);
+            gotoxy(30,30);
+            printf("                  ");
+            gotoxy(30,30);
+            fflush(stdin);
+            do{
+                c = getch();
+                if( isalnum(c) != 0 ){
+                    if (i < 16){
+                        recuperarJogo[i] = c;
+                        i++;
+                        putch(c);
+                    }
+                } else if (c == 8 && i){
+                    recuperarJogo[i] = '\0';
+                    i--;
+                    printf("\b \b");
+                } else if (c == ESC) {
+                    Beep(370, 200);
+                    system("cls");
+                    selecao();
                 }
-            } else if (c == 8 && i){
-                recuperarJogo[i] = '\0';
-                i--;
-                printf("\b \b");
-            } else if (c == ESC) {
-                Beep(370, 200);
-                system("cls");
-                selecao();
-            }
-        } while (c != 13);
-        if (i < 4){
-                gotoxy(2,33);
-                cor(4);
-                printf("          O nome do seu jogo salvo contem no minimo 4 caracteres.           ");
-                cor(7);
-                continuar = 1;
-            }
-        recuperarJogo[i] = '\0';
-
+            } while (c != 13);
+            if (i < 4){
+                    gotoxy(2,33);
+                    cor(4);
+                    printf("          O nome do seu jogo salvo contem no minimo 4 caracteres.           ");
+                    cor(7);
+                    continuar = 1;
+                }
+            recuperarJogo[i] = '\0';
         } while (continuar == 1);
 
-        recJogo = fopen("JogosSalvos.txt", "rb");
         while ( fread(&salvar, sizeof(JogosSalvos), 1, recJogo) == 1 ){
             if (strcmp(recuperarJogo, salvar.nomeSalvo) == 0){
                 for (x = 0; x < TAM5; x++){
@@ -2067,23 +2066,11 @@ jogosSalvos(){
                 }
                 pontos = salvar.pontos;
                 jogada = salvar.jogada;
+                dificuldade = salvar.dificuldade;
                 continuar = 1;
-                if (salvar.dificuldade == 1) {
-                    system("cls");
-                    jogar5x5(1);
-                } else if (salvar.dificuldade == 2) {
-                    system("cls");
-                    jogar4x4Media(1);
-                }  else if (salvar.dificuldade == 3) {
-                    system("cls");
-                    jogar4x4Dificil(1);
-                }  else if (salvar.dificuldade == 4) {
-                    system("cls");
-                    jogar3x3(1);
-                }
             }
         }
-        fclose(recJogo);
+
         if (continuar != 1){
             gotoxy(2,33);
             cor(4);
@@ -2091,11 +2078,27 @@ jogosSalvos(){
             cor(7);
             continuar = 2;
         }
+
+        fclose(recJogo);
+
+        if (dificuldade == 1) {
+            system("cls");
+            jogar5x5(1);
+        } else if (dificuldade == 2) {
+            system("cls");
+            jogar4x4Media(1);
+        }  else if (dificuldade == 3) {
+            system("cls");
+            jogar4x4Dificil(1);
+        }  else if (dificuldade == 4) {
+            system("cls");
+            jogar3x3(1);
+        }
     } while (continuar == 2);
 }
 
 salvarJogo(int dificuldade){
-	FILE *salvos, *leituraSalvar, *temp;
+	FILE *salvos, *temp, *append;
 
 	JogosSalvos salvar;
     char c, salvaJogo[17];
@@ -2114,16 +2117,16 @@ salvarJogo(int dificuldade){
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                      DIGITE UM NOME PARA SEU JOGO SALVO                    %c%c\n", 219, 219, 219, 219);
-    printf("%c%c     (VOCE PRECISARA DESSE NOME PARA RESTAURAR SEU JOGO POSTERIORMENTE)     %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                   DIGITE UM NOME PARA SALVAR SEU JOGO OU                   %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                 UM NOME DE JOGO JA EXISTENTE PARA ATUALIZAR                %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c             (VOCE PRECISARA DESSE NOME PARA RESTAURAR SEU JOGO)            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
     printf("%c%c                           %c                    %c                           %c%c\n", 219, 219, 179, 179, 219, 219);
     printf("%c%c                           %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                           %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -2139,10 +2142,12 @@ salvarJogo(int dificuldade){
     tijolos();
 
     do{
+        salvos = fopen("JogosSalvos.txt", "r+b");
+        temp = fopen("Temp.txt", "wb");
         i = continuar = 0;
-        gotoxy(30,30);
+        gotoxy(30,31);
         printf("                  ");
-        gotoxy(30,30);
+        gotoxy(30,31);
         fflush(stdin);
         do{
             c = getch();
@@ -2177,7 +2182,7 @@ salvarJogo(int dificuldade){
             }
         } while (c != 13);
         if (i < 4){
-                gotoxy(2,33);
+                gotoxy(2,34);
                 cor(4);
                 printf("             O nome do jogo deve conter no minimo 4 caracteres.             ");
                 cor(7);
@@ -2185,73 +2190,35 @@ salvarJogo(int dificuldade){
             }
         salvaJogo[i] = '\0';
 
+        gotoxy(2,33);
+        printf("                                                                            ");
+        gotoxy(2,34);
+        printf("                                                                            ");
+
+        while ( fread(&salvar, sizeof(JogosSalvos), 1, salvos) == 1 ){
+            if (strcmp(salvaJogo, salvar.nomeSalvo) == 0){
+                gotoxy(2,34);
+                cor(2);
+            	printf("                        Jogo atualizado com sucesso!                        ", salvaJogo);
+                cor(7);
+                continuar = 2;
+            } else if (strcmp(salvaJogo, salvar.nomeSalvo) != 0){
+                fwrite(&salvar, sizeof(JogosSalvos), 1, temp);
+            }
+        }
+
+        fclose(salvos);
+        fclose(temp);
+
+        remove("JogosSalvos.txt");
+        rename("Temp.txt", "JogosSalvos.txt");
     } while (continuar == 1);
-    gotoxy(2,33);
-    printf("                                                                            ");
-    gotoxy(2,34);
-    printf("                                                                            ");
 
-    leituraSalvar = fopen("JogosSalvos.txt", "rb");
-    while ( fread(&salvar, sizeof(JogosSalvos), 1, leituraSalvar) == 1 ){
-        if (strcmp(salvaJogo, salvar.nomeSalvo) == 0){
-            gotoxy(2,33);
-            cor(4);
-            printf("                  Ja existe um jogo salvo com esse nome.                    ");
-            gotoxy(2,34);
-            printf("                   Voce quer salvar mesmo assim? (s/n)                      ");
-            cor(7);
-            do{
-                opcao = getch();
-                if (opcao == 83 || opcao == 115) {              // SIM
-                    continuar = 2;
-                } else if (opcao == 78 || opcao == 110) {       // NAO
-                    continuar = 3;
-                    gotoxy(2,33);
-                    cor(4);
-                    printf("                           Seu jogo nao foi salvo!                          ");
-                    gotoxy(2,34);
-                    printf("                                                                            ");
-                    cor(7);
-                } else {                                        // RESPOSTA PADRAO
-                    continuar = 4;
-                    gotoxy(2,33);
-                    cor(4);
-                    printf("                          Opcao Invalida! Use (s/n)                         ");
-                    gotoxy(2,34);
-                    printf("                                                                            ");
-                    cor(7);
-                }
-            
-            } while (continuar == 4);
-        }
-    }
-    gotoxy(2,33);
-            cor(4);
-            printf("                                                                            ");
-            gotoxy(2,34);
-            printf("                                                                            ");
-            cor(7);
-    fclose(leituraSalvar);
-
-    salvos = fopen("JogosSalvos.txt", "rb");
-    temp = fopen("Temp.txt", "wb");
-
-    while ( fread(&salvar, sizeof(JogosSalvos), 1, salvos) == 1 ){
-        if (strcmp(salvaJogo, salvar.nomeSalvo) != 0){
-            fwrite(&salvar, sizeof(JogosSalvos), 1, temp);
-        }
-    }
-    fclose(temp);
-    fclose(salvos);
-
-    remove("JogosSalvos.txt");
-    rename("Temp.txt", "JogosSalvos.txt");
-
-    salvos = fopen("JogosSalvos.txt", "a+b");
+    append = fopen("JogosSalvos.txt", "ab");
 
     strcpy(salvar.nomeSalvo, salvaJogo);
-    for (x = 0; x < TAM5; x++){
-        for (y = 0; y < TAM5; y++){
+    for (x = 0; x < TAM5; x++) {
+        for (y = 0; y < TAM5; y++) {
             salvar.matrizSalva[x][y] = matrizJogo[x][y];
         }
     }
@@ -2259,14 +2226,17 @@ salvarJogo(int dificuldade){
     salvar.pontos = pontos;
     salvar.jogada = jogada;
 
-    fwrite(&salvar, sizeof(JogosSalvos), 1, salvos);
-    cor(2);
-    gotoxy(29,34);
-    printf("Jogo salvo com sucesso");
-    cor(7);
+    fwrite(&salvar, sizeof(JogosSalvos), 1, append);
 
-    fclose(salvos);
-        
+    fclose(append);
+
+    if (continuar != 2) {
+        gotoxy(2,34);
+        cor(2);
+        printf("                          Jogo salvo com sucesso!                           ", salvaJogo);
+        cor(7);
+    }
+
     do{
         if (getch() == ESC) {
             if (dificuldade == 1) {
