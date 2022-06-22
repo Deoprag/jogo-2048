@@ -62,6 +62,17 @@ void valorAleatorio();
 void cor();
 void guardarPontuacao();
 
+// ADM
+
+void cadastrar();
+void listar();
+void remover();
+void consultar();
+void menu();
+void cor();
+
+int senha();
+
 // DECLARACAO DE FUNCOES
 int checarMovimento();
 int checarVitoriaMedia();
@@ -177,7 +188,7 @@ inicio(){                                                                       
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                    [1] INICIAR SESSAO  [2] NOVO JOGADOR                    %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
-    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                             [3] ADMINISTRACAO                              %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
     printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
@@ -224,8 +235,370 @@ inicio(){                                                                       
             system("cls");
             cadastro();
             opcao = 0;
+        } else if (opcao == 51) {
+            Beep(370, 200);
+            system("cls");
+            opcao = 0;
+            if (senha() == 0){
+    	        menu();
+            }
         }
     } while (opcao != 0);
+}
+
+void menu(){
+    int opcao = 0;
+
+    logo();
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c ADMINISTRACAO DE CADASTROS  %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                        [1] LISTAR CADASTROS                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                        [2] PESQUISAR CADASTRO                              %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                        [3] EXCLUIR CADASTRO                                %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                 ", 219, 219);
+    cor(4);
+    printf("[ESC] SAIR");
+    cor(7);
+    printf("                                 %c%c\n", 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+
+    tijolos();
+
+    do
+    {
+        opcao = getch();
+
+        if (opcao == ESC){
+            Beep(370, 200);
+            system("cls");
+            inicio();
+            opcao = 0;
+        } else if (opcao == 49){
+            Beep(370, 200);
+            system("cls");
+            listar();
+            opcao = 0;
+        } else if (opcao == 50) {
+            Beep(370, 200);
+            system("cls");
+            consultar();
+            opcao = 0;
+        } else if (opcao == 51) {
+            Beep(370, 200);
+            system("cls");
+            remover();
+            opcao = 0;
+        }
+    } while (opcao != 0);
+}
+
+senha(){
+    int i, acesso = 0;
+    char chave[15] = "senhacadastros";
+    char senha[15], c;
+
+    logo();
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c        AREA RESTRITA        %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                     %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                 %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c           DIGITE A SENHA DE ACESSO: %c                    %c                 %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                                     %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                 %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                 ", 219, 219);
+    cor(4);
+    printf("[ESC] SAIR");
+    cor(7);
+    printf("                                 %c%c\n", 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+
+    tijolos();
+
+    do{
+        gotoxy(40,28);
+        printf("                ");
+        gotoxy(40,28);
+	    i = 0;
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 14){
+                    senha[i] = c;
+                    i++;
+                    putch('*');
+                }
+            } else if (c == 8 && i){
+                senha[i] = '\0';
+                i--;
+                printf("\b \b");
+            } else if (c == ESC) {
+                system("cls");
+                inicio();
+            }
+        } while (c != 13);
+
+        if (strcmp(senha, chave) == 0){
+            acesso = 1;
+            Beep(370, 200);
+            system("cls");
+            return 0;
+        } else {
+            Beep(1400, 200);
+            Beep(1600, 200);
+            cor(4);
+            gotoxy(2,33);
+            printf("                 [ENTER] Senha incorreta. Tente novamente!                  ");
+            cor(7);
+        }
+    } while(acesso != 1);
+}
+
+listar(){
+
+    int opcao, x, y = 0;
+
+    logo();
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c      LISTA DE USUARIOS      %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    FILE *cadastros;
+    Cadastro usuario;
+
+    cadastros = fopen("Cadastros.TXT", "rb");
+    if (cadastros == NULL){
+        printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+        printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+        printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+        printf("%c%c                    ", 219, 219);
+        cor(4);
+        printf("NAO FOI POSSIVEL LISTAR OS USUARIOS!");
+        cor(7);
+        printf("                    %c%c\n", 219, 219);
+        printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+        printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+        printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    } else {
+        linha();
+        x = 30;
+        y = 25;
+        while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
+            printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+            printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+            printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+            printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+            printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+            gotoxy(x, y);
+            printf("Apelido: %s", usuario.apelido);
+            gotoxy(x, y+1);
+            printf("Senha:   %s", usuario.senha);
+            gotoxy(x, y+2);
+            printf("Celular: %s\n\n", usuario.celular);
+            linha();
+            y+=6;
+        }
+    }
+    fclose(cadastros);
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                 ", 219, 219);
+    cor(4);
+    printf("[ESC] SAIR");
+    cor(7);
+    printf("                                 %c%c\n", 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+
+    tijolos();
+    do {
+        opcao = getch();
+        if (opcao == ESC) {
+            Beep(370, 200);
+            system("cls");
+            opcao = 1;
+            menu();
+        }
+    } while (opcao != 1);
+}
+
+consultar(){
+	char consulta[16];
+    int op, i, encontrado = 0;
+    char c;
+    
+    FILE *cadastros;
+    Cadastro usuario;
+
+    system("cls");
+    printf("-----------------------------------------\n");
+    printf("----------- CONSULTAR CADASTRO ----------\n");
+    printf("-----------------------------------------\n");
+
+	do{
+		cadastros = fopen("Cadastros.TXT", "rb");
+    	if (cadastros == NULL){
+        	printf("|  Não foi possivel listar os usuarios  |\n");
+		} else {
+    
+    		consulta[0] = '\0';
+			i = encontrado = 0;
+            printf("\nDigite o apelido do usuario a ser consultado: ");
+            i = 0;
+            fflush(stdin);
+            do{
+                c = getch();
+                if( isalnum(c) != 0 ){
+                    if (i < 16){
+                        consulta[i] = c;
+                        i++;
+                        putch(c);
+                    }
+                } else if (c == 8 && i){
+
+                    consulta[i] = '\0';
+                    i--;
+                    printf("\b \b");
+                }
+            } while (c != 13);
+            consulta[i] = '\0';	        
+        	while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
+            	if (strcmp(consulta, usuario.apelido) == 0){
+            		printf("\n---------- USUARIO ENCONTRADO -----------\n");
+                    printf("\tApelido:  %s\n", usuario.apelido);
+                    printf("\tSenha:    %s\n", usuario.senha);
+                    printf("\tCelular:  %s\n", usuario.celular);
+                    printf("-----------------------------------------\n");
+                    encontrado = 1;
+				}
+        	}
+	        if (encontrado != 1){
+	            printf("\nUsuario nao encontrado.\n");
+	        }
+	        printf("\n[1] Consultar novamente\t[0] Sair\n");
+	        op = getch();
+		}
+		fclose(cadastros);
+	} while (op == 49);
+    system("cls");
+    menu();
+}
+
+remover(){
+    char remover[16];
+    int op, i, encontrado = 0;
+    char c;
+
+    FILE *cadastros, *temp;
+    Cadastro usuario;
+
+    system("cls");
+    printf("-----------------------------------------\n");
+    printf("------------ EXCLUIR CADASTRO -----------\n");
+    printf("-----------------------------------------\n");
+
+    do{
+        cadastros = fopen("Cadastros.TXT", "r+b");
+        temp = fopen("Temp.TXT", "wb");
+
+        remover[0] = '\0';
+        i = op = encontrado = 0;
+        printf("\nDigite o apelido do usuario a ser excluido: ");
+        fflush(stdin);
+        do{
+            c = getch();
+            if( isalnum(c) != 0 ){
+                if (i < 16){
+                    remover[i] = c;
+                    i++;
+                    putch(c);
+                }
+            } else if (c == 8 && i){
+
+                remover[i] = '\0';
+                i--;
+                printf("\b \b");
+            }
+        } while (c != 13);
+
+        remover[i] = '\0';
+
+        while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
+            if (strcmp(remover, usuario.apelido) == 0){
+            	cor(12);
+            	printf("\nUsuario '%s' excluido com sucesso!", remover);
+            	cor(7);
+                encontrado = 1;
+            } else if (strcmp(remover, usuario.apelido) != 0){
+                fwrite(&usuario, sizeof(Cadastro), 1, temp);
+            }
+        }
+        if (encontrado != 1){
+            printf("\nUsuario nao encontrado.\n");
+        }
+
+        fclose(cadastros);
+        fclose(temp);
+
+        remove("Cadastros.TXT");
+        rename("Temp.TXT", "Cadastros.TXT");
+	} while (op == 49);
+
+    getch();
+    system("cls");
+    menu();
 }
 
 login(){                                                                                            // LOGIN
@@ -2389,6 +2762,15 @@ tijolos(){
     for (int tijolo = 0; tijolo != 80; tijolo++){
         printf("%c", 219);
     }
+    printf("\n");
+}
+
+linha(){
+    printf("%c%c", 219, 219);
+    for (int linha = 0; linha !=76; linha++){
+        printf("%c", 196);
+    }
+    printf("%c%c", 219, 219);
     printf("\n");
 }
 

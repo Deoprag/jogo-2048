@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "c:/Users/pdroe/Área de Trabalho/P STUFF/jogo-2048/2048",
-      "program": "c:/Users/pdroe/Área de Trabalho/P STUFF/jogo-2048/2048/build/Debug/outDebug",
+      "cwd": "c:/Users/pdroe/Área de Trabalho/P STUFF/Projeto 2048/2048",
+      "program": "c:/Users/pdroe/Área de Trabalho/P STUFF/Projeto 2048/2048/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
