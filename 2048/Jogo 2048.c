@@ -18,7 +18,6 @@
 
 // VARIAVEIS GLOBAIS
 int jogada, pontos = 0;
-int x, y, i = 0;
 int matrizJogo[5][5];
 int matrizJogoChecar[5][5];
 char apelido[17];
@@ -390,7 +389,7 @@ senha(){
             Beep(1600, 200);
             cor(4);
             gotoxy(2,33);
-            printf("                 [ENTER] Senha incorreta. Tente novamente!                  ");
+            printf("                      Senha incorreta. Tente novamente!                     ");
             cor(7);
         }
     } while(acesso != 1);
@@ -475,28 +474,61 @@ listar(){
 }
 
 consultar(){
-	char consulta[16];
-    int op, i, encontrado = 0;
-    char c;
+	char consulta[16], c;
+    int i, encontrado, opcao = 0;
     
     FILE *cadastros;
     Cadastro usuario;
 
-    system("cls");
-    printf("-----------------------------------------\n");
-    printf("----------- CONSULTAR CADASTRO ----------\n");
-    printf("-----------------------------------------\n");
+    logo();
+
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c      PESQUISAR USUARIO      %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c                             %c                      %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                       %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                      %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                     %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                 %c%c\n", 219, 219, 218, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 191, 219, 219);
+    printf("%c%c           DIGITE O NOME DO USUARIO: %c                    %c                 %c%c\n", 219, 219, 179, 179, 219, 219);
+    printf("%c%c                                     %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c                 %c%c\n", 219, 219, 192, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 196, 217, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                 ", 219, 219);
+    cor(4);
+    printf("[ESC] SAIR");
+    cor(7);
+    printf("                                 %c%c\n", 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+    printf("%c%c                                                                            %c%c\n", 219, 219, 219, 219);
+
+    tijolos();
 
 	do{
 		cadastros = fopen("Cadastros.TXT", "rb");
     	if (cadastros == NULL){
-        	printf("|  Não foi possivel listar os usuarios  |\n");
+            cor(4);
+            gotoxy(2,33);
+            printf("                     Nao e possivel consultar usuarios.                     ");
+            cor(7);
 		} else {
-    
-    		consulta[0] = '\0';
+            gotoxy(40,24);
+            printf("                ");
+            gotoxy(40,24);
 			i = encontrado = 0;
-            printf("\nDigite o apelido do usuario a ser consultado: ");
-            i = 0;
             fflush(stdin);
             do{
                 c = getch();
@@ -507,33 +539,60 @@ consultar(){
                         putch(c);
                     }
                 } else if (c == 8 && i){
-
                     consulta[i] = '\0';
                     i--;
                     printf("\b \b");
+                } else if (c == ESC) {
+                    Beep(370, 200);
+                    system("cls");
+                    opcao = 1;
+                    menu();
                 }
             } while (c != 13);
-            consulta[i] = '\0';	        
+            consulta[i] = '\0';      
         	while ( fread(&usuario, sizeof(Cadastro), 1, cadastros) == 1 ){
             	if (strcmp(consulta, usuario.apelido) == 0){
-            		printf("\n---------- USUARIO ENCONTRADO -----------\n");
-                    printf("\tApelido:  %s\n", usuario.apelido);
-                    printf("\tSenha:    %s\n", usuario.senha);
-                    printf("\tCelular:  %s\n", usuario.celular);
-                    printf("-----------------------------------------\n");
+                    gotoxy(30,31);
+	                printf("                         ");
+                    gotoxy(61,24);
+                    cor(2);
+                    printf("OK");
+                    cor(7);
+            		gotoxy(30, 28);
+                    printf("\n");
+                    linha();
+                    gotoxy(30, 29);
+                    cor(2);
+                    printf("USUARIO ENCONTRADO!");
+                    cor(7);
+                    gotoxy(30, 31);
+                    printf("Apelido: %s", usuario.apelido);
+                    gotoxy(30, 32);
+                    printf("Senha:   %s", usuario.senha);
+                    gotoxy(30, 33);
+                    printf("Celular: %s\n\n", usuario.celular);
+                    linha();
                     encontrado = 1;
 				}
         	}
 	        if (encontrado != 1){
-	            printf("\nUsuario nao encontrado.\n");
+                cor(4);
+                gotoxy(30,31);
+	            printf("Usuario nao encontrado.\n");
+                cor(7);
 	        }
-	        printf("\n[1] Consultar novamente\t[0] Sair\n");
-	        op = getch();
 		}
 		fclose(cadastros);
-	} while (op == 49);
-    system("cls");
-    menu();
+	} while (encontrado != 1);
+    do {
+        opcao = getch();
+        if (opcao == ESC) {
+            Beep(370, 200);
+            system("cls");
+            opcao = 1;
+            menu();
+        }
+    } while (opcao != 1);
 }
 
 remover(){
@@ -667,6 +726,7 @@ login(){                                                                        
                 i--;
                 printf("\b \b");
             } else if (c == ESC) {
+                Beep(370, 200);
                 system("cls");
                 inicio();
                 verificador = 1;
@@ -720,6 +780,7 @@ login(){                                                                        
                 i--;
                 printf("\b \b");
             } else if (c == ESC) {
+                Beep(370, 200);
                 system("cls");
                 inicio();
                 verificador = 1;
@@ -839,11 +900,11 @@ cadastro(){                                                                     
                     putch(c);
                 }
             } else if (c == 8 && i){
-
                 apelido[i] = '\0';
                 i--;
                 printf("\b \b");
             } else if (c == ESC) {
+                Beep(370, 200);
                 system("cls");
                 inicio();
             }
@@ -906,6 +967,7 @@ cadastro(){                                                                     
                 i--;
                 printf("\b \b");
             } else if (c == ESC) {
+                Beep(370, 200);
                 system("cls");
                 inicio();
             }
@@ -963,6 +1025,10 @@ cadastro(){                                                                     
                         i--;
                         printf("\b \b");
                     }
+                } else if (c == ESC) {
+                    Beep(370, 200);
+                    system("cls");
+                    inicio();
                 }
             }while(c != 13);
             celular[i] = '\0';
@@ -1137,7 +1203,7 @@ selecao(){
             system("cls");
             jogosSalvos();
             opcao = 0;
-        } else if (opcao == 27){
+        } else if (opcao == ESC){
             Beep(370, 200);
             gotoxy(2,34);
             cor(4);
@@ -1197,7 +1263,7 @@ dificuldadeFacil(){
 
     do{
         opcao = getch();
-        if (opcao == 27){
+        if (opcao == ESC){
             Beep(370, 200);
             system("cls");
             selecao();
@@ -1253,7 +1319,7 @@ dificuldadeMedia(){
 
     do{
         opcao = getch();
-        if (opcao == 27){
+        if (opcao == ESC){
             Beep(370, 200);
             system("cls");
             selecao();
@@ -1314,7 +1380,7 @@ dificuldadeDificil(){
 
     do{
         opcao = getch();
-        if (opcao == 27){
+        if (opcao == ESC){
             Beep(370, 200);
             system("cls");
             selecao();
@@ -1375,7 +1441,7 @@ dificuldadeHardcore(){
 
     do{
         opcao = getch();
-        if (opcao == 27){
+        if (opcao == ESC){
             Beep(370, 200);
             system("cls");
             selecao();
@@ -1500,8 +1566,8 @@ jogar5x5(int volta){
                 }
             } while(opcao != 1);
         }
+        
         if (perdeu(TAM5) == 1) {
-
             cor(4);
             gotoxy(2,13);
 			printf("                                VOCE PERDEU!                                ");
@@ -1510,8 +1576,8 @@ jogar5x5(int volta){
             cor(7);
             Beep(1400, 200);
             Beep(1600, 200);
-            
             do{
+                opcao = getch();
                 if ( (opcao == 82) || (opcao == 114) ){
                     Beep(370, 200);
                     system("cls");
@@ -1523,7 +1589,6 @@ jogar5x5(int volta){
                     selecao();
                     opcao = 1;
                 }
-
             } while (opcao != 1);
         }
 
@@ -2775,6 +2840,7 @@ linha(){
 }
 
 movDireita5x5(){
+    int x, y = 0;
 
     for(y = 4; y >= 0; y--) {
                     
@@ -2842,6 +2908,8 @@ movDireita5x5(){
 }
 
 movEsquerda5x5(){
+    int x, y = 0;
+
     for(y = 0; y < TAM5; y++) {
             
         for(x = 4; x >= 0; x--) {
@@ -2907,6 +2975,8 @@ movEsquerda5x5(){
 }
 
 movBaixo5x5(){
+    int x, y = 0;
+
     for(x = 4; x >= 0; x--) {
             
         for(y = 0; y < TAM5; y++) {
@@ -2973,6 +3043,8 @@ movBaixo5x5(){
 }
 
 movCima5x5(){
+    int x, y = 0;
+
     for(x = 0; x < TAM5; x++) {   
 
         for(y = 4; y >= 0; y--) {
@@ -3262,6 +3334,7 @@ movCima4x4(){
 }
 
 movDireita3x3(){
+    int x, y = 0;
 
     for(y = 2; y >= 0; y--) {
                     
@@ -3307,6 +3380,8 @@ movDireita3x3(){
 }
 
 movEsquerda3x3(){
+    int x, y = 0;
+
     for(y = 0; y < TAM3; y++) {
             
         for(x = 2; x >= 0; x--) {
@@ -3350,6 +3425,8 @@ movEsquerda3x3(){
 }
 
 movBaixo3x3(){
+    int x, y = 0;
+
     for(x = 2; x >= 0; x--) {
             
         for(y = 0; y < TAM3; y++) {
@@ -3394,6 +3471,8 @@ movBaixo3x3(){
 }
 
 movCima3x3(){
+    int x, y = 0;
+
     for(x = 0; x < TAM3; x++) {   
 
         for(y = 2; y >= 0; y--) {
@@ -3463,6 +3542,8 @@ gotoxy(int x, int y){
 }
 
 valorAleatorio(int tam){
+    int x, y, i = 0;
+
     srand(time(NULL));
 	
     do{
@@ -3481,7 +3562,7 @@ valorAleatorio(int tam){
 
 imprimirValores(int tam){
 	
-	int posx, posy = 0;
+	int posx, posy, x, y = 0;
 	
 	if (tam == 3){											// 3X3
 		posy = 22;
@@ -3991,7 +4072,13 @@ checarVitoriaHardcore(){
 
 perdeu(int tam){
     int vazios = 0;
-    vazios = tam * tam;
+    if (tam == 5){
+        vazios = 25;
+    } else if (tam == 4){
+        vazios = 16;
+    } else if (tam == 3){
+        vazios = 9;
+    }
     for(int x = 0; x < tam; x++){
         for (int y = 0; y < tam; y++){
             if (matrizJogo[x][y] != 0){
