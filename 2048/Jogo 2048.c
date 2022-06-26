@@ -1607,6 +1607,13 @@ jogar5x5(int volta){
 
         if(checarVitoriaFacil() == 0 && (continuar != 1) && (volta != 1)){
 
+            Beep(880, 200);
+            Beep(932, 200);
+            Beep(987, 200);
+            Beep(1046, 200);
+            Beep(987, 250);
+            Beep(1046, 250);
+
             cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
@@ -1817,6 +1824,14 @@ jogar4x4Media(int volta){
         gotoxy(80,40);
 
         if(checarVitoriaMedia() == 0 && (continuar != 1) && (volta != 1)){
+
+            Beep(880, 200);
+            Beep(932, 200);
+            Beep(987, 200);
+            Beep(1046, 200);
+            Beep(987, 250);
+            Beep(1046, 250);
+
             cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
@@ -2027,6 +2042,14 @@ jogar4x4Dificil(int volta){
         cor(7);
 
         if(checarVitoriaDificil() == 0 && (continuar != 1) && (volta != 1)){
+
+            Beep(880, 200);
+            Beep(932, 200);
+            Beep(987, 200);
+            Beep(1046, 200);
+            Beep(987, 250);
+            Beep(1046, 250);
+
             cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
@@ -2229,6 +2252,14 @@ jogar3x3(int volta){
         cor(7);
 
         if(checarVitoriaHardcore() == 0 && (continuar != 1) && (volta != 1)){
+
+            Beep(880, 200);
+            Beep(932, 200);
+            Beep(987, 200);
+            Beep(1046, 200);
+            Beep(987, 250);
+            Beep(1046, 250);
+
             cor(2);
             gotoxy(2,13);
 			printf("                       VOCE VENCEU! ESCOLHA UMA OPCAO:                      ");
@@ -2476,7 +2507,11 @@ rankingPontuacaoDif(){
 }
 
 rankingPontuacao(int dificuldade){
-    int opcao = 0;
+    int pontPrimeiro, pontSegundo, pontTerceiro, pontQuarto, pontQuinto, opcao = 0;
+    char primeiro[17], segundo[17], terceiro[17], quarto[17], quinto[17];
+
+    Pontuacoes pontuacao;
+    FILE *ranking;
 
     logo();
 
@@ -2502,24 +2537,24 @@ rankingPontuacao(int dificuldade){
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     1%c  LUGAR       %c%c                        %c%c     [               ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c       [           ]       %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     2%c  LUGAR       %c%c                        %c%c     [               ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c       [           ]       %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     3%c  LUGAR       %c%c                        %c%c     [               ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c       [           ]       %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     4%c  LUGAR       %c%c                        %c%c     [               ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c       [           ]       %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c     5%c  LUGAR       %c%c                        %c%c     [               ]     %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c       [           ]       %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
-    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 167, 219, 219, 219, 219, 219);
+    printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
     printf("%c%c                     %c%c                        %c%c                           %c%c\n", 219, 219, 219, 219, 219, 219, 219, 219);
 
     tijolos();
 
     gotoxy(43,16);
     if (dificuldade == 1) {
-        cor(3);
+        cor(9);
         printf("FACIL");
         cor(7);
     } else if (dificuldade == 2) {
@@ -2536,6 +2571,101 @@ rankingPontuacao(int dificuldade){
         cor(7);
     }
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+    ranking = fopen("Ranking.txt", "rb");
+
+    pontPrimeiro = pontSegundo = pontTerceiro = pontQuarto = pontQuinto = 0;
+
+    while ( fread(&pontuacao, sizeof(Pontuacoes), 1, ranking) == 1 ){
+        if (pontuacao.pontos > pontPrimeiro && pontuacao.dificuldade == dificuldade) {
+            pontQuinto = pontQuarto;
+            strcpy(quinto, quarto);
+            pontQuarto = pontTerceiro;
+            strcpy(quarto, terceiro);
+            pontTerceiro = pontSegundo;
+            strcpy(terceiro, segundo);
+            pontSegundo = pontPrimeiro;
+            strcpy(segundo, primeiro);
+            pontPrimeiro = pontuacao.pontos;
+            strcpy(primeiro, pontuacao.apelido);
+        } else if (pontuacao.pontos > pontSegundo && pontuacao.pontos < pontPrimeiro && pontuacao.dificuldade == dificuldade) {
+            pontQuinto = pontQuarto;
+            strcpy(quinto, quarto);
+            pontQuarto = pontTerceiro;
+            strcpy(quarto, terceiro);
+            pontTerceiro = pontSegundo;
+            strcpy(terceiro, segundo);
+            pontSegundo = pontuacao.pontos;
+            strcpy(segundo, pontuacao.apelido);
+        } else if (pontuacao.pontos > pontTerceiro && pontuacao.pontos < pontSegundo && pontuacao.dificuldade == dificuldade) {
+            pontQuinto = pontQuarto;
+            strcpy(quinto, quarto);
+            pontQuarto = pontTerceiro;
+            strcpy(quarto, terceiro);
+            pontTerceiro = pontuacao.pontos;
+            strcpy(terceiro, pontuacao.apelido);
+        } else if (pontuacao.pontos > pontQuarto && pontuacao.pontos < pontTerceiro && pontuacao.dificuldade == dificuldade) {
+            pontQuinto = pontQuarto;
+            strcpy(quinto, quarto);
+            pontQuarto = pontuacao.pontos;
+            strcpy(quarto, pontuacao.apelido);
+        } else if (pontuacao.pontos > pontQuinto && pontuacao.dificuldade == dificuldade) {
+            pontQuinto = pontuacao.pontos;
+            strcpy(quinto, pontuacao.apelido);
+        }
+    }
+    fclose(ranking);
+
+    if(pontPrimeiro != 0){
+        cor(13);
+        gotoxy(8,28);
+        printf("1%c LUGAR", 167);
+        gotoxy(32,28);
+        printf("%s", primeiro);
+        gotoxy(62,28);
+        printf("%i", pontPrimeiro);
+    }
+    
+    if(pontSegundo != 0){
+        cor(12);
+        gotoxy(8,30);
+        printf("2%c LUGAR", 167);
+        gotoxy(32,30);
+        printf("%s", segundo);
+        gotoxy(62,30);
+        printf("%i", pontSegundo);
+    }
+
+    if(pontTerceiro != 0){
+        cor(6);
+        gotoxy(8,32);
+        printf("3%c LUGAR", 167);
+        gotoxy(32,32);
+        printf("%s", terceiro);
+        gotoxy(62,32);
+        printf("%i", pontTerceiro);
+    }
+
+    if(pontQuarto != 0){
+        cor(9);
+        gotoxy(8,34);
+        printf("4%c LUGAR", 167);
+        gotoxy(32,34);
+        printf("%s", quarto);
+        gotoxy(62,34);
+        printf("%i", pontQuarto);
+    }
+
+    if(pontQuinto != 0){
+        cor(3);
+        gotoxy(8,36);
+        printf("5%c LUGAR", 167);
+        gotoxy(32,36);
+        printf("%s", quinto);
+        gotoxy(62,36);
+        printf("%i", pontQuinto);
+    }
+    cor(7);
 
     do{
         opcao = getch();
@@ -4211,6 +4341,7 @@ perdeu(int tam){
     } else if (tam == 3){
         vazios = 9;
     }
+
     for(int x = 0; x < tam; x++) {
         for (int y = 0; y < tam; y++){
             if (matrizJogo[x][y] != 0){
@@ -4218,14 +4349,19 @@ perdeu(int tam){
             }
         }
     }
+
     if (vazios != 0) {
         return 0;
     } else if (vazios == 0) {
         for(int x = 0; x < tam; x++) {
             for (int y = 0; y < tam; y++) {
-                if (matrizJogo[x][y] == matrizJogo[x][y - 1] || matrizJogo[x][y] == matrizJogo[x][y + 1]) {
+                if (matrizJogo[x][y] == matrizJogo[x][y - 1] && y != 0) {
                     return 0;
-                } else if (matrizJogo[x][y] == matrizJogo[x - 1][y] || matrizJogo[x][y] == matrizJogo[x + 1][y]) {
+                } else if (matrizJogo[x][y] == matrizJogo[x][y + 1] && y != 4) {
+                    return 0;
+                } else if (matrizJogo[x][y] == matrizJogo[x - 1][y] && x != 0) {
+                    return 0;
+                } else if (matrizJogo[x][y] == matrizJogo[x + 1][y] && x != 4) {
                     return 0;
                 }
             }
