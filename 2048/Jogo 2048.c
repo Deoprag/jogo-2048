@@ -313,7 +313,7 @@ void menu(){
 senha(){
     int i, acesso = 0;
     char chave[6] = "admin";
-    char senha[15], c;
+    char senha[16], c;
 
     logo();
 
@@ -361,7 +361,7 @@ senha(){
         do{
             c = getch();
             if( isalnum(c) != 0 ){
-                if (i < 6){
+                if (i < 5){
                     senha[i] = c;
                     i++;
                     putch('*');
@@ -375,6 +375,7 @@ senha(){
                 inicio();
             }
         } while (c != 13);
+        senha[i] = '\0';
 
         if (strcmp(senha, chave) == 0){
             acesso = 1;
